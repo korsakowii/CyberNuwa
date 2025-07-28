@@ -28,7 +28,7 @@
 git remote add origin https://github.com/yourusername/CyberNuwa.git
 
 # 推送代码到 GitHub
-git push -u origin main
+git push -u origin release
 ```
 
 ### 步骤 3: 连接 Vercel / Step 3: Connect to Vercel
@@ -71,7 +71,7 @@ Vercel 会自动检测到这是一个 Next.js 项目，保持默认设置：
    ```bash
    git add .
    git commit -m "feat: Add new feature"
-   git push origin main
+   git push origin release
    ```
 
 2. **Vercel 自动检测**

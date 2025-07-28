@@ -35,7 +35,7 @@ fi
 
 # 推送代码 / Push code
 echo "📤 推送代码到 GitHub / Pushing code to GitHub..."
-git push origin main
+git push origin release
 
 if [ $? -ne 0 ]; then
     echo "❌ 推送失败 / Push failed"
