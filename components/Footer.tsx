@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useState, useRef, useEffect } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { createPortal } from 'react-dom'
 
 export default function Footer() {
   const { language, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
+  const [menuPos, setMenuPos] = useState<{top: number, right: number}>({top: 0, right: 0})
+  const btnRef = useRef<HTMLButtonElement>(null)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -18,8 +21,18 @@ export default function Footer() {
     closeMenu()
   }
 
+  useEffect(() => {
+    if (isOpen && btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect()
+      setMenuPos({
+        top: rect.top - 8, // 8px 间距
+        right: window.innerWidth - rect.right
+      })
+    }
+  }, [isOpen])
+
   return (
-    <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20">
+    <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* 版权信息 */}
@@ -30,6 +43,7 @@ export default function Footer() {
           {/* 语言切换器 */}
           <div className="relative">
             <button
+              ref={btnRef}
               onClick={toggleMenu}
               className="flex items-center space-x-2 px-3 py-2 bg-zinc-700/50 hover:bg-zinc-700/70 rounded-lg transition-all duration-200 text-zinc-300 hover:text-white"
             >
@@ -48,9 +62,17 @@ export default function Footer() {
               </span>
             </button>
 
-            {/* 语言选择菜单 */}
-            {isOpen && (
-              <div className="absolute bottom-full right-0 mb-2 bg-zinc-900/95 backdrop-blur-sm border border-zinc-700/50 rounded-lg shadow-lg overflow-hidden min-w-[120px]">
+            {/* 语言选择菜单（Portal） */}
+            {isOpen && typeof window !== 'undefined' && createPortal(
+              <div
+                style={{
+                  position: 'fixed',
+                  top: menuPos.top - 56, // 菜单高度约56px，向上弹出
+                  right: menuPos.right,
+                  zIndex: 9999
+                }}
+                className="bg-zinc-900/95 backdrop-blur-sm border border-zinc-700/50 rounded-lg shadow-lg overflow-hidden min-w-[120px]"
+              >
                 <div className="py-1">
                   <button
                     onClick={() => handleLanguageChange('zh')}
@@ -75,7 +97,8 @@ export default function Footer() {
                     <span>EN</span>
                   </button>
                 </div>
-              </div>
+              </div>,
+              document.body
             )}
 
             {/* 点击外部关闭菜单 */}
