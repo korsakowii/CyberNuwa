@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useLanguage } from '../../contexts/LanguageContext'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '../../locales/translations'
 
 export default function LaunchMission() {
   const { language } = useLanguage()
@@ -13,50 +14,7 @@ export default function LaunchMission() {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const translations = {
-    zh: {
-      title: '🚀 发起任务',
-      subtitle: '提交创意任务，让社区共同孵化',
-      form: {
-        title: '任务标题',
-        titlePlaceholder: '输入你的创意任务标题...',
-        description: '任务描述',
-        descriptionPlaceholder: '详细描述你的任务需求、目标和期望结果...',
-        tags: '标签',
-        tagsPlaceholder: '用逗号分隔的标签，如：AI, 创意, 协作',
-        submit: '提交任务',
-        back: '返回首页'
-      },
-      success: {
-        title: '🎉 任务提交成功！',
-        message: '你的创意任务已成功提交到社区。我们将尽快审核并发布。',
-        newTask: '提交新任务',
-        back: '返回首页'
-      }
-    },
-    en: {
-      title: '🚀 Launch Mission',
-      subtitle: 'Submit creative tasks for community incubation',
-      form: {
-        title: 'Mission Title',
-        titlePlaceholder: 'Enter your creative mission title...',
-        description: 'Mission Description',
-        descriptionPlaceholder: 'Describe your mission requirements, goals, and expected outcomes...',
-        tags: 'Tags',
-        tagsPlaceholder: 'Comma-separated tags, e.g.: AI, Creative, Collaboration',
-        submit: 'Submit Mission',
-        back: 'Back to Home'
-      },
-      success: {
-        title: '🎉 Mission Submitted Successfully!',
-        message: 'Your creative mission has been successfully submitted to the community. We will review and publish it soon.',
-        newTask: 'Submit New Mission',
-        back: 'Back to Home'
-      }
-    }
-  }
-
-  const t = translations[language]
+  const t = translations[language].launchMission
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

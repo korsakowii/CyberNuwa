@@ -2,65 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useLanguage } from '../../contexts/LanguageContext'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '../../locales/translations'
 
 export default function TrainAgent() {
   const { language } = useLanguage()
+  const t = translations[language].trainAgent
 
-  const translations = {
-    zh: {
-      title: '🎯 训练智能体',
-      subtitle: '通过提示词和样本训练自定义 Agent',
-      backHome: '← 返回首页',
-      form: {
-        name: '智能体名称 *',
-        namePlaceholder: '给你的智能体起个名字...',
-        description: '智能体描述 *',
-        descriptionPlaceholder: '简要描述智能体的功能...',
-        prompt: '核心提示词 *',
-        promptPlaceholder: '定义智能体的核心行为和响应模式...',
-        samples: '训练样本',
-        samplesPlaceholder: '提供一些示例对话或场景...',
-        personality: '性格特征',
-        personalityPlaceholder: '描述智能体的性格特点...',
-        constraints: '行为约束',
-        constraintsPlaceholder: '定义智能体的行为边界...',
-        submit: '开始训练',
-        training: '训练中...'
-      },
-      progress: {
-        title: '训练进度',
-        complete: '训练完成！'
-      }
-    },
-    en: {
-      title: '🎯 Train Agent',
-      subtitle: 'Train custom agents with prompts and samples',
-      backHome: '← Back to Home',
-      form: {
-        name: 'Agent Name *',
-        namePlaceholder: 'Give your agent a name...',
-        description: 'Agent Description *',
-        descriptionPlaceholder: 'Briefly describe the agent\'s function...',
-        prompt: 'Core Prompt *',
-        promptPlaceholder: 'Define the agent\'s core behavior and response patterns...',
-        samples: 'Training Samples',
-        samplesPlaceholder: 'Provide some example conversations or scenarios...',
-        personality: 'Personality Traits',
-        personalityPlaceholder: 'Describe the agent\'s personality...',
-        constraints: 'Behavior Constraints',
-        constraintsPlaceholder: 'Define the agent\'s behavioral boundaries...',
-        submit: 'Start Training',
-        training: 'Training...'
-      },
-      progress: {
-        title: 'Training Progress',
-        complete: 'Training Complete!'
-      }
-    }
-  }
-
-  const t = translations[language]
   const [trainingData, setTrainingData] = useState({
     name: '',
     description: '',

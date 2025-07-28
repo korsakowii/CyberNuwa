@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '../locales/translations'
 
 export default function Home() {
