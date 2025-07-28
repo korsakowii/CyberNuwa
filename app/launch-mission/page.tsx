@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import LanguageSwitcher from '../../components/LanguageSwitcher'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function LaunchMission() {
-  const [language, setLanguage] = useState<'zh' | 'en'>('en')
+  const { language } = useLanguage()
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -76,8 +76,7 @@ export default function LaunchMission() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white">
-      <LanguageSwitcher language={language} onLanguageChange={setLanguage} />
+    <div className="bg-zinc-900 text-white">
 
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
@@ -180,6 +179,6 @@ export default function LaunchMission() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 } 

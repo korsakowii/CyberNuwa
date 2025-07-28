@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function Narratives() {
+  const { language } = useLanguage()
   const narratives = [
     {
       id: 1,
@@ -95,7 +97,7 @@ export default function Narratives() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white py-10">
+    <div className="bg-zinc-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -251,6 +253,6 @@ export default function Narratives() {
           overflow: hidden;
         }
       `}</style>
-    </main>
+    </div>
   )
 } 

@@ -1,8 +1,51 @@
 'use client'
 
 import Link from 'next/link'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function Agents() {
+  const { language } = useLanguage()
+
+  const translations = {
+    zh: {
+      title: '🤖 Agent 养成所',
+      subtitle: '查看智能体列表与训练记录',
+      backHome: '← 返回首页',
+      trainNew: '🎯 训练新智能体',
+      stats: {
+        total: '总智能体数',
+        active: '运行中',
+        training: '训练中',
+        inactive: '已停用'
+      },
+      status: {
+        active: '运行中',
+        training: '训练中',
+        inactive: '已停用',
+        unknown: '未知'
+      }
+    },
+    en: {
+      title: '🤖 Agent Incubator',
+      subtitle: 'View agent list and training records',
+      backHome: '← Back to Home',
+      trainNew: '🎯 Train New Agent',
+      stats: {
+        total: 'Total Agents',
+        active: 'Active',
+        training: 'Training',
+        inactive: 'Inactive'
+      },
+      status: {
+        active: 'Active',
+        training: 'Training',
+        inactive: 'Inactive',
+        unknown: 'Unknown'
+      }
+    }
+  }
+
+  const t = translations[language]
   // 模拟数据 - 实际项目中应该从 API 获取
   const agents = [
     {
@@ -58,28 +101,28 @@ export default function Agents() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'active': return '运行中'
-      case 'training': return '训练中'
-      case 'inactive': return '已停用'
-      default: return '未知'
+      case 'active': return t.status.active
+      case 'training': return t.status.training
+      case 'inactive': return t.status.inactive
+      default: return t.status.unknown
     }
   }
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white py-10">
+    <div className="bg-zinc-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
           <Link href="/" className="text-zinc-400 hover:text-white transition-colors mb-4 inline-block">
-            ← 返回首页
+            {t.backHome}
           </Link>
-          <h1 className="text-4xl font-bold mb-4">🤖 Agent 养成所</h1>
-          <p className="text-zinc-400 mb-6">查看智能体列表与训练记录</p>
+          <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
+          <p className="text-zinc-400 mb-6">{t.subtitle}</p>
           <Link
             href="/train-agent"
             className="inline-block bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
           >
-            🎯 训练新智能体
+            {t.trainNew}
           </Link>
         </div>
 
@@ -87,25 +130,25 @@ export default function Agents() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-blue-400">{agents.length}</div>
-            <div className="text-zinc-400">总智能体数</div>
+            <div className="text-zinc-400">{t.stats.total}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-green-400">
               {agents.filter(a => a.status === 'active').length}
             </div>
-            <div className="text-zinc-400">运行中</div>
+            <div className="text-zinc-400">{t.stats.active}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-yellow-400">
               {agents.filter(a => a.status === 'training').length}
             </div>
-            <div className="text-zinc-400">训练中</div>
+            <div className="text-zinc-400">{t.stats.training}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-purple-400">
               {Math.round(agents.reduce((acc, agent) => acc + agent.trainingProgress, 0) / agents.length)}%
             </div>
-            <div className="text-zinc-400">平均完成度</div>
+            <div className="text-zinc-400">{language === 'zh' ? '平均完成度' : 'Avg Progress'}</div>
           </div>
         </div>
 
@@ -189,6 +232,6 @@ export default function Agents() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 } 

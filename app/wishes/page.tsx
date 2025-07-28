@@ -2,8 +2,39 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function Wishes() {
+  const { language } = useLanguage()
+
+  const translations = {
+    zh: {
+      title: '⭐ 许愿池',
+      subtitle: '展示灵感碎片和半成品想法',
+      backHome: '← 返回首页',
+      addWish: '添加愿望',
+      status: {
+        idea: '灵感',
+        'in-progress': '进行中',
+        completed: '已完成',
+        unknown: '未知'
+      }
+    },
+    en: {
+      title: '⭐ Wish Pool',
+      subtitle: 'Show inspiration fragments and half-finished ideas',
+      backHome: '← Back to Home',
+      addWish: 'Add Wish',
+      status: {
+        idea: 'Idea',
+        'in-progress': 'In Progress',
+        completed: 'Completed',
+        unknown: 'Unknown'
+      }
+    }
+  }
+
+  const t = translations[language]
   const [wishes, setWishes] = useState([
     {
       id: 1,
@@ -87,15 +118,15 @@ export default function Wishes() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'idea': return '灵感'
-      case 'in-progress': return '进行中'
-      case 'completed': return '已完成'
-      default: return '未知'
+      case 'idea': return t.status.idea
+      case 'in-progress': return t.status['in-progress']
+      case 'completed': return t.status.completed
+      default: return t.status.unknown
     }
   }
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white py-10">
+    <div className="bg-zinc-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -251,6 +282,6 @@ export default function Wishes() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 } 

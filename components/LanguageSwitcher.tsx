@@ -1,13 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
-interface LanguageSwitcherProps {
-  language: 'zh' | 'en'
-  onLanguageChange: (language: 'zh' | 'en') => void
-}
-
-export default function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitcherProps) {
+export default function LanguageSwitcher() {
+  const { language, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -18,7 +15,7 @@ export default function LanguageSwitcher({ language, onLanguageChange }: Languag
 
   const handleLanguageChange = (lang: 'zh' | 'en') => {
     console.log('Language changed to:', lang)
-    onLanguageChange(lang)
+    setLanguage(lang)
     closeMenu()
   }
 

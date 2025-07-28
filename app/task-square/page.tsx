@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function TaskSquare() {
+  const { language } = useLanguage()
   // 模拟任务数据
   const tasks = [
     {
@@ -102,7 +104,7 @@ export default function TaskSquare() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-900 text-white py-10">
+    <div className="bg-zinc-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -247,6 +249,6 @@ export default function TaskSquare() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 } 
