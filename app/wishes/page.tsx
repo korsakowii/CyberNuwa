@@ -102,7 +102,7 @@ export default function Wishes() {
   }
 
   // 提交时生成中英文结构的 wish
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const wish = {
       id: wishes.length + 1,
