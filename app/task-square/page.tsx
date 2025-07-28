@@ -188,11 +188,11 @@ export default function TaskSquare() {
                     <div className="flex items-center space-x-2">
                       {/* 状态标签 */}
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}>
-                        {t.status[task.status]}
+                        {t.status[task.status as keyof typeof t.status] || task.status}
                       </span>
                       {/* 优先级标签 */}
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(task.priority)} bg-zinc-700/50`}>
-                        {t.priority ? t.priority[task.priority] : task.priority}
+                        {t.priority ? t.priority[task.priority as keyof typeof t.priority] : task.priority}
                       </span>
                     </div>
                   </div>
