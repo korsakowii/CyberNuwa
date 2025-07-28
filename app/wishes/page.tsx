@@ -21,6 +21,7 @@ export default function Wishes() {
       status: 'idea',
       likes: 23,
       comments: 8,
+      views: 1567,
       tags: {
         zh: ['AI', '诗歌', '创作', '情感'],
         en: ['AI', 'Poetry', 'Creation', 'Emotion']
@@ -38,6 +39,7 @@ export default function Wishes() {
       status: 'in-progress',
       likes: 45,
       comments: 12,
+      views: 2341,
       tags: {
         zh: ['编程', '重构', '代码质量'],
         en: ['Programming', 'Refactoring', 'Code Quality']
@@ -55,6 +57,7 @@ export default function Wishes() {
       status: 'idea',
       likes: 67,
       comments: 15,
+      views: 1892,
       tags: {
         zh: ['翻译', '多语言', '语音'],
         en: ['Translation', 'Multilingual', 'Speech']
@@ -72,6 +75,7 @@ export default function Wishes() {
       status: 'completed',
       likes: 89,
       comments: 23,
+      views: 3124,
       tags: {
         zh: ['设计', '创意', '视觉'],
         en: ['Design', 'Creativity', 'Visual']
@@ -112,6 +116,7 @@ export default function Wishes() {
       status: 'idea',
       likes: 0,
       comments: 0,
+      views: 1,
       tags: {
         zh: newWish.tags.zh.split(',').map(tag => tag.trim()).filter(Boolean),
         en: newWish.tags.en.split(',').map(tag => tag.trim()).filter(Boolean)
@@ -162,11 +167,13 @@ export default function Wishes() {
         {/* 许愿表单 */}
         {showForm && (
           <div className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 mb-8">
-            <h3 className="text-xl font-semibold mb-4">许下你的愿望</h3>
+            <h3 className="text-xl font-semibold mb-4">
+              {language === 'zh' ? '许下你的愿望' : 'Make Your Wish'}
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="title" className="block text-sm font-medium text-zinc-300 mb-2">
-                  愿望标题 *
+                  {language === 'zh' ? '愿望标题 *' : 'Wish Title *'}
                 </label>
                 <input
                   type="text"
@@ -176,12 +183,12 @@ export default function Wishes() {
                   name="title"
                   required
                   className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400"
-                  placeholder="给你的愿望起个名字..."
+                  placeholder={language === 'zh' ? '给你的愿望起个名字...' : 'Give your wish a name...'}
                 />
               </div>
               <div>
                 <label htmlFor="description" className="block text-sm font-medium text-zinc-300 mb-2">
-                  愿望描述 *
+                  {language === 'zh' ? '愿望描述 *' : 'Wish Description *'}
                 </label>
                 <textarea
                   id="description"
@@ -191,12 +198,12 @@ export default function Wishes() {
                   required
                   rows={4}
                   className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400 resize-none"
-                  placeholder="详细描述你的愿望，让其他人理解你的想法..."
+                  placeholder={language === 'zh' ? '详细描述你的愿望，让其他人理解你的想法...' : 'Describe your wish in detail so others can understand your idea...'}
                 />
               </div>
               <div>
                 <label htmlFor="tags" className="block text-sm font-medium text-zinc-300 mb-2">
-                  标签
+                  {language === 'zh' ? '标签' : 'Tags'}
                 </label>
                 <input
                   type="text"
@@ -205,7 +212,7 @@ export default function Wishes() {
                   onChange={handleChange}
                   name="tags"
                   className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400"
-                  placeholder="用逗号分隔，如：AI, 创意, 工具"
+                  placeholder={language === 'zh' ? '用逗号分隔，如：AI, 创意, 工具' : 'Separate with commas, e.g.: AI, Creativity, Tools'}
                 />
               </div>
               <div className="flex space-x-3">
@@ -213,14 +220,14 @@ export default function Wishes() {
                   type="submit"
                   className="flex-1 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                  许愿
+                  {language === 'zh' ? '许愿' : 'Make Wish'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
                   className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                  取消
+                  {language === 'zh' ? '取消' : 'Cancel'}
                 </button>
               </div>
             </form>
@@ -239,7 +246,7 @@ export default function Wishes() {
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2">{wish.title[language]}</h3>
                   <div className="flex items-center space-x-2 text-sm text-zinc-400">
-                    <span>by {wish.author[language]}</span>
+                    <span>{language === 'zh' ? '作者：' : 'by '}{wish.author[language]}</span>
                     <span>•</span>
                     <span>{wish.createdAt}</span>
                   </div>
@@ -277,6 +284,10 @@ export default function Wishes() {
                     <span>💬</span>
                     <span>{wish.comments}</span>
                   </button>
+                  <span className="flex items-center space-x-1">
+                    <span role="img" aria-label="views">👀</span>
+                    <span>{wish.views?.toLocaleString() || 0}</span>
+                  </span>
                 </div>
                 <button className="text-pink-400 hover:text-pink-300 transition-colors">
                   {t.supportWish}
@@ -290,13 +301,17 @@ export default function Wishes() {
         {wishes.length === 0 && (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">⭐</div>
-            <h3 className="text-xl font-semibold mb-2">许愿池还是空的</h3>
-            <p className="text-zinc-400 mb-6">成为第一个许愿的人吧！</p>
+            <h3 className="text-xl font-semibold mb-2">
+              {language === 'zh' ? '许愿池还是空的' : 'Wish Pool is Empty'}
+            </h3>
+            <p className="text-zinc-400 mb-6">
+              {language === 'zh' ? '成为第一个许愿的人吧！' : 'Be the first to make a wish!'}
+            </p>
             <button
               onClick={() => setShowForm(true)}
               className="inline-block bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
             >
-              许下第一个愿望
+              {language === 'zh' ? '许下第一个愿望' : 'Make the First Wish'}
             </button>
           </div>
         )}

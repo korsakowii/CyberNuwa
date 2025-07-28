@@ -46,7 +46,8 @@ export default function TaskSquare() {
       priority: 'high',
       deadline: '2024-07-01',
       assignee: 'Alice',
-      reward: '600000-800000元'
+      reward: '600000-800000元',
+      views: 1247
     },
     {
       id: 2,
@@ -66,7 +67,8 @@ export default function TaskSquare() {
       priority: 'medium',
       deadline: '2024-06-15',
       assignee: 'Bob',
-      reward: '400000-600000元'
+      reward: '400000-600000元',
+      views: 892
     },
     {
       id: 3,
@@ -86,7 +88,8 @@ export default function TaskSquare() {
       priority: 'low',
       deadline: '2024-08-01',
       assignee: 'Charlie',
-      reward: '250000-350000元'
+      reward: '250000-350000元',
+      views: 567
     }
   ]
 
@@ -235,6 +238,10 @@ export default function TaskSquare() {
                     <span>{t.participants}: {task.participants}</span>
                     {task.assignee && <span>{t.assignee}: {task.assignee}</span>}
                     <span>{t.reward} {formatReward(task.reward, language)}</span>
+                    <span className="flex items-center gap-1">
+                      <span role="img" aria-label="views">👀</span> 
+                      {task.views?.toLocaleString() || 0} {language === 'zh' ? '围观' : 'Views'}
+                    </span>
                   </div>
                 </div>
 

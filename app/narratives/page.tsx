@@ -25,7 +25,8 @@ export default function Narratives() {
       date: '2024-01-01',
       likes: 12,
       readTime: 3,
-      comments: 2
+      comments: 2,
+      views: 2341
     },
     {
       id: 2,
@@ -43,7 +44,8 @@ export default function Narratives() {
       date: '2024-01-10',
       likes: 8,
       readTime: 2,
-      comments: 0
+      comments: 0,
+      views: 1567
     },
     {
       id: 3,
@@ -61,7 +63,8 @@ export default function Narratives() {
       date: '2024-02-01',
       likes: 5,
       readTime: 4,
-      comments: 5
+      comments: 5,
+      views: 892
     }
   ]
 
@@ -94,7 +97,7 @@ export default function Narratives() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-blue-400">{narratives.length}</div>
             <div className="text-zinc-400">{t.total}</div>
@@ -110,6 +113,12 @@ export default function Narratives() {
               {narratives.filter(n => n.type === 'community').length}
             </div>
             <div className="text-zinc-400">{t.communityHistory}</div>
+          </div>
+          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
+            <div className="text-3xl font-bold text-yellow-400">
+              {narratives.reduce((sum, n) => sum + (n.views || 0), 0).toLocaleString()}
+            </div>
+            <div className="text-zinc-400">{language === 'zh' ? '总浏览量' : 'Total Views'}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-yellow-400">
@@ -131,7 +140,7 @@ export default function Narratives() {
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2">{narrative.title[language]}</h3>
                   <div className="flex items-center space-x-2 text-sm text-zinc-400">
-                    <span>by {narrative.author[language]}</span>
+                    <span>{language === 'zh' ? '作者：' : 'by '}{narrative.author[language]}</span>
                     <span>•</span>
                     <span>{narrative.date}</span>
                   </div>
@@ -170,6 +179,10 @@ export default function Narratives() {
                     <span>💬</span>
                     <span>{narrative.comments}</span>
                   </button>
+                  <span className="flex items-center space-x-1">
+                    <span role="img" aria-label="views">👀</span>
+                    <span>{narrative.views?.toLocaleString() || 0}</span>
+                  </span>
                 </div>
                 <button className="text-blue-400 hover:text-blue-300 transition-colors">
                   {t.readMore}
