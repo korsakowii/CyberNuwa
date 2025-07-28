@@ -1,67 +1,92 @@
 'use client'
 
 import Link from 'next/link'
-import { useLanguage } from '../../contexts/LanguageContext'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '../../locales/translations'
+
+function formatReward(reward: string, language: string) {
+  // reward like '6000-8000元' or '2500元'
+  const match = reward.match(/(\d+)(-(\d+))?元?/)
+  if (!match) return reward
+  const min = parseInt(match[1], 10)
+  const max = match[3] ? parseInt(match[3], 10) : undefined
+  if (language === 'en') {
+    if (max) {
+      const usdMin = Math.round(min / 7)
+      const usdMax = Math.round(max / 7)
+      return `$${usdMin}-$${usdMax}`
+    } else {
+      const usd = Math.round(min / 7)
+      return `$${usd}`
+    }
+  }
+  return max ? `${min}-${max}元` : `${min}元`
+}
 
 export default function TaskSquare() {
   const { language } = useLanguage()
+  const t = translations[language].taskSquare
   // 模拟任务数据
   const tasks = [
     {
       id: 1,
-      title: '开发智能代码审查助手',
-      description: '创建一个能够自动审查代码质量、检测潜在bug并提供改进建议的AI助手。',
-      status: 'open',
+      title: { zh: 'AI 写作助手开发', en: 'AI Writing Assistant Development' },
+      description: {
+        zh: '开发一个能够辅助用户写作、润色和生成内容的智能体。',
+        en: 'Develop an agent that assists users in writing, polishing, and generating content.'
+      },
+      creator: { zh: 'Alice', en: 'Alice' },
+      status: 'in-progress',
+      tags: {
+        zh: ['AI', '写作', '内容生成'],
+        en: ['AI', 'Writing', 'Content Generation']
+      },
+      progress: 60,
+      participants: 12,
       priority: 'high',
-      assignee: null,
-      participants: 8,
-      progress: 0,
-      tags: ['编程', 'AI', '代码质量'],
-      createdAt: '2024-01-15',
-      deadline: '2024-02-15',
-      reward: '社区贡献者徽章'
+      deadline: '2024-07-01',
+      assignee: 'Alice',
+      reward: '600000-800000元'
     },
     {
       id: 2,
-      title: '设计创意写作AI',
-      description: '开发一个能够根据用户输入的主题和风格生成创意文本的智能体。',
-      status: 'in-progress',
+      title: { zh: '多语言翻译工具', en: 'Multilingual Translation Tool' },
+      description: {
+        zh: '构建一个支持多语言实时翻译的智能体，适用于文本和语音。',
+        en: 'Build an agent that supports real-time multilingual translation for text and speech.'
+      },
+      creator: { zh: 'Bob', en: 'Bob' },
+      status: 'completed',
+      tags: {
+        zh: ['翻译', '多语言', '语音'],
+        en: ['Translation', 'Multilingual', 'Speech']
+      },
+      progress: 100,
+      participants: 8,
       priority: 'medium',
-      assignee: 'Alice',
-      participants: 12,
-      progress: 65,
-      tags: ['写作', '创意', 'AI'],
-      createdAt: '2024-01-10',
-      deadline: '2024-02-10',
-      reward: '早期采用者特权'
+      deadline: '2024-06-15',
+      assignee: 'Bob',
+      reward: '400000-600000元'
     },
     {
       id: 3,
-      title: '构建多语言翻译工具',
-      description: '创建一个支持实时语音翻译和文档翻译的智能工具。',
-      status: 'completed',
-      priority: 'high',
-      assignee: 'Bob',
-      participants: 15,
-      progress: 100,
-      tags: ['翻译', '多语言', '语音'],
-      createdAt: '2024-01-05',
-      deadline: '2024-01-25',
-      reward: '项目贡献者证书'
-    },
-    {
-      id: 4,
-      title: '开发数据可视化生成器',
-      description: '根据用户提供的数据自动生成美观且信息丰富的可视化图表。',
-      status: 'open',
-      priority: 'low',
-      assignee: null,
-      participants: 5,
+      title: { zh: '智能体协作平台优化', en: 'Agent Collaboration Platform Optimization' },
+      description: {
+        zh: '优化平台性能，提升多智能体协作效率和用户体验。',
+        en: 'Optimize platform performance to improve multi-agent collaboration efficiency and user experience.'
+      },
+      creator: { zh: 'Charlie', en: 'Charlie' },
+      status: 'pending',
+      tags: {
+        zh: ['平台', '协作', '优化'],
+        en: ['Platform', 'Collaboration', 'Optimization']
+      },
       progress: 0,
-      tags: ['数据', '可视化', '图表'],
-      createdAt: '2024-01-12',
-      deadline: '2024-03-01',
-      reward: '技能认证徽章'
+      participants: 5,
+      priority: 'low',
+      deadline: '2024-08-01',
+      assignee: 'Charlie',
+      reward: '250000-350000元'
     }
   ]
 
@@ -71,6 +96,7 @@ export default function TaskSquare() {
       case 'in-progress': return 'text-yellow-400 bg-yellow-400/10'
       case 'completed': return 'text-green-400 bg-green-400/10'
       case 'closed': return 'text-gray-400 bg-gray-400/10'
+      case 'pending': return 'text-gray-400 bg-gray-400/10'
       default: return 'text-gray-400 bg-gray-400/10'
     }
   }
@@ -109,15 +135,15 @@ export default function TaskSquare() {
         {/* Header */}
         <div className="text-center mb-12">
           <Link href="/" className="text-zinc-400 hover:text-white transition-colors mb-4 inline-block">
-            ← 返回首页
+            {t.backHome}
           </Link>
-          <h1 className="text-4xl font-bold mb-4">🏛️ 任务广场</h1>
-          <p className="text-zinc-400 mb-6">浏览所有公开任务与进展</p>
+          <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
+          <p className="text-zinc-400 mb-6">{t.subtitle}</p>
           <Link
             href="/launch-mission"
             className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
           >
-            🚀 发布新任务
+            {t.addTask}
           </Link>
         </div>
 
@@ -125,25 +151,25 @@ export default function TaskSquare() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-blue-400">{tasks.length}</div>
-            <div className="text-zinc-400">总任务数</div>
+            <div className="text-zinc-400">{t.totalTasks}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-yellow-400">
               {tasks.filter(t => t.status === 'in-progress').length}
             </div>
-            <div className="text-zinc-400">进行中</div>
+            <div className="text-zinc-400">{t.inProgress}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-green-400">
               {tasks.filter(t => t.status === 'completed').length}
             </div>
-            <div className="text-zinc-400">已完成</div>
+            <div className="text-zinc-400">{t.completed}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-purple-400">
               {tasks.reduce((acc, task) => acc + task.participants, 0)}
             </div>
-            <div className="text-zinc-400">总参与者</div>
+            <div className="text-zinc-400">{t.participants}</div>
           </div>
         </div>
 
@@ -158,24 +184,26 @@ export default function TaskSquare() {
                 {/* 任务信息 */}
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-semibold">{task.title}</h3>
+                    <h3 className="text-xl font-semibold">{task.title[language]}</h3>
                     <div className="flex items-center space-x-2">
+                      {/* 状态标签 */}
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}>
-                        {getStatusText(task.status)}
+                        {t.status[task.status as keyof typeof t.status] || task.status}
                       </span>
+                      {/* 优先级标签 */}
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(task.priority)} bg-zinc-700/50`}>
-                        {getPriorityText(task.priority)}
+                        {t.priority ? t.priority[task.priority as keyof typeof t.priority] : task.priority}
                       </span>
                     </div>
                   </div>
                   
                   <p className="text-zinc-300 text-sm mb-4 leading-relaxed">
-                    {task.description}
+                    {task.description[language]}
                   </p>
 
                   {/* 标签 */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {task.tags.map((tag, index) => (
+                    {task.tags[language].map((tag, index) => (
                       <span
                         key={index}
                         className="px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full"
@@ -189,7 +217,7 @@ export default function TaskSquare() {
                   {task.status === 'in-progress' && (
                     <div className="mb-4">
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-zinc-400">完成进度</span>
+                        <span className="text-zinc-400">{t.progress}</span>
                         <span className="text-zinc-300">{task.progress}%</span>
                       </div>
                       <div className="w-full bg-zinc-700 rounded-full h-2">
@@ -203,10 +231,10 @@ export default function TaskSquare() {
 
                   {/* 任务元信息 */}
                   <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
-                    <span>📅 截止: {task.deadline}</span>
-                    <span>👥 参与者: {task.participants}</span>
-                    {task.assignee && <span>🎯 负责人: {task.assignee}</span>}
-                    <span>🏆 奖励: {task.reward}</span>
+                    <span>{t.deadline} {task.deadline}</span>
+                    <span>{t.participants}: {task.participants}</span>
+                    {task.assignee && <span>{t.assignee}: {task.assignee}</span>}
+                    <span>{t.reward} {formatReward(task.reward, language)}</span>
                   </div>
                 </div>
 
@@ -214,19 +242,19 @@ export default function TaskSquare() {
                 <div className="flex flex-col space-y-2 min-w-[120px]">
                   {task.status === 'open' ? (
                     <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                      参与任务
+                      {t.participants}
                     </button>
                   ) : task.status === 'in-progress' ? (
                     <button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                      查看进展
+                      {t.viewProgress}
                     </button>
                   ) : (
                     <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                      查看成果
+                      {t.viewResult}
                     </button>
                   )}
                   <button className="w-full bg-zinc-700 hover:bg-zinc-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                    详情
+                    {t.details}
                   </button>
                 </div>
               </div>
@@ -238,13 +266,13 @@ export default function TaskSquare() {
         {tasks.length === 0 && (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🏛️</div>
-            <h3 className="text-xl font-semibold mb-2">任务广场还是空的</h3>
-            <p className="text-zinc-400 mb-6">成为第一个发布任务的人吧！</p>
+            <h3 className="text-xl font-semibold mb-2">{t.emptyTaskSquare}</h3>
+            <p className="text-zinc-400 mb-6">{t.beFirst}</p>
             <Link
               href="/launch-mission"
               className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
             >
-              发布第一个任务
+              {t.launchFirstTask}
             </Link>
           </div>
         )}

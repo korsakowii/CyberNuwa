@@ -124,6 +124,7 @@ export const translations = {
       subtitle: '展示灵感碎片和半成品想法',
       backHome: '← 返回首页',
       addWish: '添加愿望',
+      supportWish: '支持这个愿望',
       status: {
         idea: '灵感',
         'in-progress': '进行中',
@@ -136,21 +137,71 @@ export const translations = {
     roles: {
       title: '👥 用户角色',
       subtitle: '扮演不同角色，体验不同权限路径',
-      backHome: '← 返回首页'
+      backHome: '← 返回首页',
+      currentStatus: '你的当前状态',
+      upgradeProgress: '升级进度',
+      members: '成员',
+      permissions: '权限',
+      requirement: '获得要求',
+      nextLevel: '下一级',
+      nextRequirement: '下一级要求',
+      viewDetails: '查看详情',
+      roleDevelopmentPath: '角色发展路径',
+      roleDevelopmentPathDescription: '每个角色都有独特的权限和发展路径，通过贡献和参与来提升你的角色等级',
+      howToProgress1: '想要提升角色等级？积极参与任务、训练智能体、贡献优质内容！',
+      howToProgress2: '每个角色都有独特的成长路径和专属权限。',
     },
 
     // Narratives 页面
     narratives: {
       title: '📖 元叙事广场',
       subtitle: '记录社区发展和 Agent 传记',
-      backHome: '← 返回首页'
+      backHome: '← 返回首页',
+      total: '总叙事数',
+      agentBiographies: '智能体传记',
+      communityHistory: '社区历史',
+      totalLikes: '总点赞数',
+      readMore: '阅读全文',
+      other: '其他',
+      shareStory: '分享你的故事',
+      shareButton: '撰写叙事',
+      shareDesc1: '无论是社区贡献的经历，还是智能体训练的心得，都值得被记录和分享。',
+      shareDesc2: '让我们一起书写 CyberNuwa 的历史。',
+      timelineTitle: '社区发展时间线',
     },
 
     // Task Square 页面
     taskSquare: {
       title: '🏛️ 任务广场',
       subtitle: '浏览所有公开任务与进展',
-      backHome: '← 返回首页'
+      addTask: '发布新任务',
+      totalTasks: '总任务数',
+      inProgress: '进行中',
+      completed: '已完成',
+      participants: '参与者',
+      status: {
+        pending: '待启动',
+        'in-progress': '进行中',
+        completed: '已完成',
+        unknown: '未知'
+      },
+      priority: {
+        high: '高优先级',
+        medium: '中优先级',
+        low: '低优先级',
+        unknown: '未知'
+      },
+      assignee: '负责人',
+      viewResult: '查看成果',
+      details: '详情',
+      deadline: '截止：',
+      reward: '奖励：',
+      emptyTaskSquare: '暂无任务',
+      beFirst: '成为第一个发布任务的用户吧！',
+      launchFirstTask: '发布第一个任务',
+      backHome: '← 返回首页',
+      viewProgress: '查看进展',
+      progress: '完成进度'
     }
   },
 
@@ -279,6 +330,7 @@ export const translations = {
       subtitle: 'Show inspiration fragments and half-finished ideas',
       backHome: '← Back to Home',
       addWish: 'Add Wish',
+      supportWish: 'Support this wish',
       status: {
         idea: 'Idea',
         'in-progress': 'In Progress',
@@ -291,21 +343,71 @@ export const translations = {
     roles: {
       title: '👥 User Roles',
       subtitle: 'Experience different roles and permission paths',
-      backHome: '← Back to Home'
+      backHome: '← Back to Home',
+      currentStatus: 'Your Current Status',
+      upgradeProgress: 'Upgrade Progress',
+      members: 'Members',
+      permissions: 'Permissions',
+      requirement: 'Requirement',
+      nextLevel: 'Next Level',
+      nextRequirement: 'Next Requirement',
+      viewDetails: 'View Details',
+      roleDevelopmentPath: 'Role Development Path',
+      roleDevelopmentPathDescription: 'Each role has unique permissions and development paths. Improve your role level through contribution and participation.',
+      howToProgress1: 'Want to level up your role? Actively participate in tasks, train agents, and contribute quality content!',
+      howToProgress2: 'Each role has a unique growth path and exclusive permissions.',
     },
 
     // Narratives page
     narratives: {
       title: '📖 Metanarrative Square',
       subtitle: 'Record community development and agent biographies',
-      backHome: '← Back to Home'
+      backHome: '← Back to Home',
+      total: 'Total Narratives',
+      agentBiographies: 'Agent Biographies',
+      communityHistory: 'Community History',
+      totalLikes: 'Total Likes',
+      readMore: 'Read More',
+      other: 'Other',
+      shareStory: 'Share Your Story',
+      shareButton: 'Write Narrative',
+      shareDesc1: 'Whether it is the experience of community contribution or the insights of agent training, it is worth recording and sharing.',
+      shareDesc2: 'Let us write the history of CyberNuwa together.',
+      timelineTitle: 'Community Timeline',
     },
 
     // Task Square page
     taskSquare: {
       title: '🏛️ Task Square',
       subtitle: 'Browse all public tasks and progress',
-      backHome: '← Back to Home'
+      addTask: 'Publish New Task',
+      totalTasks: 'Total Tasks',
+      inProgress: 'In Progress',
+      completed: 'Completed',
+      participants: 'Participants',
+      status: {
+        pending: 'Pending',
+        'in-progress': 'In Progress',
+        completed: 'Completed',
+        unknown: 'Unknown'
+      },
+      priority: {
+        high: 'High Priority',
+        medium: 'Medium Priority',
+        low: 'Low Priority',
+        unknown: 'Unknown'
+      },
+      assignee: 'Assignee',
+      viewResult: 'View Result',
+      details: 'Details',
+      deadline: 'Deadline:',
+      reward: 'Reward:',
+      emptyTaskSquare: 'No tasks yet',
+      beFirst: 'Be the first to publish a task!',
+      launchFirstTask: 'Publish the first task',
+      backHome: '← Back to Home',
+      viewProgress: 'View Progress',
+      progress: 'Progress'
     }
   }
 } 
