@@ -23,18 +23,9 @@ export default function LanguageSwitcher({ language, onLanguageChange }: Languag
       {/* 地球图标按钮 */}
       <button
         onClick={toggleMenu}
-        className="w-10 h-10 bg-zinc-800/80 backdrop-blur-sm border border-zinc-600 rounded-full flex items-center justify-center hover:bg-zinc-700/80 hover:border-zinc-500 transition-all duration-200 hover:scale-110 shadow-lg"
+        className="w-10 h-10 bg-blue-500/80 backdrop-blur-sm border border-blue-400 rounded-full flex items-center justify-center hover:bg-blue-600/80 hover:border-blue-300 transition-all duration-200 hover:scale-110 shadow-lg"
       >
-        <svg 
-          className="w-5 h-5 text-zinc-300" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth="1.5"/>
-          <path d="M2 12h20" strokeWidth="1.5"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" strokeWidth="1.5"/>
-        </svg>
+        <span className="text-white text-lg">🌍</span>
       </button>
 
       {/* 弹出菜单 */}
