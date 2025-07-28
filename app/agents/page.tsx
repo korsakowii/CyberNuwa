@@ -151,7 +151,7 @@ export default function Agents() {
                   <div className="text-3xl">{agent.avatar}</div>
                   <div>
                     <h3 className="text-xl font-semibold">{agent.name[language]}</h3>
-                    <p className="text-sm text-zinc-400">by {agent.creator[language]}</p>
+                    <p className="text-sm text-zinc-400">{language === 'zh' ? '创建者：' : 'by '}{agent.creator[language]}</p>
                   </div>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(agent.status)}`}>
