@@ -90,11 +90,14 @@ export default function Wishes() {
   const [showForm, setShowForm] = useState(false)
 
   // 表单输入处理，按当前 language 写入
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setNewWish(prev => ({
       ...prev,
-      [name]: { ...prev[name], [language]: value }
+      [name as 'title' | 'description' | 'tags']: {
+        ...prev[name as 'title' | 'description' | 'tags'],
+        [language]: value
+      }
     }))
   }
 
@@ -242,7 +245,7 @@ export default function Wishes() {
                   </div>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(wish.status)}`}>
-                  {t.status[wish.status]}
+                  {t.status[wish.status as keyof typeof t.status]}
                 </span>
               </div>
 
