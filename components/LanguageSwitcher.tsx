@@ -10,10 +10,14 @@ interface LanguageSwitcherProps {
 export default function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => {
+    console.log('Toggle menu clicked, current state:', isOpen)
+    setIsOpen(!isOpen)
+  }
   const closeMenu = () => setIsOpen(false)
 
   const handleLanguageChange = (lang: 'zh' | 'en') => {
+    console.log('Language changed to:', lang)
     onLanguageChange(lang)
     closeMenu()
   }
@@ -23,7 +27,8 @@ export default function LanguageSwitcher({ language, onLanguageChange }: Languag
       {/* 极简地球图标按钮 */}
       <button
         onClick={toggleMenu}
-        className="w-8 h-8 bg-transparent hover:bg-zinc-800/20 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105"
+        className="w-8 h-8 bg-transparent hover:bg-zinc-800/20 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer"
+        style={{ pointerEvents: 'auto' }}
       >
         <svg 
           className="w-4 h-4 text-zinc-400 hover:text-zinc-200 transition-colors duration-200" 
