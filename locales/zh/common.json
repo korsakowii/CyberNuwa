@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "🌌 Cyber Nüwa",
+    "subtitle": "面向创意共创与智能体养成的开放式平台",
+    "description": "融合 Kaggle 的任务机制、Notion 的协作空间与 HuggingFace 的模型文化"
+  },
+  "modules": {
+    "title": "探索平台模块",
+    "launchMission": {
+      "title": "🚀 发起任务",
+      "description": "提交创意任务，让社区共同孵化"
+    },
+    "agents": {
+      "title": "🤖 Agent 养成所",
+      "description": "查看智能体列表与训练记录"
+    },
+    "trainAgent": {
+      "title": "🎯 训练智能体",
+      "description": "通过提示词和样本训练自定义 Agent"
+    },
+    "wishes": {
+      "title": "⭐ 许愿池",
+      "description": "展示灵感碎片和半成品想法"
+    },
+    "roles": {
+      "title": "👥 用户角色",
+      "description": "扮演不同角色，体验不同权限路径"
+    },
+    "narratives": {
+      "title": "📖 元叙事广场",
+      "description": "记录社区发展和 Agent 传记"
+    },
+    "taskSquare": {
+      "title": "🏛️ 任务广场",
+      "description": "浏览所有公开任务与进展"
+    }
+  },
+  "vision": {
+    "title": "项目愿景",
+    "content": "让每个创意都被看见、让每位参与者都能留下痕迹，在非问答型协作中捏出赛博智能体，共同建造一座人机共创的灵感宇宙。"
+  },
+  "navigation": {
+    "language": "语言",
+    "zh": "中文",
+    "en": "English"
+  }
+} 

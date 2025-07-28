@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "🌌 Cyber Nüwa",
+    "subtitle": "Open Platform for Creative Co-Creation and AI Agent Development",
+    "description": "Integrating Kaggle's task mechanisms, Notion's collaborative spaces, and HuggingFace's model culture"
+  },
+  "modules": {
+    "title": "Explore Platform Modules",
+    "launchMission": {
+      "title": "🚀 Launch Mission",
+      "description": "Submit creative tasks for community incubation"
+    },
+    "agents": {
+      "title": "🤖 Agent Incubator",
+      "description": "View agent list and training records"
+    },
+    "trainAgent": {
+      "title": "🎯 Train Agent",
+      "description": "Train custom agents with prompts and samples"
+    },
+    "wishes": {
+      "title": "⭐ Wish Pool",
+      "description": "Show inspiration fragments and half-finished ideas"
+    },
+    "roles": {
+      "title": "👥 User Roles",
+      "description": "Experience different roles and permission paths"
+    },
+    "narratives": {
+      "title": "📖 Metanarrative Square",
+      "description": "Record community development and agent biographies"
+    },
+    "taskSquare": {
+      "title": "🏛️ Task Square",
+      "description": "Browse all public tasks and progress"
+    }
+  },
+  "vision": {
+    "title": "Project Vision",
+    "content": "Let every idea be seen, let every participant leave their mark, mold cyber agents through non-Q&A collaboration, and together build a universe of human-machine co-creation."
+  },
+  "navigation": {
+    "language": "Language",
+    "zh": "中文",
+    "en": "English"
+  }
+} 
