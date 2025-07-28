@@ -5,7 +5,7 @@ import Link from 'next/link'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 
 export default function LaunchMission() {
-  const [language, setLanguage] = useState<'zh' | 'en'>('zh')
+  const [language, setLanguage] = useState<'zh' | 'en'>('en')
   const [formData, setFormData] = useState({
     title: '',
     description: '',

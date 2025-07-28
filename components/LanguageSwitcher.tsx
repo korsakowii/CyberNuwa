@@ -8,15 +8,29 @@ interface LanguageSwitcherProps {
 export default function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitcherProps) {
   return (
     <div className="fixed top-4 right-4 z-50">
-      <div className="bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-lg p-2">
-        <select
-          value={language}
-          onChange={(e) => onLanguageChange(e.target.value as 'zh' | 'en')}
-          className="bg-transparent text-white border-none outline-none cursor-pointer"
-        >
-          <option value="zh">中文</option>
-          <option value="en">English</option>
-        </select>
+      <div className="bg-zinc-800/90 backdrop-blur-md border border-zinc-600 rounded-xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+        <div className="flex items-center space-x-1">
+          <button
+            onClick={() => onLanguageChange('zh')}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+              language === 'zh'
+                ? 'bg-blue-500 text-white shadow-md'
+                : 'text-zinc-300 hover:text-white hover:bg-zinc-700'
+            }`}
+          >
+            🇨🇳 中文
+          </button>
+          <button
+            onClick={() => onLanguageChange('en')}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+              language === 'en'
+                ? 'bg-blue-500 text-white shadow-md'
+                : 'text-zinc-300 hover:text-white hover:bg-zinc-700'
+            }`}
+          >
+            🇺🇸 EN
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 
 export default function Home() {
-  const [language, setLanguage] = useState<'zh' | 'en'>('zh')
+  const [language, setLanguage] = useState<'zh' | 'en'>('en')
 
   const translations = {
     zh: {
