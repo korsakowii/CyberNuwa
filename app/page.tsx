@@ -77,6 +77,13 @@ export default function Home() {
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
               {t.hero.description}
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Link href="/showcase" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105">
+                <span>🎯</span>
+                {language === 'zh' ? '功能展示' : 'Feature Showcase'}
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

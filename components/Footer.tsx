@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* 版权信息 */}
           <div className="text-zinc-400 text-sm">
-            © 2024 Cyber Nüwa. All rights reserved.
+            © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
           </div>
 
           {/* 语言切换器 */}
