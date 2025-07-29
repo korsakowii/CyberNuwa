@@ -7,31 +7,31 @@
   "modules": {
     "title": "Explore Platform Modules",
     "launchMission": {
-      "title": "🚀 Launch Mission",
+      "title": "Launch Mission",
       "description": "Submit creative tasks for community incubation"
     },
     "agents": {
-      "title": "🤖 Agent Incubator",
+      "title": "Agent Incubator",
       "description": "View agent list and training records"
     },
     "trainAgent": {
-      "title": "🎯 Train Agent",
+      "title": "Train Agent",
       "description": "Train custom agents with prompts and samples"
     },
     "wishes": {
-      "title": "⭐ Wish Pool",
+      "title": "Wish Pool",
       "description": "Show inspiration fragments and half-finished ideas"
     },
     "roles": {
-      "title": "👥 User Roles",
+      "title": "User Roles",
       "description": "Experience different roles and permission paths"
     },
     "narratives": {
-      "title": "📖 Metanarrative Square",
+      "title": "Metanarrative Square",
       "description": "Record community development and agent biographies"
     },
     "taskSquare": {
-      "title": "🏛️ Task Square",
+      "title": "Task Square",
       "description": "Browse all public tasks and progress"
     }
   },

@@ -37,6 +37,8 @@ jobs:
         cp app/page.static.tsx app/page.tsx
       
     - name: Build for GitHub Pages
+      env:
+        GITHUB_PAGES: 'true'
       run: npm run build
       
     - name: Restore original files
