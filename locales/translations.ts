@@ -35,13 +35,13 @@ export const translations = {
       },
       modules: {
         title: '探索平台模块',
-        launchMission: { title: '🚀 发起任务', description: '提交创意任务，让社区共同孵化' },
-        agents: { title: '🤖 Agent 养成所', description: '查看智能体列表与训练记录' },
-        trainAgent: { title: '🎯 训练智能体', description: '通过提示词和样本训练自定义 Agent' },
-        wishes: { title: '⭐ 许愿池', description: '展示灵感碎片和半成品想法' },
-        roles: { title: '👥 用户角色', description: '扮演不同角色，体验不同权限路径' },
-        narratives: { title: '📖 元叙事广场', description: '记录社区发展和 Agent 传记' },
-        taskSquare: { title: '🏛️ 任务广场', description: '浏览所有公开任务与进展' }
+        launchMission: { title: '发起任务', description: '提交创意任务，让社区共同孵化' },
+        agents: { title: 'Agent 养成所', description: '查看智能体列表与训练记录' },
+        trainAgent: { title: '训练智能体', description: '通过提示词和样本训练自定义 Agent' },
+        wishes: { title: '许愿池', description: '展示灵感碎片和半成品想法' },
+        roles: { title: '用户角色', description: '扮演不同角色，体验不同权限路径' },
+        narratives: { title: '元叙事广场', description: '记录社区发展和 Agent 传记' },
+        taskSquare: { title: '任务广场', description: '浏览所有公开任务与进展' }
       },
       vision: {
         title: '项目愿景',
@@ -241,13 +241,13 @@ export const translations = {
       },
       modules: {
         title: 'Explore Platform Modules',
-        launchMission: { title: '🚀 Launch Mission', description: 'Submit creative tasks for community incubation' },
-        agents: { title: '🤖 Agent Incubator', description: 'View agent list and training records' },
-        trainAgent: { title: '🎯 Train Agent', description: 'Train custom agents with prompts and samples' },
-        wishes: { title: '⭐ Wish Pool', description: 'Show inspiration fragments and half-finished ideas' },
-        roles: { title: '👥 User Roles', description: 'Experience different roles and permission paths' },
-        narratives: { title: '📖 Metanarrative Square', description: 'Record community development and agent biographies' },
-        taskSquare: { title: '🏛️ Task Square', description: 'Browse all public tasks and progress' }
+        launchMission: { title: 'Launch Mission', description: 'Submit creative tasks for community incubation' },
+        agents: { title: 'Agent Incubator', description: 'View agent list and training records' },
+        trainAgent: { title: 'Train Agent', description: 'Train custom agents with prompts and samples' },
+        wishes: { title: 'Wish Pool', description: 'Show inspiration fragments and half-finished ideas' },
+        roles: { title: 'User Roles', description: 'Experience different roles and permission paths' },
+        narratives: { title: 'Metanarrative Square', description: 'Record community development and agent biographies' },
+        taskSquare: { title: 'Task Square', description: 'Browse all public tasks and progress' }
       },
       vision: {
         title: 'Project Vision',
