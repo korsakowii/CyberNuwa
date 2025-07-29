@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
-import Footer from '../components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +23,7 @@ export default function RootLayout({
             <main className="flex-1">
               {children}
             </main>
-            <Footer />
+            {/* 移除全局Footer，让各页面自己管理footer */}
           </div>
         </LanguageProvider>
       </body>
