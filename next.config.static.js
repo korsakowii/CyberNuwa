@@ -2,8 +2,11 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/CyberNuwa',
-  assetPrefix: '/CyberNuwa/',
+  // 只在GitHub Pages部署时使用basePath
+  ...(process.env.GITHUB_PAGES === 'true' && {
+    basePath: '/CyberNuwa',
+    assetPrefix: '/CyberNuwa/',
+  }),
   images: {
     unoptimized: true
   }
