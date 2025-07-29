@@ -110,13 +110,13 @@ export default function StandaloneShowcase() {
     {
       id: 'task-square',
       title: { zh: '任务广场', en: 'Task Square' },
-      description: { zh: '浏览和参与各种AI任务，获得奖励', en: 'Browse and participate in various AI tasks, earn rewards' },
+      description: { zh: '浏览和参与各种AI任务，获得经验值', en: 'Browse and participate in various AI tasks, earn XP' },
       icon: '🏆',
       path: '/task-square',
       views: 4123,
       features: [
         { zh: '任务分类', en: 'Task Categories' },
-        { zh: '奖励系统', en: 'Reward System' },
+        { zh: '经验值系统', en: 'XP System' },
         { zh: '排行榜', en: 'Leaderboard' }
       ],
       status: 'active'
@@ -158,6 +158,14 @@ export default function StandaloneShowcase() {
     <div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
+        {/* Back to Main Site */}
+        <div className="mb-8">
+          <Link href="https://cybernuwa.vercel.app" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+            <span>←</span>
+            {language === 'zh' ? '返回主站' : 'Back to Main Site'}
+          </Link>
+        </div>
+        
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {language === 'zh' ? 'CyberNuwa 功能展示' : 'CyberNuwa Feature Showcase'}

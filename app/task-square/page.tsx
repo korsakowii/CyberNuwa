@@ -4,23 +4,16 @@ import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '../../locales/translations'
 
-function formatReward(reward: string, language: string) {
-  // reward like '6000-8000元' or '2500元'
-  const match = reward.match(/(\d+)(-(\d+))?元?/)
-  if (!match) return reward
+function formatExperience(experience: string, language: string) {
+  // experience like '6000-8000 XP' or '2500 XP'
+  const match = experience.match(/(\d+)(-(\d+))?XP?/)
+  if (!match) return experience
   const min = parseInt(match[1], 10)
   const max = match[3] ? parseInt(match[3], 10) : undefined
   if (language === 'en') {
-    if (max) {
-      const usdMin = Math.round(min / 7)
-      const usdMax = Math.round(max / 7)
-      return `$${usdMin}-$${usdMax}`
-    } else {
-      const usd = Math.round(min / 7)
-      return `$${usd}`
-    }
+    return max ? `${min}-${max} XP` : `${min} XP`
   }
-  return max ? `${min}-${max}元` : `${min}元`
+  return max ? `${min}-${max} 经验值` : `${min} 经验值`
 }
 
 export default function TaskSquare() {
@@ -46,7 +39,7 @@ export default function TaskSquare() {
       priority: 'high',
       deadline: '2024-07-01',
       assignee: 'Alice',
-      reward: '600000-800000元',
+      reward: '6000-8000 XP',
       views: 1247
     },
     {
@@ -67,7 +60,7 @@ export default function TaskSquare() {
       priority: 'medium',
       deadline: '2024-06-15',
       assignee: 'Bob',
-      reward: '400000-600000元',
+      reward: '4000-6000 XP',
       views: 892
     },
     {
@@ -88,7 +81,7 @@ export default function TaskSquare() {
       priority: 'low',
       deadline: '2024-08-01',
       assignee: 'Charlie',
-      reward: '250000-350000元',
+      reward: '2500-3500 XP',
       views: 567
     }
   ]
@@ -237,7 +230,7 @@ export default function TaskSquare() {
                     <span>{t.deadline} {task.deadline}</span>
                     <span>{t.participants}: {task.participants}</span>
                     {task.assignee && <span>{t.assignee}: {task.assignee}</span>}
-                    <span>{t.reward} {formatReward(task.reward, language)}</span>
+                    <span>{t.reward} {formatExperience(task.reward, language)}</span>
                     <span className="flex items-center gap-1">
                       <span role="img" aria-label="views">👀</span> 
                       {task.views?.toLocaleString() || 0} {language === 'zh' ? '围观' : 'Views'}
