@@ -31,8 +31,18 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
+    - name: Prepare static build files
+      run: |
+        cp next.config.static.js next.config.js
+        cp app/page.static.tsx app/page.tsx
+      
     - name: Build for GitHub Pages
-      run: npm run build:static
+      run: npm run build
+      
+    - name: Restore original files
+      run: |
+        git checkout app/page.tsx
+        git checkout next.config.js
       
     - name: Setup Pages
       uses: actions/configure-pages@v4
