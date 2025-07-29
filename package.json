@@ -5,8 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build:static": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx",
-    "export": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx",
+    "build:static": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx && git checkout next.config.js",
+    "export": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx && git checkout next.config.js",
     "preview:static": "npm run build:static && npx serve out/ -p 3001"
   },
   "dependencies": {
