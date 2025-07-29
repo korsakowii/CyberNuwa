@@ -9,9 +9,14 @@ try {
   // LanguageContext不可用，使用默认中文
 }
 
-export default function Footer() {
-  // 如果LanguageContext可用，使用它；否则使用默认中文
-  const language = useLanguage ? useLanguage().language : 'zh'
+interface FooterProps {
+  language?: 'zh' | 'en'
+}
+
+export default function Footer({ language: propLanguage }: FooterProps = {}) {
+  // 优先级：props > LanguageContext > 默认中文
+  const contextLanguage = useLanguage ? useLanguage().language : null
+  const language = propLanguage || contextLanguage || 'zh'
 
   return (
     <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">

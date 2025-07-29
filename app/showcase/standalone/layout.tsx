@@ -17,6 +17,7 @@ export default function ShowcaseLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-zinc-900 text-white antialiased`}>
+        {/* 静态页面有自己的Footer，不需要全局Footer */}
         {children}
       </body>
     </html>

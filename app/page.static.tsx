@@ -292,6 +292,23 @@ export default function StaticHomePage() {
           </div>
         </div>
       </section>
+
+      {/* 自定义Footer - 响应语言切换 */}
+      <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* 版权信息 */}
+            <div className="text-zinc-400 text-sm">
+              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+            </div>
+
+            {/* 右侧平台描述 */}
+            <div className="text-zinc-500 text-xs">
+              {language === 'zh' ? 'AI智能体共创平台' : 'AI Agent Co-Creation Platform'}
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 } 
