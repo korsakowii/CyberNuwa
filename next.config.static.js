@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  basePath: '/CyberNuwa',
+  assetPrefix: '/CyberNuwa/',
   images: {
     unoptimized: true
   }

@@ -292,15 +292,6 @@ export default function StaticHomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-zinc-800 border-t border-zinc-700 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-zinc-400">
-            © 2024 CyberNuwa. {t[language].subtitle}
-          </p>
-        </div>
-      </footer>
     </div>
   );
 } 

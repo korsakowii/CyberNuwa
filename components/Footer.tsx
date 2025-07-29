@@ -1,11 +1,24 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { useLanguage } from '@/contexts/LanguageContext'
 import { createPortal } from 'react-dom'
 
+// 尝试导入LanguageContext，如果失败则使用本地状态
+let useLanguage: any = null
+try {
+  const context = require('@/contexts/LanguageContext')
+  useLanguage = context.useLanguage
+} catch (error) {
+  // LanguageContext不可用，使用本地状态
+}
+
 export default function Footer() {
-  const { language, setLanguage } = useLanguage()
+  // 如果LanguageContext可用，使用它；否则使用本地状态
+  const [localLanguage, setLocalLanguage] = useState<'zh' | 'en'>('zh')
+  
+  const language = useLanguage ? useLanguage().language : localLanguage
+  const setLanguage = useLanguage ? useLanguage().setLanguage : setLocalLanguage
+  
   const [isOpen, setIsOpen] = useState(false)
   const [menuPos, setMenuPos] = useState<{top: number, right: number}>({top: 0, right: 0})
   const btnRef = useRef<HTMLButtonElement>(null)
