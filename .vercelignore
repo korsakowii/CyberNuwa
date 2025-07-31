@@ -1,0 +1,12 @@
+# 排除不需要部署的文件和目录
+node_modules/
+.next/
+.git/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+README.md
+CHANGELOG.md
+*.log
+.DS_Store 
