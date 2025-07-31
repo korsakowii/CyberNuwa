@@ -1,59 +1,83 @@
 #!/bin/bash
 
-# CyberNuwa 快速部署脚本 / Quick Deployment Script
-echo "🚀 CyberNuwa 部署脚本 / CyberNuwa Deployment Script"
-echo "=================================================="
+# CyberNuwa 部署脚本 / CyberNuwa Deployment Script
+# 确保 Vercel 部署的是 release 分支 / Ensure Vercel deploys from release branch
 
-# 检查 Git 状态 / Check Git status
-echo "📋 检查 Git 状态 / Checking Git status..."
+set -e
+
+echo "🚀 CyberNuwa 部署脚本启动... / CyberNuwa deployment script starting..."
+
+# 检查当前分支 / Check current branch
+CURRENT_BRANCH=$(git branch --show-current)
+echo "📍 当前分支: $CURRENT_BRANCH / Current branch: $CURRENT_BRANCH"
+
+# 检查是否有未提交的更改 / Check for uncommitted changes
 if [ -n "$(git status --porcelain)" ]; then
-    echo "⚠️  有未提交的更改 / There are uncommitted changes"
-    echo "请先提交更改: git add . && git commit -m 'your message'"
-    echo "Please commit changes first: git add . && git commit -m 'your message'"
+    echo "⚠️  检测到未提交的更改，请先提交或暂存更改 / Uncommitted changes detected, please commit or stash first"
+    git status --short
     exit 1
 fi
 
-# 构建项目 / Build project
-echo "🔨 构建项目 / Building project..."
-npm run build
+# 确保本地分支与远程同步
+echo "🔄 同步远程分支..."
+git fetch origin
 
-if [ $? -ne 0 ]; then
-    echo "❌ 构建失败 / Build failed"
-    exit 1
-fi
+# 根据当前分支执行不同的部署策略
+case $CURRENT_BRANCH in
+    "main")
+        echo "📋 在 main 分支上，准备推送到 release 分支..."
+        
+        # 切换到 release 分支
+        git checkout release
+        
+        # 合并 main 分支的更改
+        git merge main --no-edit
+        
+        # 推送到远程 release 分支
+        git push origin release
+        
+        echo "✅ main 分支的更改已合并到 release 分支并推送"
+        echo "🔄 Vercel 将自动部署 release 分支"
+        
+        # 切换回 main 分支
+        git checkout main
+        ;;
+        
+    "qa")
+        echo "📋 在 qa 分支上，准备推送到 release 分支..."
+        
+        # 切换到 release 分支
+        git checkout release
+        
+        # 合并 qa 分支的更改
+        git merge qa --no-edit
+        
+        # 推送到远程 release 分支
+        git push origin release
+        
+        echo "✅ qa 分支的更改已合并到 release 分支并推送"
+        echo "🔄 Vercel 将自动部署 release 分支"
+        
+        # 切换回 qa 分支
+        git checkout qa
+        ;;
+        
+    "release")
+        echo "📋 直接在 release 分支上，推送更改..."
+        
+        # 推送到远程 release 分支
+        git push origin release
+        
+        echo "✅ release 分支已推送"
+        echo "🔄 Vercel 将自动部署"
+        ;;
+        
+    *)
+        echo "❌ 未知分支: $CURRENT_BRANCH"
+        echo "请切换到 main、qa 或 release 分支"
+        exit 1
+        ;;
+esac
 
-echo "✅ 构建成功 / Build successful"
-
-# 检查远程仓库 / Check remote repository
-echo "🌐 检查远程仓库 / Checking remote repository..."
-if ! git remote get-url origin > /dev/null 2>&1; then
-    echo "⚠️  未配置远程仓库 / No remote repository configured"
-    echo "请先添加远程仓库: git remote add origin https://github.com/yourusername/CyberNuwa.git"
-    echo "Please add remote repository first: git remote add origin https://github.com/yourusername/CyberNuwa.git"
-    exit 1
-fi
-
-# 推送代码 / Push code
-echo "📤 推送代码到 GitHub / Pushing code to GitHub..."
-git push origin release
-
-if [ $? -ne 0 ]; then
-    echo "❌ 推送失败 / Push failed"
-    echo "请检查 GitHub 仓库是否存在 / Please check if GitHub repository exists"
-    exit 1
-fi
-
-echo "✅ 代码推送成功 / Code pushed successfully"
-
-echo ""
-echo "🎉 部署准备完成！/ Deployment preparation completed!"
-echo "=================================================="
-echo "📋 下一步 / Next steps:"
-echo "1. 访问 https://vercel.com"
-echo "2. 使用 GitHub 账户登录"
-echo "3. 点击 'New Project'"
-echo "4. 选择 CyberNuwa 仓库"
-echo "5. 点击 'Deploy'"
-echo ""
-echo "🌐 部署完成后，你的网站将在几分钟内上线！"
-echo "After deployment, your website will be live in minutes!" 
+echo "🎉 部署流程完成！"
+echo "📊 检查 Vercel 部署状态: https://vercel.com/dashboard" 

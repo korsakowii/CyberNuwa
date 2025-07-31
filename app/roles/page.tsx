@@ -5,13 +5,13 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '../../locales/translations'
 
 export default function Roles() {
-  const { language } = useLanguage()
+  const { language, setLanguage } = useLanguage()
   const t = translations[language].roles
 
   const roles = [
     {
       id: 1,
-      name: { zh: '🎨 创意者', en: '🎨 Creator' },
+      name: { zh: '创意者', en: 'Creator' },
       description: {
         zh: '专注于提出创新想法和概念的用户',
         en: 'Users focused on proposing innovative ideas and concepts'
@@ -29,7 +29,7 @@ export default function Roles() {
     },
     {
       id: 2,
-      name: { zh: '🤖 训练师', en: '🤖 Trainer' },
+      name: { zh: '训练师', en: 'Trainer' },
       description: {
         zh: '专门训练和优化智能体的专家',
         en: 'Experts specializing in training and optimizing agents'
@@ -47,7 +47,7 @@ export default function Roles() {
     },
     {
       id: 3,
-      name: { zh: '🏛️ 守护者', en: '🏛️ Guardian' },
+      name: { zh: '守护者', en: 'Guardian' },
       description: {
         zh: '维护平台秩序和内容质量的社区管理者',
         en: 'Community managers maintaining platform order and content quality'
@@ -65,7 +65,7 @@ export default function Roles() {
     },
     {
       id: 4,
-      name: { zh: '🌟 元老', en: '🌟 Elder' },
+      name: { zh: '元老', en: 'Elder' },
       description: {
         zh: '平台的核心贡献者和精神领袖',
         en: 'Core contributors and spiritual leaders of the platform'
@@ -95,25 +95,25 @@ export default function Roles() {
 
   const progressionPath = [
     {
-      name: { zh: '🎨 创意者', en: '🎨 Creator' },
+      name: { zh: '创意者', en: 'Creator' },
       level: { zh: '初级', en: 'Beginner' },
       color: 'from-pink-500 to-rose-600',
       icon: '🎨'
     },
     {
-      name: { zh: '🤖 训练师', en: '🤖 Trainer' },
+      name: { zh: '训练师', en: 'Trainer' },
       level: { zh: '中级', en: 'Intermediate' },
       color: 'from-blue-500 to-purple-600',
       icon: '🤖'
     },
     {
-      name: { zh: '🏛️ 守护者', en: '🏛️ Guardian' },
+      name: { zh: '守护者', en: 'Guardian' },
       level: { zh: '高级', en: 'Advanced' },
       color: 'from-green-500 to-teal-600',
       icon: '🏛️'
     },
     {
-      name: { zh: '🌟 元老', en: '🌟 Elder' },
+      name: { zh: '元老', en: 'Elder' },
       level: { zh: '顶级', en: 'Top' },
       color: 'from-yellow-500 to-orange-600',
       icon: '🌟'
@@ -257,6 +257,33 @@ export default function Roles() {
           </p>
         </div>
       </div>
+      {/* Footer with Language Switcher */}
+      <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* 版权信息 */}
+            <div className="text-zinc-400 text-sm">
+              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+            </div>
+
+            {/* 右侧平台描述 */}
+            <div className="text-zinc-500 text-xs">
+              {language === 'zh' ? 'AI智能体共创平台' : 'AI Agent Co-Creation Platform'}
+            </div>
+
+            {/* 语言切换器 - 移到最右侧 */}
+            <div className="flex items-center">
+              <button
+                onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+                className="flex items-center space-x-2 px-3 py-2 bg-zinc-700 rounded-lg hover:bg-zinc-600 transition-colors"
+              >
+                <span>{language === 'zh' ? '🇨🇳' : '🇺🇸'}</span>
+                <span>{language === 'zh' ? '中文' : 'English'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 } 
