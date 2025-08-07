@@ -175,7 +175,7 @@ npm run build && npm start
 ### 在线部署 / Online Deployment
 - **Vercel**: https://cybernuwa.vercel.app (推荐)
 - **Netlify**: https://cybernuwa.netlify.app
-- **GitHub Pages**: https://yourusername.github.io/CyberNuwa
+- **GitHub Pages**: https://korsakowii.github.io/CyberNuwa
 
 ---
 
