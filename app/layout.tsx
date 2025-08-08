@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import { TranslationProvider } from '@/components/TranslationProvider'
+import IntegrationStatus from '@/components/IntegrationStatus'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,12 +21,15 @@ export default function RootLayout({
     <html lang="zh-CN">
       <body className={`${inter.className} bg-zinc-900 text-white antialiased`}>
         <LanguageProvider>
-          <div className="min-h-screen flex flex-col">
-            <main className="flex-1">
-              {children}
-            </main>
-            {/* 移除全局Footer，让各页面自己管理footer */}
-          </div>
+          <TranslationProvider>
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-1">
+                {children}
+              </main>
+              {/* 移除全局Footer，让各页面自己管理footer */}
+            </div>
+            <IntegrationStatus />
+          </TranslationProvider>
         </LanguageProvider>
       </body>
     </html>

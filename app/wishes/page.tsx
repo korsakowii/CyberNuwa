@@ -1,139 +1,246 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useLanguage } from '@/contexts/LanguageContext'
+import { useRouter } from 'next/navigation'
+import { useLanguage } from '../../contexts/LanguageContext'
 import { translations } from '../../locales/translations'
+import { wishesApi, Wish as ApiWish } from '../../utils/api'
+import ApiStatus from '../../components/ApiStatus'
+import { TranslationControls } from '../../components/TranslationControls'
+import { WishCard } from '../../components/WishCard'
+
+
+// 添加浮动动画样式
+const floatAnimation = `
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes gentle-pulse {
+    0%, 100% { opacity: 0.06; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(1.03); }
+  }
+  
+  @keyframes gentle-ping {
+    0%, 100% { opacity: 0.05; transform: scale(1); }
+    50% { opacity: 0.12; transform: scale(1.05); }
+  }
+  
+  @keyframes gentle-bounce {
+    0%, 100% { opacity: 0.06; transform: translateY(0px); }
+    50% { opacity: 0.15; transform: translateY(-3px); }
+  }
+`
+
+// 定义愿望类型
+interface Wish {
+  id: number
+  title: { zh: string; en: string }
+  description: { zh: string; en: string }
+  author: { zh: string; en: string }
+  status: string
+  likes: number
+  comments: number
+  views: number
+  tags: { zh: string[]; en: string[] }
+  createdAt: string
+}
 
 export default function Wishes() {
   const { language, setLanguage } = useLanguage()
+  const router = useRouter()
   const t = translations[language].wishes
 
-  const [wishes, setWishes] = useState([
+  // 默认愿望数据（当API不可用时使用）
+  const defaultWishes = [
     {
       id: 1,
-      title: { zh: 'AI 诗歌创作助手', en: 'AI Poetry Assistant' },
+      title: { zh: '每天都能喝到完美的咖啡', en: 'Perfect Coffee Every Day' },
       description: {
-        zh: '一个能够根据用户情感和主题创作个性化诗歌的智能体，支持多种诗歌形式和风格。',
-        en: 'An agent that creates personalized poems based on user emotions and themes, supporting various forms and styles.'
+        zh: '找到最适合的咖啡豆，每一天都从一杯完美的咖啡开始，甚至能预测明天想喝什么口味。',
+        en: 'Find the perfect coffee beans to start every day with a perfect cup of coffee, and predict tomorrow\'s taste.'
       },
-      author: { zh: '诗人小A', en: 'Poet A' },
+      author: { zh: '咖啡爱好者', en: 'Coffee Lover' },
       status: 'idea',
       likes: 23,
       comments: 8,
       views: 1567,
       tags: {
-        zh: ['AI', '诗歌', '创作', '情感'],
-        en: ['AI', 'Poetry', 'Creation', 'Emotion']
+        zh: ['咖啡', '生活品质', '日常'],
+        en: ['Coffee', 'Lifestyle', 'Daily']
       },
-      createdAt: '2024-01-15'
+      createdAt: '2025-01-15'
     },
     {
       id: 2,
-      title: { zh: '代码重构专家', en: 'Code Refactoring Expert' },
+      title: { zh: '实时翻译日漫', en: 'Real-time Anime Translation' },
       description: {
-        zh: '自动分析代码结构，提供重构建议，帮助提升代码质量和可维护性。',
-        en: 'Automatically analyzes code structure and provides refactoring suggestions to improve code quality and maintainability.'
+        zh: '不用等字幕组，实时翻译喜欢的日漫，享受原汁原味的观看体验，顺便自动配音成我的声音。',
+        en: 'No need to wait for subtitles, translate anime in real-time for authentic viewing experience, and auto-dub with my voice.'
       },
-      author: { zh: '程序员B', en: 'Programmer B' },
+      author: { zh: '动漫迷', en: 'Anime Fan' },
       status: 'in-progress',
       likes: 45,
       comments: 12,
       views: 2341,
       tags: {
-        zh: ['编程', '重构', '代码质量'],
-        en: ['Programming', 'Refactoring', 'Code Quality']
+        zh: ['动漫', '翻译', '娱乐'],
+        en: ['Anime', 'Translation', 'Entertainment']
       },
-      createdAt: '2024-01-10'
+              createdAt: '2025-01-10'
     },
     {
       id: 3,
-      title: { zh: '多语言翻译助手', en: 'Multilingual Translation Assistant' },
+      title: { zh: '分析梦境含义', en: 'Dream Analysis' },
       description: {
-        zh: '支持实时语音翻译和文档翻译，保持原文风格和语气的智能翻译工具。',
-        en: 'Supports real-time speech and document translation, preserving the original style and tone.'
+        zh: '分析梦境，了解这些奇怪的梦到底是什么意思，探索潜意识世界，顺便预测今晚会做什么梦。',
+        en: 'Analyze dreams and understand what these strange dreams mean, exploring the subconscious world, and predict tonight\'s dreams.'
       },
-      author: { zh: '语言学家C', en: 'Linguist C' },
+      author: { zh: '梦境探索者', en: 'Dream Explorer' },
       status: 'idea',
       likes: 67,
       comments: 15,
       views: 1892,
       tags: {
-        zh: ['翻译', '多语言', '语音'],
-        en: ['Translation', 'Multilingual', 'Speech']
+        zh: ['梦境', '心理学', '探索'],
+        en: ['Dreams', 'Psychology', 'Exploration']
       },
-      createdAt: '2024-01-08'
+              createdAt: '2025-01-08'
     },
     {
       id: 4,
-      title: { zh: '创意设计生成器', en: 'Creative Design Generator' },
+      title: { zh: '多肉植物养护', en: 'Succulent Care' },
       description: {
-        zh: '根据用户需求自动生成 Logo、海报、UI 设计等创意作品的智能体。',
-        en: 'Automatically generates creative works such as logos, posters, and UI designs based on user needs.'
+        zh: '多肉植物不再死掉，知道什么时候浇水、施肥，茁壮成长，还能听懂植物说话。',
+        en: 'Succulents won\'t die anymore, knowing when to water and fertilize for healthy growth, and understand plant language.'
       },
-      author: { zh: '设计师D', en: 'Designer D' },
-      status: 'completed',
+      author: { zh: '植物父母', en: 'Plant Parent' },
+      status: 'idea',
       likes: 89,
-      comments: 23,
+      comments: 20,
       views: 3124,
       tags: {
-        zh: ['设计', '创意', '视觉'],
-        en: ['Design', 'Creativity', 'Visual']
+        zh: ['植物', '养护', '生活'],
+        en: ['Plants', 'Care', 'Lifestyle']
       },
-      createdAt: '2024-01-05'
+              createdAt: '2025-01-05'
     }
-  ])
+  ]
 
-  // 新建愿望的默认值为中英文结构
-  const [newWish, setNewWish] = useState({
-    title: { zh: '', en: '' },
-    description: { zh: '', en: '' },
-    tags: { zh: '', en: '' }
-  })
+  const [wishes, setWishes] = useState<Wish[]>(defaultWishes)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const [showForm, setShowForm] = useState(false)
-
-  // 表单输入处理，按当前 language 写入
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setNewWish(prev => ({
-      ...prev,
-      [name as 'title' | 'description' | 'tags']: {
-        ...prev[name as 'title' | 'description' | 'tags'],
-        [language]: value
+  // 从后端获取愿望数据
+  const fetchWishes = async () => {
+    try {
+      const response = await wishesApi.getWishes(1, 50) // 获取更多记录
+      console.log('API响应:', response) // 调试信息
+      if (response.data && response.data.items && response.data.items.length > 0) {
+        // 转换API数据格式为前端格式
+        const apiWishes = response.data.items.map((item: ApiWish) => {
+          // 处理作者信息
+          let authorName = item.user_id || '用户'
+          if (item.user_id === 'anonymous_user') {
+            authorName = language === 'zh' ? '匿名用户' : 'Anonymous'
+          } else if (item.user_id && item.user_id !== 'anonymous_user') {
+            // 如果是中文用户名，直接使用；如果是英文，保持原样
+            authorName = item.user_id
+          }
+          
+          return {
+            id: item.id,
+            title: { zh: item.content || '愿望', en: item.content || 'Wish' },
+            description: { zh: item.content || '', en: item.content || '' },
+            author: { zh: authorName, en: authorName },
+            status: item.status,
+            likes: 0,
+            comments: 0,
+            views: 0,
+            tags: { zh: [], en: [] },
+            createdAt: item.created_at ? item.created_at.split('T')[0] : new Date().toISOString().split('T')[0]
+          }
+        })
+        console.log('转换后的愿望数据:', apiWishes) // 调试信息
+        setWishes(apiWishes)
+      } else {
+        // 如果API没有数据，使用默认数据
+        setWishes(defaultWishes)
       }
-    }))
+    } catch (err) {
+      console.error('获取愿望失败:', err)
+      setError(err instanceof Error ? err.message : '获取愿望失败')
+      // API失败时使用默认数据
+      console.log('使用默认愿望数据') // 调试信息
+      setWishes(defaultWishes)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  // 提交时生成中英文结构的 wish
+  // 组件加载时获取数据
+  useEffect(() => {
+    // 尝试从API获取数据，失败时使用默认数据
+    fetchWishes()
+  }, [])
+
+  // 监听页面可见性变化，当页面重新可见时刷新数据
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        fetchWishes()
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    // 处理表单变化
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const wish = {
-      id: wishes.length + 1,
-      title: { ...newWish.title },
-      description: { ...newWish.description },
-      author: { zh: '匿名用户', en: 'Anonymous' },
-      status: 'idea',
-      likes: 0,
-      comments: 0,
-      views: 1,
-      tags: {
-        zh: newWish.tags.zh.split(',').map(tag => tag.trim()).filter(Boolean),
-        en: newWish.tags.en.split(',').map(tag => tag.trim()).filter(Boolean)
-      },
-      createdAt: new Date().toISOString().split('T')[0]
+    // 处理表单提交
+  }
+
+  const handleDropWish = () => {
+    // 跳转到添加愿望页面
+    window.location.href = '/wishes/add'
+  }
+
+  const handleBackToHome = (e: React.MouseEvent) => {
+    // 返回主页
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('Back to Home clicked!')
+    try {
+      window.location.href = '/'
+    } catch (error) {
+      console.error('Navigation error:', error)
+      window.open('/', '_self')
     }
-    setWishes([wish, ...wishes])
-    setNewWish({ title: { zh: '', en: '' }, description: { zh: '', en: '' }, tags: { zh: '', en: '' } })
-    setShowForm(false)
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'idea': return 'text-blue-400 bg-blue-400/10'
-      case 'in-progress': return 'text-yellow-400 bg-yellow-400/10'
-      case 'completed': return 'text-green-400 bg-green-400/10'
-      default: return 'text-gray-400 bg-gray-400/10'
+      case 'idea': return 'bg-blue-500/70 text-white'
+      case 'in-progress': return 'bg-yellow-500/70 text-white'
+      case 'completed': return 'bg-green-500/70 text-white'
+      case 'pending': return 'bg-blue-500/70 text-white'
+      case 'processing': return 'bg-yellow-500/70 text-white'
+      case null: return 'bg-gray-500/70 text-white'
+      default: return 'bg-gray-500/70 text-white'
     }
   }
 
@@ -142,207 +249,157 @@ export default function Wishes() {
       case 'idea': return t.status.idea
       case 'in-progress': return t.status['in-progress']
       case 'completed': return t.status.completed
+      case 'pending': return t.status.idea
+      case 'processing': return t.status['in-progress']
+      case null: return t.status.unknown
       default: return t.status.unknown
     }
   }
 
-  return (
-    <div className="bg-zinc-900 text-white py-10">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Link href="/" className="text-zinc-400 hover:text-white transition-colors mb-4 inline-block">
-            {t.backHome}
-          </Link>
-          <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
-          <p className="text-zinc-400 mb-6">{t.subtitle}</p>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="inline-block bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-400 mx-auto"></div>
+          <p className="mt-4 text-zinc-300">{language === 'zh' ? '加载中...' : 'Loading...'}</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-400 text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-white mb-2">{language === 'zh' ? '加载失败' : 'Loading Failed'}</h2>
+          <p className="text-zinc-300 mb-4">{error}</p>
+          <button 
+            onClick={fetchWishes}
+            className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
           >
-            {t.addWish}
+            {language === 'zh' ? '重试' : 'Retry'}
           </button>
         </div>
+      </div>
+    )
+  }
 
-        {/* 许愿表单 */}
-        {showForm && (
-          <div className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 mb-8">
-            <h3 className="text-xl font-semibold mb-4">
-              {language === 'zh' ? '许下你的愿望' : 'Make Your Wish'}
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="title" className="block text-sm font-medium text-zinc-300 mb-2">
-                  {language === 'zh' ? '愿望标题 *' : 'Wish Title *'}
-                </label>
-                <input
-                  type="text"
-                  id="title"
-                  value={newWish.title[language]}
-                  onChange={handleChange}
-                  name="title"
-                  required
-                  className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400"
-                  placeholder={language === 'zh' ? '给你的愿望起个名字...' : 'Give your wish a name...'}
-                />
-              </div>
-              <div>
-                <label htmlFor="description" className="block text-sm font-medium text-zinc-300 mb-2">
-                  {language === 'zh' ? '愿望描述 *' : 'Wish Description *'}
-                </label>
-                <textarea
-                  id="description"
-                  value={newWish.description[language]}
-                  onChange={handleChange}
-                  name="description"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400 resize-none"
-                  placeholder={language === 'zh' ? '详细描述你的愿望，让其他人理解你的想法...' : 'Describe your wish in detail so others can understand your idea...'}
-                />
-              </div>
-              <div>
-                <label htmlFor="tags" className="block text-sm font-medium text-zinc-300 mb-2">
-                  {language === 'zh' ? '标签' : 'Tags'}
-                </label>
-                <input
-                  type="text"
-                  id="tags"
-                  value={newWish.tags[language]}
-                  onChange={handleChange}
-                  name="tags"
-                  className="w-full px-4 py-3 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-white placeholder-zinc-400"
-                  placeholder={language === 'zh' ? '用逗号分隔，如：AI, 创意, 工具' : 'Separate with commas, e.g.: AI, Creativity, Tools'}
-                />
-              </div>
-              <div className="flex space-x-3">
-                <button
-                  type="submit"
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
-                >
-                  {language === 'zh' ? '许愿' : 'Make Wish'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
-                >
-                  {language === 'zh' ? '取消' : 'Cancel'}
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-
-        {/* 愿望列表 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {wishes.map((wish) => (
-            <div
-              key={wish.id}
-              className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 hover:bg-zinc-800/70 hover:border-zinc-600 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              {/* 愿望头部 */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{wish.title[language]}</h3>
-                  <div className="flex items-center space-x-2 text-sm text-zinc-400">
-                    <span>{language === 'zh' ? '作者：' : 'by '}{wish.author[language]}</span>
-                    <span>•</span>
-                    <span>{wish.createdAt}</span>
-                  </div>
-                </div>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(wish.status)}`}>
-                  {t.status[wish.status as keyof typeof t.status]}
-                </span>
-              </div>
-
-              {/* 愿望描述 */}
-              <p className="text-zinc-300 text-sm mb-4 leading-relaxed">
-                {wish.description[language]}
-              </p>
-
-              {/* 标签 */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {wish.tags[language].map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* 互动数据 */}
-              <div className="flex items-center justify-between text-sm text-zinc-400">
-                <div className="flex items-center space-x-4">
-                  <button className="flex items-center space-x-1 hover:text-pink-400 transition-colors">
-                    <span>❤️</span>
-                    <span>{wish.likes}</span>
-                  </button>
-                  <button className="flex items-center space-x-1 hover:text-blue-400 transition-colors">
-                    <span>💬</span>
-                    <span>{wish.comments}</span>
-                  </button>
-                  <span className="flex items-center space-x-1">
-                    <span role="img" aria-label="views">👀</span>
-                    <span>{wish.views?.toLocaleString() || 0}</span>
-                  </span>
-                </div>
-                <button className="text-pink-400 hover:text-pink-300 transition-colors">
-                  {t.supportWish}
-                </button>
-              </div>
-            </div>
-          ))}
+  return (
+    <>
+      <style jsx>{floatAnimation}</style>
+      <div className="min-h-screen bg-zinc-900 text-white relative overflow-hidden">
+      {/* 梦幻背景效果 */}
+      <div className="absolute inset-0">
+        {/* 星空背景 */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
+        
+        {/* 浮动光点 - 进一步降低闪烁强度，增加不同步延迟 */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-cyan-300 rounded-full opacity-10" style={{ animation: 'gentle-pulse 10s ease-in-out infinite', animationDelay: '0s' }}></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-8" style={{ animation: 'gentle-ping 13s ease-in-out infinite', animationDelay: '2.5s' }}></div>
+        <div className="absolute top-60 left-1/4 w-1.5 h-1.5 bg-purple-300 rounded-full opacity-10" style={{ animation: 'gentle-bounce 11s ease-in-out infinite', animationDelay: '1.8s' }}></div>
+        <div className="absolute top-80 right-1/3 w-1 h-1 bg-cyan-300 rounded-full opacity-8" style={{ animation: 'gentle-pulse 15s ease-in-out infinite', animationDelay: '4.2s' }}></div>
+        <div className="absolute top-32 left-2/3 w-1.5 h-1.5 bg-purple-300 rounded-full opacity-10" style={{ animation: 'gentle-ping 14s ease-in-out infinite', animationDelay: '6.7s' }}></div>
+        
+        {/* 宇宙能量流 - 进一步降低闪烁强度，增加不同步延迟 */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-300 to-transparent opacity-4" style={{animation: 'gentle-pulse 12s ease-in-out infinite', animationDelay: '0s'}}></div>
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-purple-300 to-transparent opacity-4" style={{animation: 'gentle-pulse 14s ease-in-out infinite', animationDelay: '4.5s'}}></div>
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-purple-300 to-transparent opacity-4" style={{animation: 'gentle-pulse 13s ease-in-out infinite', animationDelay: '8.2s'}}></div>
+        </div>
+      </div>
 
-        {/* 空状态 */}
-        {wishes.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-4">⭐</div>
-            <h3 className="text-xl font-semibold mb-2">
-              {language === 'zh' ? '许愿池还是空的' : 'Wish Pool is Empty'}
-            </h3>
-            <p className="text-zinc-400 mb-6">
-              {language === 'zh' ? '成为第一个许愿的人吧！' : 'Be the first to make a wish!'}
-            </p>
-            <button
-              onClick={() => setShowForm(true)}
-              className="inline-block bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+      {/* 头部 */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        
+        <div className="text-center mb-12">
+          <div className="mb-4">
+            <a
+              href="/"
+              className="text-zinc-400 hover:text-white transition-colors cursor-pointer z-50 relative underline"
             >
-              {language === 'zh' ? '许下第一个愿望' : 'Make the First Wish'}
+              {t.backHome}
+            </a>
+          </div>
+          <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
+          <p className="text-zinc-400 mb-6">{t.subtitle}</p>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={handleDropWish}
+              className="bg-gradient-to-r from-purple-400/70 via-purple-500/70 to-indigo-500/70 text-white px-8 py-4 rounded-full font-medium hover:from-purple-400/80 hover:via-purple-500/80 hover:to-indigo-500/80 transition-all transform hover:scale-105 shadow-md hover:shadow-purple-400/25"
+            >
+              ✨ {t.dropWish}
             </button>
           </div>
-        )}
+        </div>
       </div>
-      {/* Footer with Language Switcher */}
-      <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">
-        <div className="max-w-6xl mx-auto px-4 py-8">
+
+      {/* 主要内容 */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 愿望卡片网格 */}
+        <div className="mb-6 text-center">
+          <p className="text-zinc-400">
+            {language === 'zh' ? `当前显示 ${wishes.length} 个愿望` : `Currently displaying ${wishes.length} wishes`}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {wishes.map((wish, index) => (
+            <WishCard 
+              key={wish.id}
+              wish={wish}
+              index={index}
+              t={t}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* 页脚 */}
+      <footer className="relative z-10 mt-20 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* 版权信息 */}
-            <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+            <div className="text-gray-400 text-sm">
+              © 2025 Cyber Nüwa. All rights reserved.
             </div>
-
-            {/* 右侧平台描述 */}
-            <div className="text-zinc-500 text-xs">
-              {language === 'zh' ? 'AI智能体共创平台' : 'AI Agent Co-Creation Platform'}
-            </div>
-
-            {/* 语言切换器 - 移到最右侧 */}
-            <div className="flex items-center">
-              <button
-                onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-                className="flex items-center space-x-2 px-3 py-2 bg-zinc-700 rounded-lg hover:bg-zinc-600 transition-colors"
-              >
-                <span>{language === 'zh' ? '🇨🇳' : '🇺🇸'}</span>
-                <span>{language === 'zh' ? '中文' : 'English'}</span>
-              </button>
-            </div>
+            <button
+              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+              className="flex items-center space-x-2 px-3 py-2 bg-black/40 backdrop-blur-sm border border-cyan-400/25 rounded-lg hover:border-cyan-300/50 hover:bg-black/60 transition-all"
+            >
+              <span>{language === 'zh' ? '🇺🇸' : '🇨🇳'}</span>
+              <span className="text-white">{language === 'zh' ? 'English' : '中文'}</span>
+            </button>
           </div>
         </div>
       </footer>
-    </div>
+      
+      {/* 开发环境调试组件 */}
+      {process.env.NODE_ENV === 'development' && (
+        <>
+          {/* API状态指示器 */}
+          <ApiStatus language={language} />
+          
+          {/* 翻译控件 */}
+          <TranslationControls />
+          
+          {/* 全局翻译状态指示器 */}
+          <div className="fixed top-4 right-4 z-50">
+            <div className="bg-zinc-800/90 backdrop-blur-sm border border-zinc-700 rounded-lg shadow-lg p-3">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-zinc-300">
+                  {language === 'zh' ? '当前语言: 中文' : 'Current Language: English'}
+                </span>
+                <span className={`w-2 h-2 rounded-full ${language === 'zh' ? 'bg-green-400' : 'bg-blue-400'}`}></span>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      </div>
+    </>
   )
-} 
+}

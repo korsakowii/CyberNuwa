@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "task_id": 2,
+    "name": "情感分析模块",
+    "content": "def analyze_emotion(text): return {'emotion': 'positive', 'confidence': 0.8}",
+    "user_id": "user_002",
+    "id": 1,
+    "created_at": "2025-07-31T19:37:24.889618"
+  },
+  {
+    "task_id": 3,
+    "name": "时间管理模块",
+    "content": "def manage_time(): return {'status': 'managed', 'efficiency': 0.9}",
+    "user_id": "test_user_002",
+    "id": 2,
+    "created_at": "2025-07-31T20:00:17.419858"
+  },
+  {
+    "task_id": 4,
+    "name": "情感分析模块",
+    "content": "def analyze_emotion(text): return {'emotion': 'positive', 'confidence': 0.8}",
+    "user_id": "user_002",
+    "id": 3,
+    "created_at": "2025-07-31T20:12:50.986517"
+  },
+  {
+    "task_id": 1,
+    "name": "测试模块",
+    "content": "测试内容",
+    "user_id": "test_user",
+    "id": 4,
+    "created_at": "2025-07-31T22:07:15.629080"
+  },
+  {
+    "task_id": 6,
+    "name": "任务识别模块",
+    "content": "这是一个用于识别和分类用户任务的模块",
+    "user_id": "test_user_002",
+    "id": 5,
+    "created_at": "2025-07-31T22:09:20.104672"
+  },
+  {
+    "task_id": 7,
+    "name": "任务识别模块",
+    "content": "这是一个用于识别和分类用户任务的模块",
+    "user_id": "test_user_002",
+    "id": 6,
+    "created_at": "2025-07-31T22:14:31.167485"
+  }
+]

@@ -1,7 +1,7 @@
-# 🎉 CyberNuwa v1.0.0 发布说明 / Release Notes
+# 🎉 CyberNüwa v1.0.0 发布说明 / Release Notes
 
 ## 📅 发布日期 / Release Date
-**2024年12月19日** / December 19, 2024
+**2025年7月29日** / July 29, 2025
 
 ## 🚀 版本信息 / Version Information
 - **版本号 / Version**: v1.0.0
@@ -70,9 +70,9 @@ Route (app)                              Size     First Load JS
 - **生产环境**: http://localhost:3000 (npm start)
 
 ### 在线部署 / Online Deployment
-- **Vercel**: https://cybernuwa.vercel.app (推荐)
-- **Netlify**: https://cybernuwa.netlify.app
-- **GitHub Pages**: https://yourusername.github.io/CyberNuwa
+- **Vercel**: https://cybernüwa.vercel.app (推荐)
+- **Netlify**: https://cybernüwa.netlify.app
+- **GitHub Pages**: https://yourusername.github.io/CyberNüwa
 
 ## 📚 文档资源 / Documentation
 
@@ -136,23 +136,23 @@ Route (app)                              Size     First Load JS
 ## 📞 支持与反馈 / Support & Feedback
 
 ### 问题反馈 / Issue Reporting
-- GitHub Issues: [项目仓库Issues](https://github.com/yourusername/CyberNuwa/issues)
-- 功能建议: [Feature Requests](https://github.com/yourusername/CyberNuwa/discussions)
+- GitHub Issues: [项目仓库Issues](https://github.com/yourusername/CyberNüwa/issues)
+- 功能建议: [Feature Requests](https://github.com/yourusername/CyberNüwa/discussions)
 
 ### 社区参与 / Community Participation
 - 贡献代码: [Contributing Guidelines](CONTRIBUTING.md)
-- 分享想法: [社区讨论](https://github.com/yourusername/CyberNuwa/discussions)
-- 项目推广: [分享项目](https://github.com/yourusername/CyberNuwa)
+- 分享想法: [社区讨论](https://github.com/yourusername/CyberNüwa/discussions)
+- 项目推广: [分享项目](https://github.com/yourusername/CyberNüwa)
 
 ---
 
 ## 🎉 发布庆祝 / Release Celebration
 
-**恭喜！CyberNuwa v1.0.0 正式发布！** 🚀
+**恭喜！CyberNüwa v1.0.0 正式发布！** 🚀
 
 这是一个重要的里程碑，标志着我们向智能体共创宇宙迈出了第一步。
 
-**Congratulations! CyberNuwa v1.0.0 is officially released!** 🚀
+**Congratulations! CyberNüwa v1.0.0 is officially released!** 🚀
 
 This is an important milestone, marking our first step towards the universe of AI agent co-creation.
 

@@ -7,10 +7,15 @@
     "start": "next start",
     "build:static": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx && git checkout next.config.js",
     "export": "cp next.config.static.js next.config.js && cp app/page.static.tsx app/page.tsx && next build && git checkout app/page.tsx && git checkout next.config.js",
-    "preview:static": "npm run build:static && npx serve out/ -p 3001"
+    "preview:static": "npm run build:static && npx serve out/ -p 3001",
+    "build:prod": "NODE_ENV=production next build",
+    "start:prod": "NODE_ENV=production next start",
+    "deploy:prod": "./scripts/deploy-production.sh",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "framer-motion": "^10.16.3",
+    "framer-motion": "^10.18.0",
     "next": "^14.2.30",
     "next-intl": "^4.3.4",
     "react": "18.2.0",

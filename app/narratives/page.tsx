@@ -15,14 +15,14 @@ export default function Narratives() {
       title: { zh: '平台启动记', en: 'Platform Launch Story' },
       author: { zh: '管理员', en: 'Admin' },
       content: {
-        zh: '2024年1月，Cyber Nüwa 平台正式上线，开启了人机共创的新纪元。',
-        en: 'In January 2024, the Cyber Nüwa platform officially launched, ushering in a new era of human-AI co-creation.'
+        zh: '2025年8月，Cyber Nüwa 平台正式上线，开启了人机共创的新纪元。',
+                  en: 'In August 2025, the Cyber Nüwa platform officially launched, ushering in a new era of human-AI co-creation.'
       },
       tags: {
         zh: ['平台', '历史'],
         en: ['Platform', 'History']
       },
-      date: '2024-01-01',
+              date: '2025-08-01',
       likes: 12,
       readTime: 3,
       comments: 2,
@@ -41,7 +41,7 @@ export default function Narratives() {
         zh: ['智能体', '创意'],
         en: ['Agent', 'Creativity']
       },
-      date: '2024-01-10',
+              date: '2025-08-15',
       likes: 8,
       readTime: 2,
       comments: 0,
@@ -60,7 +60,7 @@ export default function Narratives() {
         zh: ['社区', '协作'],
         en: ['Community', 'Collaboration']
       },
-      date: '2024-02-01',
+              date: '2025-09-15',
       likes: 5,
       readTime: 4,
       comments: 5,
@@ -71,7 +71,7 @@ export default function Narratives() {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'community': return 'text-blue-400 bg-blue-400/10'
-      case 'agent-biography': return 'text-green-400 bg-green-400/10'
+              case 'agent-biography': return 'text-blue-400 bg-blue-400/10'
       default: return 'text-gray-400 bg-gray-400/10'
     }
   }
@@ -103,7 +103,7 @@ export default function Narratives() {
             <div className="text-zinc-400">{t.total}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-green-400">
+                            <div className="text-3xl font-bold text-blue-400">
               {narratives.filter(n => n.type === 'agent-biography').length}
             </div>
             <div className="text-zinc-400">{t.agentBiographies}</div>
@@ -200,16 +200,16 @@ export default function Narratives() {
               {narratives.slice(0, 4).map((narrative, index) => (
                 <div key={narrative.id} className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className={`w-4 h-4 rounded-full ${narrative.type === 'community' ? 'bg-blue-400' : 'bg-green-400'}`}></div>
+                    <div className={`w-4 h-4 rounded-full ${narrative.type === 'community' ? 'bg-blue-400' : 'bg-purple-400'}`}></div>
                     {index < 3 && (
-                      <div className={`w-0.5 h-12 mx-auto mt-2 ${narrative.type === 'community' ? 'bg-blue-400/30' : 'bg-green-400/30'}`}></div>
+                                              <div className={`w-0.5 h-12 mx-auto mt-2 ${narrative.type === 'community' ? 'bg-blue-400/30' : 'bg-purple-400/30'}`}></div>
                     )}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-1">
                       <span className="text-sm font-medium text-zinc-300">{narrative.title[language]}</span>
                       <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${narrative.type === 'community' ? 'bg-blue-900 text-blue-300' : 'bg-green-900 text-green-300'} mr-2`}
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${narrative.type === 'community' ? 'bg-blue-900 text-blue-300' : 'bg-purple-900 text-purple-300'} mr-2`}
                       >
                         {narrative.type === 'community' ? t.communityHistory : t.agentBiographies}
                       </span>
@@ -258,7 +258,7 @@ export default function Narratives() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

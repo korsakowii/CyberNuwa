@@ -195,23 +195,23 @@ export default function TrainAgent() {
 
             {/* 训练步骤 */}
             <div className="text-left max-w-md mx-auto space-y-2">
-              <div className={`flex items-center space-x-3 ${trainingProgress >= 20 ? 'text-green-400' : 'text-zinc-500'}`}>
+                              <div className={`flex items-center space-x-3 ${trainingProgress >= 20 ? 'text-blue-400' : 'text-zinc-500'}`}>
                 <span>{trainingProgress >= 20 ? '✓' : '○'}</span>
                 <span>{language === 'zh' ? '解析训练数据' : 'Parsing training data'}</span>
               </div>
-              <div className={`flex items-center space-x-3 ${trainingProgress >= 40 ? 'text-green-400' : 'text-zinc-500'}`}>
+                              <div className={`flex items-center space-x-3 ${trainingProgress >= 40 ? 'text-blue-400' : 'text-zinc-500'}`}>
                 <span>{trainingProgress >= 40 ? '✓' : '○'}</span>
                 <span>{language === 'zh' ? '构建模型架构' : 'Building model architecture'}</span>
               </div>
-              <div className={`flex items-center space-x-3 ${trainingProgress >= 60 ? 'text-green-400' : 'text-zinc-500'}`}>
+                              <div className={`flex items-center space-x-3 ${trainingProgress >= 60 ? 'text-blue-400' : 'text-zinc-500'}`}>
                 <span>{trainingProgress >= 60 ? '✓' : '○'}</span>
                 <span>{language === 'zh' ? '训练模型参数' : 'Training model parameters'}</span>
               </div>
-              <div className={`flex items-center space-x-3 ${trainingProgress >= 80 ? 'text-green-400' : 'text-zinc-500'}`}>
+                              <div className={`flex items-center space-x-3 ${trainingProgress >= 80 ? 'text-blue-400' : 'text-zinc-500'}`}>
                 <span>{trainingProgress >= 80 ? '✓' : '○'}</span>
                 <span>{language === 'zh' ? '优化性能' : 'Optimizing performance'}</span>
               </div>
-              <div className={`flex items-center space-x-3 ${trainingProgress >= 100 ? 'text-green-400' : 'text-zinc-500'}`}>
+                              <div className={`flex items-center space-x-3 ${trainingProgress >= 100 ? 'text-blue-400' : 'text-zinc-500'}`}>
                 <span>{trainingProgress >= 100 ? '✓' : '○'}</span>
                 <span>{language === 'zh' ? '部署完成' : 'Deployment complete'}</span>
               </div>
@@ -219,10 +219,10 @@ export default function TrainAgent() {
 
             {trainingProgress >= 100 && (
               <div className="mt-8">
-                <div className="text-green-400 text-xl font-semibold mb-4">🎉 {t.progress.complete}</div>
+                <div className="text-blue-400 text-xl font-semibold mb-4">🎉 {t.progress.complete}</div>
                 <Link
                   href="/agents"
-                  className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
                   {language === 'zh' ? '查看智能体' : 'View Agents'}
                 </Link>
@@ -247,7 +247,7 @@ export default function TrainAgent() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

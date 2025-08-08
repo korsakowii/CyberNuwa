@@ -78,7 +78,7 @@ export default function Agents() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-green-400 bg-green-400/10'
+              case 'active': return 'text-blue-400 bg-blue-400/10'
       case 'training': return 'text-yellow-400 bg-yellow-400/10'
       case 'inactive': return 'text-gray-400 bg-gray-400/10'
       default: return 'text-gray-400 bg-gray-400/10'
@@ -106,7 +106,7 @@ export default function Agents() {
           <p className="text-zinc-400 mb-6">{t.subtitle}</p>
           <Link
             href="/train-agent"
-            className="inline-block bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+                            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
           >
             {t.trainNew}
           </Link>
@@ -119,7 +119,7 @@ export default function Agents() {
             <div className="text-zinc-400">{t.stats.total}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-green-400">
+                            <div className="text-3xl font-bold text-blue-400">
               {agents.filter(a => a.status === 'active').length}
             </div>
             <div className="text-zinc-400">{t.stats.active}</div>
@@ -211,7 +211,7 @@ export default function Agents() {
             <p className="text-zinc-400 mb-6">{language === 'zh' ? '成为第一个训练智能体的用户吧！' : 'Be the first to train an agent!'}</p>
             <Link
               href="/train-agent"
-              className="inline-block bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                              className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
             >
               {language === 'zh' ? '开始训练' : 'Start Training'}
             </Link>
@@ -225,7 +225,7 @@ export default function Agents() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

@@ -21,10 +21,10 @@ export default function StaticHomePage() {
   // 简化的翻译
   const t = {
     zh: {
-      title: 'CyberNuwa 功能展示',
+      title: 'Cyber Nüwa 功能展示',
       subtitle: 'AI智能体共创平台',
       overview: '平台概览',
-      overviewDesc: 'CyberNuwa是一个开放的AI智能体共创平台，集成了任务发布、智能体训练和社区协作。',
+      overviewDesc: 'Cyber Nüwa是一个开放的AI智能体共创平台，集成了任务发布、智能体训练和社区协作。',
       explore: '探索平台模块',
       backToMain: '返回主站',
       totalModules: '核心模块',
@@ -41,10 +41,10 @@ export default function StaticHomePage() {
       }
     },
     en: {
-      title: 'CyberNuwa Feature Showcase',
+      title: 'Cyber Nüwa Feature Showcase',
       subtitle: 'AI Agent Co-Creation Platform',
       overview: 'Platform Overview',
-      overviewDesc: 'CyberNuwa is an open platform for AI agent co-creation, integrating task publishing, agent training, and community collaboration.',
+      overviewDesc: 'Cyber Nüwa is an open platform for AI agent co-creation, integrating task publishing, agent training, and community collaboration.',
       explore: 'Explore Platform Modules',
       backToMain: 'Back to Main Site',
       totalModules: 'Core Modules',
@@ -159,7 +159,7 @@ export default function StaticHomePage() {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      active: { color: 'bg-green-500', text: t[language].status.active },
+              active: { color: 'bg-blue-500', text: t[language].status.active },
       beta: { color: 'bg-yellow-500', text: t[language].status.beta },
       'coming-soon': { color: 'bg-gray-500', text: t[language].status['coming-soon'] }
     };
@@ -227,7 +227,7 @@ export default function StaticHomePage() {
               <div className="text-sm text-zinc-400">{t[language].totalModules}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-400">{totalViews.toLocaleString()}</div>
+                              <div className="text-3xl font-bold text-blue-400">{totalViews.toLocaleString()}</div>
               <div className="text-sm text-zinc-400">{t[language].totalViews}</div>
             </div>
             <div className="text-center">
@@ -299,7 +299,7 @@ export default function StaticHomePage() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

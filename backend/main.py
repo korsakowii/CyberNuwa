@@ -11,7 +11,7 @@ import os
 from dotenv import load_dotenv
 
 # 导入路由模块
-from routes import wishes, tasks, modules, agents, signatures
+from routes import wishes, tasks, modules, agents, signatures, translation
 from utils.database import init_database
 from utils.config import settings
 
@@ -45,6 +45,7 @@ app.include_router(tasks.router, prefix="/api/tasks", tags=["任务管理"])
 app.include_router(modules.router, prefix="/api/modules", tags=["模块管理"])
 app.include_router(agents.router, prefix="/api/agents", tags=["智能体管理"])
 app.include_router(signatures.router, prefix="/api/signatures", tags=["署名管理"])
+app.include_router(translation.router)
 
 @app.on_event("startup")
 async def startup_event():
@@ -71,7 +72,7 @@ if __name__ == "__main__":
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=8000,
+        port=8001,
         reload=True,
         log_level="info"
     ) 

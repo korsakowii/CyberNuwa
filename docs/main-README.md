@@ -1,4 +1,4 @@
-# CyberNuwa - AI Agent 共创平台 / AI Agent Co-creation Platform
+# CyberNüwa - AI Agent 共创平台 / AI Agent Co-creation Platform
 
 [English](#english) | [中文](#中文)
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface ModuleData {
   id: string;
@@ -15,16 +16,23 @@ interface ModuleData {
 }
 
 export default function StandaloneShowcase() {
+  const router = useRouter();
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   const [pageViews, setPageViews] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+
+  // 确保组件只在客户端渲染
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // 简化的翻译
   const t = {
     zh: {
-      title: 'CyberNuwa 功能展示',
+      title: 'Cyber Nüwa 功能展示',
       subtitle: 'AI智能体共创平台',
       overview: '平台概览',
-      overviewDesc: 'CyberNuwa是一个开放的AI智能体共创平台，集成了任务发布、智能体训练和社区协作。',
+      overviewDesc: 'Cyber Nüwa是一个开放的AI智能体共创平台，集成了任务发布、智能体训练和社区协作。',
       explore: '探索平台模块',
       backToMain: '返回主站',
       totalModules: '核心模块',
@@ -41,10 +49,10 @@ export default function StandaloneShowcase() {
       }
     },
     en: {
-      title: 'CyberNuwa Feature Showcase',
+      title: 'Cyber Nüwa Feature Showcase',
       subtitle: 'AI Agent Co-Creation Platform',
       overview: 'Platform Overview',
-      overviewDesc: 'CyberNuwa is an open platform for AI agent co-creation, integrating task publishing, agent training, and community collaboration.',
+      overviewDesc: 'Cyber Nüwa is an open platform for AI agent co-creation, integrating task publishing, agent training, and community collaboration.',
       explore: 'Explore Platform Modules',
       backToMain: 'Back to Main Site',
       totalModules: 'Core Modules',
@@ -143,18 +151,28 @@ export default function StandaloneShowcase() {
 
   // 模拟页面访问量增加
   useEffect(() => {
-    const storedViews = localStorage.getItem('showcase-views') || '0';
-    const currentViews = parseInt(storedViews) + 1;
-    localStorage.setItem('showcase-views', currentViews.toString());
-    setPageViews(currentViews);
+    // 确保在客户端环境中才访问localStorage
+    if (typeof window !== 'undefined') {
+      const storedViews = localStorage.getItem('showcase-views') || '0';
+      const currentViews = parseInt(storedViews) + 1;
+      localStorage.setItem('showcase-views', currentViews.toString());
+      setPageViews(currentViews);
+    }
   }, []);
 
   const incrementModuleViews = (moduleId: string) => {
     // 客户端模拟增加访问量
-    const module = modules.find(m => m.id === moduleId);
-    if (module) {
-      module.views += 1;
+    if (typeof window !== 'undefined') {
+      const module = modules.find(m => m.id === moduleId);
+      if (module) {
+        module.views += 1;
+      }
     }
+  };
+
+  const handleModuleClick = (modulePath: string, moduleId: string) => {
+    incrementModuleViews(moduleId);
+    router.push(modulePath);
   };
 
   const getStatusBadge = (status: string) => {
@@ -170,6 +188,18 @@ export default function StandaloneShowcase() {
       </span>
     );
   };
+
+  // 在客户端渲染之前显示加载状态
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-zinc-900 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-400">加载中...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
@@ -208,13 +238,22 @@ export default function StandaloneShowcase() {
           <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto">
             {t[language].overviewDesc}
           </p>
-          <Link 
-            href="https://cyber-nuwa.vercel.app/"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            {t[language].backToMain}
-            <span className="ml-2">→</span>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="https://cyber-nuwa.vercel.app/"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              {t[language].backToMain}
+              <span className="ml-2">→</span>
+            </Link>
+            <Link 
+              href="http://localhost:3000"
+              className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
+            >
+              🚀 本地动态主站
+              <span className="ml-2">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -282,7 +321,7 @@ export default function StandaloneShowcase() {
                 </div>
                 
                 <button
-                  onClick={() => incrementModuleViews(module.id)}
+                  onClick={() => handleModuleClick(module.path, module.id)}
                   className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   {t[language].tryNow}
@@ -297,7 +336,7 @@ export default function StandaloneShowcase() {
       <footer className="bg-zinc-800 border-t border-zinc-700 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-zinc-400">
-            © 2024 CyberNuwa. {t[language].subtitle}
+            © 2025 Cyber Nüwa. {t[language].subtitle}
           </p>
         </div>
       </footer>

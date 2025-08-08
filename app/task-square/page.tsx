@@ -37,7 +37,7 @@ export default function TaskSquare() {
       progress: 60,
       participants: 12,
       priority: 'high',
-      deadline: '2024-07-01',
+              deadline: '2025-07-01',
       assignee: 'Alice',
       reward: '6000-8000 XP',
       views: 1247
@@ -58,7 +58,7 @@ export default function TaskSquare() {
       progress: 100,
       participants: 8,
       priority: 'medium',
-      deadline: '2024-06-15',
+              deadline: '2025-06-15',
       assignee: 'Bob',
       reward: '4000-6000 XP',
       views: 892
@@ -79,7 +79,7 @@ export default function TaskSquare() {
       progress: 0,
       participants: 5,
       priority: 'low',
-      deadline: '2024-08-01',
+              deadline: '2025-08-01',
       assignee: 'Charlie',
       reward: '2500-3500 XP',
       views: 567
@@ -90,7 +90,7 @@ export default function TaskSquare() {
     switch (status) {
       case 'open': return 'text-blue-400 bg-blue-400/10'
       case 'in-progress': return 'text-yellow-400 bg-yellow-400/10'
-      case 'completed': return 'text-green-400 bg-green-400/10'
+              case 'completed': return 'text-blue-400 bg-blue-400/10'
       case 'closed': return 'text-gray-400 bg-gray-400/10'
       case 'pending': return 'text-gray-400 bg-gray-400/10'
       default: return 'text-gray-400 bg-gray-400/10'
@@ -111,7 +111,7 @@ export default function TaskSquare() {
     switch (priority) {
       case 'high': return 'text-red-400'
       case 'medium': return 'text-yellow-400'
-      case 'low': return 'text-green-400'
+              case 'low': return 'text-blue-400'
       default: return 'text-gray-400'
     }
   }
@@ -156,7 +156,7 @@ export default function TaskSquare() {
             <div className="text-zinc-400">{t.inProgress}</div>
           </div>
           <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-green-400">
+                            <div className="text-3xl font-bold text-blue-400">
               {tasks.filter(t => t.status === 'completed').length}
             </div>
             <div className="text-zinc-400">{t.completed}</div>
@@ -249,7 +249,7 @@ export default function TaskSquare() {
                       {t.viewProgress}
                     </button>
                   ) : (
-                    <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
                       {t.viewResult}
                     </button>
                   )}
@@ -283,7 +283,7 @@ export default function TaskSquare() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

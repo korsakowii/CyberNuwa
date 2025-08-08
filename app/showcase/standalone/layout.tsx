@@ -5,8 +5,8 @@ import '../../globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'CyberNuwa Feature Showcase - AI Agent Platform',
-  description: 'Explore the complete features of the CyberNuwa AI Agent Platform with bilingual support and modern UI design.',
+  title: 'Cyber Nüwa Feature Showcase - AI Agent Platform',
+  description: 'Explore the complete features of the Cyber Nüwa AI Agent Platform with bilingual support and modern UI design.',
 }
 
 export default function ShowcaseLayout({

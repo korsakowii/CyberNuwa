@@ -13,49 +13,49 @@ export default function Home() {
       title: t.modules.launchMission.title,
       description: t.modules.launchMission.description,
       href: '/launch-mission',
-      color: 'from-blue-500 to-purple-600',
+      color: 'from-blue-400 to-purple-500',
       icon: '🚀'
     },
     {
       title: t.modules.agents.title,
       description: t.modules.agents.description,
       href: '/agents',
-      color: 'from-green-500 to-teal-600',
+      color: 'from-green-400 to-teal-500',
       icon: '🤖'
     },
     {
       title: t.modules.trainAgent.title,
       description: t.modules.trainAgent.description,
       href: '/train-agent',
-      color: 'from-orange-500 to-red-600',
+      color: 'from-orange-400 to-red-500',
       icon: '🎯'
     },
     {
       title: t.modules.wishes.title,
       description: t.modules.wishes.description,
       href: '/wishes',
-      color: 'from-pink-500 to-rose-600',
+      color: 'from-pink-400 to-rose-500',
       icon: '⭐'
     },
     {
       title: t.modules.roles.title,
       description: t.modules.roles.description,
       href: '/roles',
-      color: 'from-indigo-500 to-blue-600',
+      color: 'from-indigo-400 to-blue-500',
       icon: '👥'
     },
     {
       title: t.modules.narratives.title,
       description: t.modules.narratives.description,
       href: '/narratives',
-      color: 'from-purple-500 to-pink-600',
+      color: 'from-purple-400 to-pink-500',
       icon: '📖'
     },
     {
       title: t.modules.taskSquare.title,
       description: t.modules.taskSquare.description,
       href: '/task-square',
-      color: 'from-cyan-500 to-blue-600',
+      color: 'from-cyan-400 to-blue-500',
       icon: '🏛️'
     }
   ]
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

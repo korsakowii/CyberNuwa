@@ -59,7 +59,7 @@ export default function Roles() {
       },
       requirements: { zh: '成为训练师6个月以上，贡献突出', en: 'Be a trainer for over 6 months with outstanding contributions' },
       avatar: '🏛️',
-      color: 'from-green-500 to-teal-600',
+      color: 'from-blue-500 to-purple-600',
       members: 23,
       nextLevel: { zh: '元老守护者', en: 'Elder Guardian' }
     },
@@ -109,7 +109,7 @@ export default function Roles() {
     {
       name: { zh: '守护者', en: 'Guardian' },
       level: { zh: '高级', en: 'Advanced' },
-      color: 'from-green-500 to-teal-600',
+      color: 'from-blue-500 to-purple-600',
       icon: '🏛️'
     },
     {
@@ -141,7 +141,7 @@ export default function Roles() {
               <div className="text-zinc-400">{currentUser.level[language]}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">{currentUser.progress}%</div>
+              <div className="text-2xl font-bold text-blue-400">{currentUser.progress}%</div>
               <div className="text-zinc-400">{t.upgradeProgress}</div>
             </div>
             <div className="text-center">
@@ -198,7 +198,7 @@ export default function Roles() {
                 <div className="space-y-1">
                   {role.permissions[language].map((permission, idx) => (
                     <div key={idx} className="flex items-center space-x-2 text-sm text-zinc-400">
-                      <span className="text-green-400">✓</span>
+                      <span className="text-blue-400">✓</span>
                       <span>{permission}</span>
                     </div>
                   ))}
@@ -263,7 +263,7 @@ export default function Roles() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 版权信息 */}
             <div className="text-zinc-400 text-sm">
-              © 2024 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
+              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
             </div>
 
             {/* 右侧平台描述 */}

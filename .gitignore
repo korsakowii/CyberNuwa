@@ -40,4 +40,45 @@ next-env.d.ts
 
 # OS
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+backend/venv/
+backend/__pycache__/
+backend/*/__pycache__/
+backend/*/*/__pycache__/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+backend/cybernuwa.db
+
+# Logs
+*.log
+logs/
+
+# Test files
+test_*.py
+test_*.js
+*_test.py
+*_test.js
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Blender
+*.blend1
+*.blend2 

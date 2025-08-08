@@ -163,11 +163,11 @@ class SQLiteDatabase:
         return sqlite3.connect(self.db_path)
 
 # 创建全局数据库实例
-wishes_db = JSONDatabase(os.path.join(settings.data_dir, settings.wishes_file))
-tasks_db = JSONDatabase(os.path.join(settings.data_dir, settings.tasks_file))
-signatures_db = JSONDatabase(os.path.join(settings.data_dir, settings.signatures_file))
-modules_db = JSONDatabase(os.path.join(settings.data_dir, "modules.json"))
-agents_db = JSONDatabase(os.path.join(settings.data_dir, "agents.json"))
+wishes_db = JSONDatabase("data/wishes.json")
+tasks_db = JSONDatabase("data/tasks.json")
+modules_db = JSONDatabase("data/modules.json")
+agents_db = JSONDatabase("data/agents.json")
+signatures_db = JSONDatabase("data/signatures.json")
 sqlite_db = SQLiteDatabase()
 
 async def init_database():

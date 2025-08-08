@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "task_id": 2,
+    "name": "情感关系分析助手",
+    "description": "基于任务'情感关系分析助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 情感关系分析助手Agent:\n    \"\"\"基于任务\"情感关系分析助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"情感关系分析助手\"\n        self.modules = ['情感分析模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 情感关系分析助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "ready",
+    "id": 1,
+    "created_at": "2025-07-31T19:37:24.938672",
+    "updated_at": "2025-07-31T19:37:24.958454"
+  },
+  {
+    "task_id": 3,
+    "name": "智能任务管理助手",
+    "description": "基于任务'智能任务管理助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 智能任务管理助手Agent:\n    \"\"\"基于任务\"智能任务管理助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"智能任务管理助手\"\n        self.modules = ['时间管理模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 智能任务管理助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "building",
+    "id": 2,
+    "created_at": "2025-07-31T20:00:17.449747"
+  },
+  {
+    "task_id": 4,
+    "name": "情感关系分析助手",
+    "description": "基于任务'情感关系分析助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 情感关系分析助手Agent:\n    \"\"\"基于任务\"情感关系分析助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"情感关系分析助手\"\n        self.modules = ['情感分析模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 情感关系分析助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "ready",
+    "id": 3,
+    "created_at": "2025-07-31T20:12:50.998317",
+    "updated_at": "2025-07-31T20:12:51.020388"
+  },
+  {
+    "task_id": 1,
+    "name": "情感关系分析助手",
+    "description": "基于任务'情感关系分析助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 情感关系分析助手Agent:\n    \"\"\"基于任务\"情感关系分析助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"情感关系分析助手\"\n        self.modules = ['情感分析模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 情感关系分析助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "building",
+    "id": 4,
+    "created_at": "2025-07-31T22:07:55.751546"
+  },
+  {
+    "task_id": 6,
+    "name": "智能任务管理助手",
+    "description": "基于任务'智能任务管理助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 智能任务管理助手Agent:\n    \"\"\"基于任务\"智能任务管理助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"智能任务管理助手\"\n        self.modules = ['任务识别模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 智能任务管理助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "building",
+    "id": 5,
+    "created_at": "2025-07-31T22:09:22.816280"
+  },
+  {
+    "task_id": 7,
+    "name": "智能任务管理助手",
+    "description": "基于任务'智能任务管理助手'构建的智能体，集成了1个模块",
+    "code": "\nimport json\nimport datetime\nfrom typing import Dict, List, Any\n\nclass 智能任务管理助手Agent:\n    \"\"\"基于任务\"智能任务管理助手\"构建的智能体\"\"\"\n    \n    def __init__(self):\n        self.name = \"智能任务管理助手\"\n        self.modules = ['任务识别模块']\n        self.created_at = datetime.datetime.now()\n    \n    def process_input(self, user_input: str) -> Dict[str, Any]:\n        \"\"\"处理用户输入\"\"\"\n        return {\n            \"input\": user_input,\n            \"timestamp\": datetime.datetime.now().isoformat(),\n            \"status\": \"processed\"\n        }\n    \n    def execute_modules(self, processed_input: Dict[str, Any]) -> Dict[str, Any]:\n        \"\"\"执行各个模块\"\"\"\n        result = {}\n        for module in self.modules:\n            result[module] = f\"模块 {module} 执行结果\"\n        return result\n    \n    def generate_response(self, module_results: Dict[str, Any]) -> str:\n        \"\"\"生成最终响应\"\"\"\n        return f\"基于 {len(module_results)} 个模块的分析结果：{json.dumps(module_results, ensure_ascii=False)}\"\n    \n    def run(self, user_input: str) -> str:\n        \"\"\"运行智能体\"\"\"\n        processed = self.process_input(user_input)\n        results = self.execute_modules(processed)\n        return self.generate_response(results)\n\n# 使用示例\nif __name__ == \"__main__\":\n    agent = 智能任务管理助手Agent()\n    response = agent.run(\"测试输入\")\n    print(response)\n",
+    "status": "building",
+    "id": 6,
+    "created_at": "2025-07-31T22:14:33.712938"
+  }
+]

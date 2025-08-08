@@ -1,56 +1,68 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { fetchWishes } from '../../lib/api'
+import { wishesApi } from '../../utils/api'
+import { DevOnly } from '../../components/DevOnly'
 
-export default function TestAPI() {
-  const [data, setData] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+function TestApiContent() {
+  const [apiData, setApiData] = useState<any>(null)
+  const [error, setError] = useState<string>('')
+  const [loading, setLoading] = useState(false)
+
+  const testApi = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const response = await wishesApi.getWishes(1, 10)
+      setApiData(response)
+      console.log('API测试成功:', response)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '未知错误')
+      console.error('API测试失败:', err)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
-    const testAPI = async () => {
-      try {
-        setLoading(true)
-        const response = await fetchWishes()
-        setData(response)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    testAPI()
+    testApi()
   }, [])
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white p-10">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">🧪 API Test Page</h1>
-        
-        {loading && (
-          <div className="bg-zinc-800 p-6 rounded-lg mb-6">
-            <p className="text-zinc-300">Loading...</p>
-          </div>
-        )}
+    <div className="min-h-screen bg-zinc-900 text-white p-8">
+      <h1 className="text-2xl font-bold mb-4">API 测试页面</h1>
+      
+      <button 
+        onClick={testApi}
+        disabled={loading}
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 mb-4"
+      >
+        {loading ? '测试中...' : '重新测试'}
+      </button>
 
-        {error && (
-          <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4 text-red-400">Error</h2>
-            <p className="text-red-300">{error}</p>
-          </div>
-        )}
+      {error && (
+        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 mb-4">
+          <h3 className="text-red-400 font-bold">错误:</h3>
+          <p className="text-red-300">{error}</p>
+        </div>
+      )}
 
-        {data && (
-          <div className="bg-zinc-800 p-6 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">API Response</h2>
-            <pre className="text-sm text-zinc-300 overflow-auto">
-              {JSON.stringify(data, null, 2)}
-            </pre>
-          </div>
-        )}
-      </div>
+      {apiData && (
+        <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+          <h3 className="text-green-400 font-bold">API响应:</h3>
+          <pre className="text-green-300 text-sm overflow-auto">
+            {JSON.stringify(apiData, null, 2)}
+          </pre>
+        </div>
+      )}
     </div>
+  )
+}
+
+export default function TestApi() {
+  return (
+    <DevOnly>
+      <TestApiContent />
+    </DevOnly>
   )
 } 

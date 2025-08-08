@@ -9,8 +9,8 @@ from typing import Dict, List, Any, Optional
 from utils.config import settings
 
 # 配置OpenAI客户端
-if settings.openai_api_key:
-    openai.api_key = settings.openai_api_key
+if settings.OPENAI_API_KEY:
+    openai.api_key = settings.OPENAI_API_KEY
 else:
     # 如果没有API密钥，使用模拟响应
     print("⚠️ 未配置OpenAI API密钥，将使用模拟响应")
@@ -22,7 +22,7 @@ async def synthesize_task_from_wish(wish: Dict[str, Any]) -> Dict[str, Any]:
     - **wish**: 愿望数据
     """
     try:
-        if not settings.openai_api_key:
+        if not settings.OPENAI_API_KEY:
             # 模拟AI响应
             return generate_mock_task_synthesis(wish)
         
@@ -49,14 +49,15 @@ async def synthesize_task_from_wish(wish: Dict[str, Any]) -> Dict[str, Any]:
         }}
         """
         
-        # 调用OpenAI API
-        response = await openai.ChatCompletion.acreate(
-            model=settings.openai_model,
+        # 调用OpenAI API (新版本)
+        client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+        response = await client.chat.completions.create(
+            model=settings.OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": "你是一个专业的AI任务规划师，擅长将用户愿望转化为可执行的结构化任务。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=settings.openai_max_tokens,
+            max_tokens=settings.OPENAI_MAX_TOKENS,
             temperature=0.7
         )
         
@@ -83,7 +84,7 @@ async def build_agent_from_modules(task: Dict[str, Any], modules: List[Dict[str,
     - **modules**: 模块列表
     """
     try:
-        if not settings.openai_api_key:
+        if not settings.OPENAI_API_KEY:
             # 模拟AI响应
             return generate_mock_agent_build(task, modules)
         
@@ -120,14 +121,15 @@ async def build_agent_from_modules(task: Dict[str, Any], modules: List[Dict[str,
         - usage_examples: 使用示例列表
         """
         
-        # 调用OpenAI API
-        response = await openai.ChatCompletion.acreate(
-            model=settings.openai_model,
+        # 调用OpenAI API (新版本)
+        client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+        response = await client.chat.completions.create(
+            model=settings.OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": "你是一个专业的AI智能体开发专家，擅长将多个模块整合成完整的智能体系统。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=settings.openai_max_tokens * 2,  # 代码生成需要更多token
+            max_tokens=settings.OPENAI_MAX_TOKENS * 2,  # 代码生成需要更多token
             temperature=0.5
         )
         
@@ -151,7 +153,7 @@ async def generate_agent_demo(agent: Dict[str, Any], task: Dict[str, Any], modul
     - **modules**: 模块列表
     """
     try:
-        if not settings.openai_api_key:
+        if not settings.OPENAI_API_KEY:
             # 模拟演示生成
             return generate_mock_agent_demo(agent, task, modules)
         
@@ -181,14 +183,15 @@ async def generate_agent_demo(agent: Dict[str, Any], task: Dict[str, Any], modul
         - documentation: 使用文档
         """
         
-        # 调用OpenAI API
-        response = await openai.ChatCompletion.acreate(
-            model=settings.openai_model,
+        # 调用OpenAI API (新版本)
+        client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+        response = await client.chat.completions.create(
+            model=settings.OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": "你是一个专业的AI智能体文档专家，擅长生成清晰的使用示例和文档。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=settings.openai_max_tokens,
+            max_tokens=settings.OPENAI_MAX_TOKENS,
             temperature=0.3
         )
         

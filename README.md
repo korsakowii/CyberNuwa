@@ -25,7 +25,7 @@ This is an open platform for creative co-creation and AI agent development, inte
 ## 📦 项目结构 / Project Structure
 
 ```
-CyberNuwa/
+CyberNüwa/
 ├── app/                     # Next.js App Router 页面 / Pages
 │   ├── page.tsx            # 首页 - 平台概览和模块导航 / Home - Platform Overview
 │   ├── layout.tsx          # 根布局配置 / Root Layout
@@ -49,7 +49,17 @@ CyberNuwa/
 
 ## 🚀 启动方式 / Getting Started
 
-### 中文 / Chinese
+### 🎯 快速启动 (推荐)
+
+使用我们的启动脚本，可以轻松选择启动动态主站或静态展示：
+
+```bash
+./start.sh
+```
+
+### 手动启动 / Manual Start
+
+#### 中文 / Chinese
 
 1. 安装依赖：
 
@@ -57,19 +67,26 @@ CyberNuwa/
 npm install
 ```
 
-2. 本地开发模式：
+2. 启动动态主站 (完整功能版本)：
 
 ```bash
 npm run dev
 ```
 
-3. 构建生产版本：
+3. 启动静态展示 (展示版本)：
+
+```bash
+npm run build:static
+npm run preview:static
+```
+
+4. 构建生产版本：
 
 ```bash
 npm run build && npm start
 ```
 
-### English
+#### English
 
 1. Install dependencies:
 
@@ -77,17 +94,38 @@ npm run build && npm start
 npm install
 ```
 
-2. Local development mode:
+2. Start dynamic main site (full functionality):
 
 ```bash
 npm run dev
 ```
 
-3. Build production version:
+3. Start static showcase (display version):
+
+```bash
+npm run build:static
+npm run preview:static
+```
+
+4. Build production version:
 
 ```bash
 npm run build && npm start
 ```
+
+## 📊 页面类型说明 / Page Types
+
+### 🚀 动态主站 (Dynamic Main Site)
+- **用途**: 完整功能演示和实际使用
+- **访问地址**: http://localhost:3000
+- **特点**: 支持实时数据交互、用户操作、完整API功能
+
+### 📊 静态展示 (Static Showcase)  
+- **用途**: 独立功能展示和演示
+- **访问地址**: http://localhost:3000/showcase/standalone
+- **特点**: 纯展示页面、快速加载、适合外部分享
+
+📖 **详细说明**: 查看 [PAGE_DIFFERENTIATION.md](./PAGE_DIFFERENTIATION.md)
 
 ## ✨ 技术栈 / Tech Stack
 
