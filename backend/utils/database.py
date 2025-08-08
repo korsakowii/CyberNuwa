@@ -166,6 +166,8 @@ class SQLiteDatabase:
 wishes_db = JSONDatabase(os.path.join(settings.data_dir, settings.wishes_file))
 tasks_db = JSONDatabase(os.path.join(settings.data_dir, settings.tasks_file))
 signatures_db = JSONDatabase(os.path.join(settings.data_dir, settings.signatures_file))
+modules_db = JSONDatabase(os.path.join(settings.data_dir, "modules.json"))
+agents_db = JSONDatabase(os.path.join(settings.data_dir, "agents.json"))
 sqlite_db = SQLiteDatabase()
 
 async def init_database():

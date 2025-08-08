@@ -1,0 +1,16 @@
+[
+  {
+    "content": "想知道喜欢的女生什么时候跟我确定关系",
+    "user_id": "user_001",
+    "status": "pending",
+    "id": 1,
+    "created_at": "2025-08-07T12:00:46.194358"
+  },
+  {
+    "content": "希望有一个智能助手帮我管理日常任务",
+    "user_id": "user_002",
+    "status": "processing",
+    "id": 2,
+    "created_at": "2025-08-07T12:00:46.194806"
+  }
+]
