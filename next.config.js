@@ -15,9 +15,17 @@ const nextConfig = {
     optimizePackageImports: ['@/components'], // 优化组件导入
   },
   
-  // 环境变量
-  env: {
-    NODE_ENV: process.env.NODE_ENV,
+  // 环境变量配置
+  // 注意：NODE_ENV 由 Next.js 自动管理，不应在此处设置
+  
+  // API代理配置
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8002/api/:path*',
+      },
+    ]
   },
   
   // 重定向规则

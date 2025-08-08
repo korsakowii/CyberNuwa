@@ -67,11 +67,11 @@ backend/cybernuwa.db
 *.log
 logs/
 
-# Test files
-test_*.py
-test_*.js
-*_test.py
-*_test.js
+# Test files (now organized in tests/ directory)
+# test_*.py
+# test_*.js
+# *_test.py
+# *_test.js
 
 # Temporary files
 *.tmp
