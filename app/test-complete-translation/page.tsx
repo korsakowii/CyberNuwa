@@ -26,7 +26,7 @@ function TestCompleteTranslationContent() {
     addLog('开始页面翻译...')
     try {
       await autoTranslatePage((newLang) => {
-        setLanguage(newLang)
+        setLanguage(newLang as 'zh' | 'en')
         addLog(`语言状态已更新为: ${newLang}`)
       })
       addLog('页面翻译完成')

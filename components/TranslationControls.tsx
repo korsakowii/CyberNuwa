@@ -21,7 +21,7 @@ export function TranslationControls() {
       setTranslationProgress(0)
       // 调用全局翻译功能
       await autoTranslatePage((newLang) => {
-        setLanguage(newLang)
+        setLanguage(newLang as 'zh' | 'en')
         setTranslationProgress(100)
       })
     } catch (error) {
