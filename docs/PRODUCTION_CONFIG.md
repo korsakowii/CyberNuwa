@@ -7,12 +7,14 @@
 ## 🚀 环境区分
 
 ### 开发环境 (`NODE_ENV=development`)
+
 - ✅ 显示所有调试组件
 - ✅ 测试页面可用
 - ✅ 详细错误信息
 - ✅ 热重载功能
 
 ### 生产环境 (`NODE_ENV=production`)
+
 - ❌ 隐藏调试组件
 - ❌ 测试页面重定向到首页
 - ❌ 简化错误信息
@@ -21,6 +23,7 @@
 ## 🔧 配置组件
 
 ### 1. DevOnly 组件
+
 ```typescript
 import { DevOnly } from '@/components/DevOnly'
 
@@ -31,20 +34,22 @@ import { DevOnly } from '@/components/DevOnly'
 ```
 
 ### 2. 环境检查 Hook
-```typescript
-import { useDevOnly } from '@/components/DevOnly'
 
-const { isDev, devOnly } = useDevOnly()
+```typescript
+import { useDevOnly } from '@/components/DevOnly';
+
+const { isDev, devOnly } = useDevOnly();
 
 // 只在开发环境执行
 devOnly(() => {
-  console.log('调试信息')
-})
+  console.log('调试信息');
+});
 ```
 
 ## 📁 受影响的页面
 
 ### 测试页面 (仅开发环境)
+
 - `/test-global-translation` - 翻译功能测试
 - `/test-api` - API 测试
 - `/test-translation` - 翻译测试
@@ -56,6 +61,7 @@ devOnly(() => {
 - `/integration-test` - 集成测试
 
 ### 调试组件 (仅开发环境)
+
 - API状态指示器
 - 翻译控件
 - 语言状态指示器
@@ -63,6 +69,7 @@ devOnly(() => {
 ## 🛠️ 部署脚本
 
 ### 生产环境部署
+
 ```bash
 # 使用部署脚本
 npm run deploy:prod
@@ -73,6 +80,7 @@ npm run start:prod
 ```
 
 ### 构建命令
+
 ```bash
 # 生产环境构建
 npm run build:prod
@@ -87,6 +95,7 @@ npm run build:static
 ## ⚙️ Next.js 配置
 
 ### 生产环境优化
+
 ```javascript
 // next.config.js
 {
@@ -97,6 +106,7 @@ npm run build:static
 ```
 
 ### 安全头部
+
 ```javascript
 async headers() {
   return [
@@ -113,6 +123,7 @@ async headers() {
 ```
 
 ### 重定向规则
+
 ```javascript
 async redirects() {
   return [
@@ -131,6 +142,7 @@ async redirects() {
 ## 🔒 安全配置
 
 ### 环境变量
+
 ```bash
 # 生产环境变量
 NODE_ENV=production
@@ -138,6 +150,7 @@ NEXT_PUBLIC_API_URL=https://api.cybernuwa.com
 ```
 
 ### 安全头部
+
 - `X-Frame-Options: DENY` - 防止点击劫持
 - `X-Content-Type-Options: nosniff` - 防止MIME类型嗅探
 - `Referrer-Policy: origin-when-cross-origin` - 控制引用策略
@@ -145,12 +158,14 @@ NEXT_PUBLIC_API_URL=https://api.cybernuwa.com
 ## 📊 性能优化
 
 ### 构建优化
+
 - 禁用生产环境 source maps
 - 启用 CSS 优化
 - 优化包导入
 - 启用压缩
 
 ### 运行时优化
+
 - 条件渲染调试组件
 - 测试页面重定向
 - 简化错误处理
@@ -158,6 +173,7 @@ NEXT_PUBLIC_API_URL=https://api.cybernuwa.com
 ## 🚀 部署流程
 
 ### 1. 准备环境
+
 ```bash
 # 设置生产环境
 export NODE_ENV=production
@@ -167,18 +183,21 @@ npm ci --only=production
 ```
 
 ### 2. 构建应用
+
 ```bash
 # 构建生产版本
 npm run build:prod
 ```
 
 ### 3. 启动服务
+
 ```bash
 # 启动生产服务器
 npm run start:prod
 ```
 
 ### 4. 验证部署
+
 - 检查应用是否正常启动
 - 验证测试页面重定向
 - 确认调试组件已隐藏
@@ -187,14 +206,16 @@ npm run start:prod
 ## 🔍 监控和日志
 
 ### 生产环境日志
+
 ```javascript
 // 生产环境日志配置
 if (process.env.NODE_ENV === 'production') {
-  console.log = () => {} // 禁用详细日志
+  console.log = () => {}; // 禁用详细日志
 }
 ```
 
 ### 错误监控
+
 - 使用错误边界捕获 React 错误
 - 配置错误报告服务
 - 监控 API 调用状态
@@ -202,6 +223,7 @@ if (process.env.NODE_ENV === 'production') {
 ## 📝 检查清单
 
 ### 部署前检查
+
 - [ ] 环境变量配置正确
 - [ ] 所有测试页面已添加 DevOnly 包装
 - [ ] 调试组件已条件渲染
@@ -209,6 +231,7 @@ if (process.env.NODE_ENV === 'production') {
 - [ ] 重定向规则已设置
 
 ### 部署后验证
+
 - [ ] 应用正常启动
 - [ ] 测试页面重定向到首页
 - [ ] 调试组件已隐藏
@@ -244,4 +267,4 @@ if (process.env.NODE_ENV === 'production') {
 
 **文档版本**: v1.0.0  
 **最后更新**: 2025-01-28  
-**维护者**: CyberNuwa Team 
+**维护者**: CyberNuwa Team

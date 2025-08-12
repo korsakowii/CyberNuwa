@@ -3,6 +3,7 @@
 ## 🚀 快速开始
 
 ### 1. 启动服务
+
 ```bash
 # 后端
 cd backend && python main.py
@@ -12,6 +13,7 @@ npm run dev
 ```
 
 ### 2. 测试翻译
+
 ```bash
 # 健康检查
 curl http://localhost:8001/health
@@ -30,6 +32,7 @@ curl -X POST http://localhost:8001/api/translation/translate_batch \
 ## 📋 API 速查
 
 ### 单文本翻译
+
 ```http
 POST /api/translation/translate
 {
@@ -40,6 +43,7 @@ POST /api/translation/translate
 ```
 
 ### 批量翻译
+
 ```http
 POST /api/translation/translate_batch
 {
@@ -50,6 +54,7 @@ POST /api/translation/translate_batch
 ```
 
 ### 语言检测
+
 ```http
 POST /api/translation/detect
 {
@@ -60,23 +65,24 @@ POST /api/translation/detect
 ## 🎯 前端使用
 
 ### 基本用法
+
 ```typescript
 import { useTranslation } from '@/components/TranslationProvider'
 
 function MyComponent() {
   const { translateText, autoTranslatePage, isTranslating } = useTranslation()
-  
+
   // 翻译单个文本
   const handleTranslate = async () => {
     const result = await translateText("你好", "en")
     console.log(result) // "Hello"
   }
-  
+
   // 全局翻译
   const handleGlobalTranslate = async () => {
     await autoTranslatePage()
   }
-  
+
   return (
     <button onClick={handleTranslate} disabled={isTranslating}>
       翻译
@@ -86,8 +92,9 @@ function MyComponent() {
 ```
 
 ### 翻译控件
+
 ```tsx
-import { TranslationControls } from '@/components/TranslationControls'
+import { TranslationControls } from '@/components/TranslationControls';
 
 function App() {
   return (
@@ -95,13 +102,14 @@ function App() {
       {/* 页面内容 */}
       <TranslationControls />
     </div>
-  )
+  );
 }
 ```
 
 ## ⚡ 性能优化
 
 ### 关键配置
+
 ```python
 # backend/utils/translation_service.py
 self.semaphore = asyncio.Semaphore(10)  # 并发限制
@@ -110,10 +118,11 @@ self.request_interval = 0.2  # 请求间隔(秒)
 
 ```typescript
 // 前端批量大小
-const batchSize = 10  // 每批处理文本数量
+const batchSize = 10; // 每批处理文本数量
 ```
 
 ### 缓存策略
+
 - 内存缓存: 即时生效
 - 本地存储: 跨会话保持
 - 自动去重: 避免重复翻译
@@ -121,19 +130,25 @@ const batchSize = 10  // 每批处理文本数量
 ## 🔧 常见问题
 
 ### Q: 翻译速度慢？
-A: 
+
+A:
+
 - 检查网络连接
 - 确认后端服务运行
 - 查看浏览器控制台错误
 
 ### Q: 翻译失败？
+
 A:
+
 - 检查API服务状态
 - 验证请求格式
 - 查看服务器日志
 
 ### Q: 如何添加新语言？
+
 A:
+
 1. 在 `translation_service.py` 中添加新API
 2. 更新前端语言检测逻辑
 3. 添加语言标识符
@@ -158,11 +173,13 @@ app/
 ## 🎨 UI组件
 
 ### TranslationControls
+
 - 位置: 右下角固定
 - 功能: 一键翻译 + 设置
 - 状态: 进度指示器
 
 ### 状态指示器
+
 - 位置: 右上角
 - 显示: 当前语言
 - 颜色: 绿色(中文) / 蓝色(英文)
@@ -170,7 +187,7 @@ app/
 ## 📊 监控指标
 
 - 翻译响应时间
-- API调用频率  
+- API调用频率
 - 缓存命中率
 - 错误率统计
 
@@ -184,4 +201,4 @@ app/
 ---
 
 **快速参考版本**: v1.0.0  
-**完整文档**: [TRANSLATION_SYSTEM_DOCUMENTATION.md](./TRANSLATION_SYSTEM_DOCUMENTATION.md) 
+**完整文档**: [TRANSLATION_SYSTEM_DOCUMENTATION.md](./TRANSLATION_SYSTEM_DOCUMENTATION.md)

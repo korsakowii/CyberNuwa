@@ -69,10 +69,12 @@ async def health_check():
     return {"status": "healthy", "timestamp": "2025-01-28T00:00:00Z"}
 
 if __name__ == "__main__":
+    from utils.config import settings
+    
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=8002,
+        host=settings.HOST,
+        port=settings.get_port,
         reload=True,
         log_level="info"
     ) 

@@ -13,7 +13,7 @@ export class TranslationService {
   // 使用 Google Translate API 进行翻译
   async translateText(text: string, targetLang: 'zh' | 'en'): Promise<string> {
     const cacheKey = `${text}_${targetLang}`;
-    
+
     // 检查缓存
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey)!;
@@ -30,8 +30,8 @@ export class TranslationService {
           q: text,
           source: targetLang === 'zh' ? 'en' : 'zh',
           target: targetLang,
-          format: 'text'
-        })
+          format: 'text',
+        }),
       });
 
       if (!response.ok) {
@@ -43,10 +43,10 @@ export class TranslationService {
 
       // 缓存结果
       this.cache.set(cacheKey, translatedText);
-      
+
       return translatedText;
     } catch (error) {
-      console.error('翻译失败:', error);
+      // // console.error('翻译失败:', error);
       return text; // 翻译失败时返回原文
     }
   }
@@ -54,12 +54,15 @@ export class TranslationService {
   // 翻译页面内容
   async translatePageContent(targetLang: 'zh' | 'en'): Promise<void> {
     const textNodes = this.getTextNodes(document.body);
-    
+
     for (const node of textNodes) {
       if (node.textContent && node.textContent.trim()) {
         const originalText = node.textContent.trim();
-        const translatedText = await this.translateText(originalText, targetLang);
-        
+        const translatedText = await this.translateText(
+          originalText,
+          targetLang
+        );
+
         if (translatedText !== originalText) {
           node.textContent = translatedText;
         }
@@ -70,25 +73,25 @@ export class TranslationService {
   // 获取页面中的所有文本节点
   private getTextNodes(element: Node): Text[] {
     const textNodes: Text[] = [];
-    const walker = document.createTreeWalker(
-      element,
-      NodeFilter.SHOW_TEXT,
-      {
-        acceptNode: (node) => {
-          // 排除脚本和样式标签中的文本
-          const parent = node.parentElement;
-          if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          // 只接受包含非空白字符的文本节点
-          return node.textContent && node.textContent.trim() ? 
-            NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+      acceptNode: node => {
+        // 排除脚本和样式标签中的文本
+        const parent = node.parentElement;
+        if (
+          parent &&
+          (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')
+        ) {
+          return NodeFilter.FILTER_REJECT;
         }
-      }
-    );
+        // 只接受包含非空白字符的文本节点
+        return node.textContent && node.textContent.trim()
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT;
+      },
+    });
 
     let node;
-    while (node = walker.nextNode()) {
+    while ((node = walker.nextNode())) {
       textNodes.push(node as Text);
     }
 
@@ -96,15 +99,18 @@ export class TranslationService {
   }
 
   // 翻译表单内容
-  async translateFormContent(formData: any, targetLang: 'zh' | 'en'): Promise<any> {
+  async translateFormContent(
+    formData: any,
+    targetLang: 'zh' | 'en'
+  ): Promise<any> {
     const translatedData = { ...formData };
-    
+
     for (const [key, value] of Object.entries(formData)) {
       if (typeof value === 'string' && value.trim()) {
         translatedData[key] = await this.translateText(value, targetLang);
       }
     }
-    
+
     return translatedData;
   }
 }
@@ -117,24 +123,24 @@ export class PageTranslator {
   // 一键翻译整个页面
   async translatePage(targetLang: 'zh' | 'en'): Promise<void> {
     if (this.isTranslating) {
-      console.log('翻译正在进行中...');
+      // // console.log('翻译正在进行中...');
       return;
     }
 
     this.isTranslating = true;
-    
+
     try {
       // 显示翻译进度
       this.showTranslationProgress();
-      
+
       await this.translationService.translatePageContent(targetLang);
-      
+
       // 隐藏进度条
       this.hideTranslationProgress();
-      
-      console.log(`页面已翻译为${targetLang === 'zh' ? '中文' : 'English'}`);
+
+      // // console.log(`页面已翻译为${targetLang === 'zh' ? '中文' : 'English'}`);
     } catch (error) {
-      console.error('页面翻译失败:', error);
+      // // console.error('页面翻译失败:', error);
       this.hideTranslationProgress();
     } finally {
       this.isTranslating = false;
@@ -178,4 +184,4 @@ export class PageTranslator {
 
 // 导出单例实例
 export const pageTranslator = new PageTranslator();
-export const translationService = TranslationService.getInstance(); 
+export const translationService = TranslationService.getInstance();

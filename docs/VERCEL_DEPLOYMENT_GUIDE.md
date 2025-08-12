@@ -17,7 +17,7 @@ main (development) → qa (testing) → release (production)
 ```
 
 - **main**: Daily development branch
-- **qa**: Quality assurance branch  
+- **qa**: Quality assurance branch
 - **release**: Production deployment branch (Vercel only deploys this branch)
 
 ### 🔧 Configuration Methods
@@ -25,6 +25,7 @@ main (development) → qa (testing) → release (production)
 #### Method 1: Vercel Console Configuration (Recommended)
 
 1. **Access Vercel Console**
+
    ```
    https://vercel.com/dashboard
    ```
@@ -83,6 +84,7 @@ vercel env pull .env.local
 ```
 
 The script automatically:
+
 1. Checks current branch
 2. Merges changes to release branch
 3. Pushes to remote release branch
@@ -119,6 +121,7 @@ git checkout main
 
 2. **Deployment URLs**
    - Production: `https://cybernuwa.vercel.app`
+
 - Preview: `https://cybernuwa-git-release-yourusername.vercel.app`
 
 3. **GitHub Integration**
@@ -131,6 +134,7 @@ git checkout main
 
 **Issue 1: Vercel deployed wrong branch**
 **Solution:**
+
 ```bash
 # Check Vercel project settings
 # Ensure Production Branch is set to release
@@ -138,6 +142,7 @@ git checkout main
 
 **Issue 2: Deployment failed**
 **Solution:**
+
 ```bash
 # Check build logs
 # Ensure all dependencies are installed
@@ -149,6 +154,7 @@ npm run build
 
 **Issue 3: Branch out of sync**
 **Solution:**
+
 ```bash
 # Sync remote branches
 git fetch origin
@@ -206,6 +212,7 @@ jobs:
 #### Regular Maintenance
 
 1. **Dependency Updates**
+
    ```bash
    npm audit fix
    npm update
@@ -226,6 +233,7 @@ jobs:
 #### Development Workflow
 
 1. **Feature Development**
+
    ```bash
    git checkout main
    # Develop new features
@@ -235,6 +243,7 @@ jobs:
    ```
 
 2. **Testing and Validation**
+
    ```bash
    git checkout qa
    git merge main
@@ -303,6 +312,7 @@ main (开发分支) → qa (测试分支) → release (生产分支)
 ### 方法 1: Vercel 控制台配置（推荐）
 
 1. **访问 Vercel 控制台**
+
    ```
    https://vercel.com/dashboard
    ```
@@ -361,6 +371,7 @@ vercel env pull .env.local
 ```
 
 脚本会自动：
+
 1. 检查当前分支
 2. 将更改合并到 release 分支
 3. 推送到远程 release 分支
@@ -397,6 +408,7 @@ git checkout main
 
 2. **部署 URL**
    - 生产环境: `https://cybernuwa.vercel.app`
+
 - 预览环境: `https://cybernuwa-git-release-yourusername.vercel.app`
 
 3. **GitHub 集成**
@@ -406,14 +418,18 @@ git checkout main
 ### 常见问题排查
 
 #### 问题 1: Vercel 部署了错误的分支
+
 **解决方案:**
+
 ```bash
 # 检查 Vercel 项目设置
 # 确保 Production Branch 设置为 release
 ```
 
 #### 问题 2: 部署失败
+
 **解决方案:**
+
 ```bash
 # 检查构建日志
 # 确保所有依赖已安装
@@ -424,7 +440,9 @@ npm run build
 ```
 
 #### 问题 3: 分支不同步
+
 **解决方案:**
+
 ```bash
 # 同步远程分支
 git fetch origin
@@ -482,6 +500,7 @@ jobs:
 ### 定期维护
 
 1. **依赖更新**
+
    ```bash
    npm audit fix
    npm update
@@ -502,6 +521,7 @@ jobs:
 ### 开发流程
 
 1. **功能开发**
+
    ```bash
    git checkout main
    # 开发新功能
@@ -511,6 +531,7 @@ jobs:
    ```
 
 2. **测试验证**
+
    ```bash
    git checkout qa
    git merge main
@@ -548,4 +569,4 @@ jobs:
 
 ---
 
-**CyberNuwa** - 稳定的生产部署策略 🚀 
+**CyberNuwa** - 稳定的生产部署策略 🚀

@@ -1,0 +1,141 @@
+version: '3.8'
+
+# CyberNuwa 项目 Docker Compose 配置
+# 支持多项目并行开发，避免端口冲突
+
+services:
+  # CyberNuwa 前端服务
+  cybernuwa-frontend:
+    container_name: cybernuwa-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - cybernuwa-backend
+    networks:
+      - cybernuwa-network
+
+  # CyberNuwa 后端服务
+  cybernuwa-backend:
+    container_name: cybernuwa-backend
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - DATABASE_URL=postgresql://postgres:password@cybernuwa-db:5432/cybernuwa_dev
+      - REDIS_URL=redis://cybernuwa-redis:6379
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - cybernuwa-db
+      - cybernuwa-redis
+    networks:
+      - cybernuwa-network
+
+  # CyberNuwa 数据库
+  cybernuwa-db:
+    container_name: cybernuwa-db
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=cybernuwa_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - cybernuwa_postgres_data:/var/lib/postgresql/data
+    networks:
+      - cybernuwa-network
+
+  # CyberNuwa Redis
+  cybernuwa-redis:
+    container_name: cybernuwa-redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - cybernuwa_redis_data:/data
+    networks:
+      - cybernuwa-network
+
+  # 其他项目服务 (示例)
+  project2-frontend:
+    container_name: project2-frontend
+    build:
+      context: ../project2
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - project2-network
+
+  project2-backend:
+    container_name: project2-backend
+    build:
+      context: ../project2
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8001:8000"
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+    networks:
+      - project2-network
+
+  project2-db:
+    container_name: project2-db
+    image: postgres:15-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=project2_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - project2_postgres_data:/var/lib/postgresql/data
+    networks:
+      - project2-network
+
+  project2-redis:
+    container_name: project2-redis
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - project2_redis_data:/data
+    networks:
+      - project2-network
+
+# 网络配置
+networks:
+  cybernuwa-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+  project2-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
+# 数据卷配置
+volumes:
+  cybernuwa_postgres_data:
+  cybernuwa_redis_data:
+  project2_postgres_data:
+  project2_redis_data:

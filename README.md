@@ -1,222 +1,227 @@
-
 # 🌌 Cyber Nüwa - 智能体共创平台
 
-这是一个面向创意共创与智能体养成的开放式平台，融合了 Kaggle 的任务机制、Notion 的协作空间与 HuggingFace 的模型文化。它致力于打造一个非问答型、署名保护、面向未来协作的 AI 应用宇宙。
+面向创意共创与智能体养成的开放式平台，融合任务机制、协作空间与模型文化。
 
-> 在这里，每个创意都有"孵化权"，每个智能体都拥有"成长路径"。
+## ✨ 特性
 
----
+- 🚀 **现代化架构** - 基于 Next.js 14 + React 18 + TypeScript
+- 🌐 **国际化支持** - 中英文双语界面，智能语言检测
+- 🎨 **设计系统** - 统一的UI组件库，支持多种主题
+- 📱 **响应式设计** - 完美适配各种设备尺寸
+- 🧪 **测试覆盖** - 完整的单元测试和集成测试
+- 🔧 **开发体验** - ESLint + Prettier + Husky 代码质量保障
 
-# 🌌 Cyber Nüwa - AI Agent Co-Creation Platform
+## 🛠️ 技术栈
 
-This is an open platform for creative co-creation and AI agent development, integrating Kaggle's task mechanisms, Notion's collaborative spaces, and HuggingFace's model culture. It aims to build a non-Q&A, attribution-protected, future-oriented collaborative AI application universe.
+### 前端
 
-> Here, every idea has the "right to incubate", and every agent has a "growth path".
+- **框架**: Next.js 14 (App Router)
+- **语言**: TypeScript 5.3+
+- **UI库**: React 18 + Tailwind CSS
+- **状态管理**: React Context API
+- **测试**: Jest + React Testing Library
 
----
+### 开发工具
 
-## 🌍 中英文双语支持 / Bilingual Support
+- **代码质量**: ESLint + Prettier
+- **Git Hooks**: Husky + lint-staged
+- **类型检查**: TypeScript strict mode
+- **包管理**: npm
 
-✅ **完整的中英文双语界面** / Complete Chinese-English bilingual interface
-- 实时语言切换 / Real-time language switching
-- 所有页面内容本地化 / All page content localized
-- 响应式语言切换组件 / Responsive language switcher component
+## 🚀 快速开始
 
-## 📦 项目结构 / Project Structure
+### 环境要求
 
-```
-CyberNüwa/
-├── app/                     # Next.js App Router 页面 / Pages
-│   ├── page.tsx            # 首页 - 平台概览和模块导航 / Home - Platform Overview
-│   ├── layout.tsx          # 根布局配置 / Root Layout
-│   ├── globals.css         # 全局样式 / Global Styles
-│   ├── launch-mission/     # 发起任务表单 / Launch Mission Form
-│   ├── agents/             # Agent 养成所 / Agent Incubator
-│   ├── train-agent/        # Agent 训练界面 / Agent Training Interface
-│   ├── wishes/             # 许愿池 / Wish Pool
-│   ├── roles/              # 用户角色系统 / User Role System
-│   ├── narratives/         # 元叙事广场 / Metanarrative Square
-│   └── task-square/        # 任务广场 / Task Square
-├── components/             # 可复用组件 / Reusable Components
-│   └── LanguageSwitcher.tsx # 语言切换组件 / Language Switcher Component
-├── locales/                # 国际化文件 / Internationalization Files
-│   ├── zh/                 # 中文翻译 / Chinese Translations
-│   └── en/                 # 英文翻译 / English Translations
-├── styles/                 # 样式文件 / Style Files
-├── package.json            # 项目依赖与脚本 / Dependencies & Scripts
-└── README.md               # 项目说明 / Project Documentation
-```
+- Node.js 18.0.0+
+- npm 9.0.0+
 
-## 🚀 启动方式 / Getting Started
-
-### 🎯 快速启动 (推荐)
-
-使用我们的启动脚本，可以轻松选择启动动态主站或静态展示：
-
-```bash
-./start.sh
-```
-
-### 手动启动 / Manual Start
-
-#### 中文 / Chinese
-
-1. 安装依赖：
+### 安装依赖
 
 ```bash
 npm install
 ```
 
-2. 启动动态主站 (完整功能版本)：
+### 开发模式
 
 ```bash
 npm run dev
 ```
 
-3. 启动静态展示 (展示版本)：
+访问 [http://localhost:3000](http://localhost:3000) 查看应用。
+
+### 构建生产版本
 
 ```bash
-npm run build:static
-npm run preview:static
+npm run build
+npm start
 ```
 
-4. 构建生产版本：
+## 📁 项目结构
+
+```
+CyberNuwa/
+├── app/                    # Next.js App Router 页面
+├── components/            # React 组件
+│   ├── ui/               # 基础UI组件库
+│   └── ...               # 业务组件
+├── contexts/             # React Context 状态管理
+├── hooks/                # 自定义 React Hooks
+├── lib/                  # 工具函数库
+├── types/                # TypeScript 类型定义
+├── tests/                # 测试文件
+├── styles/               # 全局样式
+└── docs/                 # 项目文档
+```
+
+## 🧪 测试
+
+### 运行测试
 
 ```bash
-npm run build && npm start
+# 运行所有测试
+npm test
+
+# 监听模式
+npm run test:watch
+
+# 生成覆盖率报告
+npm run test:coverage
+
+# 调试模式
+npm run test:debug
 ```
 
-#### English
+### 测试覆盖率目标
 
-1. Install dependencies:
+- 分支覆盖率: 70%
+- 函数覆盖率: 70%
+- 行覆盖率: 70%
+- 语句覆盖率: 70%
+
+## 🔧 代码质量
+
+### 代码检查
 
 ```bash
-npm install
+# 运行 ESLint
+npm run lint
+
+# 自动修复
+npm run lint:fix
+
+# 类型检查
+npm run type-check
+
+# 格式化代码
+npm run format
 ```
 
-2. Start dynamic main site (full functionality):
+### 质量检查
 
 ```bash
-npm run dev
+# 完整质量检查
+npm run quality
+
+# 自动修复
+npm run quality:fix
 ```
 
-3. Start static showcase (display version):
+## 🌐 国际化
 
-```bash
-npm run build:static
-npm run preview:static
+项目支持中英文双语界面：
+
+- 自动语言检测
+- 持久化语言偏好
+- 智能翻译功能
+- 响应式语言切换
+
+### 语言配置
+
+```typescript
+// 支持的语言
+type Language = 'zh' | 'en';
+
+// 语言检测
+const detectedLang = detectLanguage(text);
+
+// 语言格式化
+const formattedLang = formatLanguage(lang);
 ```
 
-4. Build production version:
+## 🎨 组件库
 
-```bash
-npm run build && npm start
+### 基础组件
+
+- **Button** - 支持多种变体和状态的按钮
+- **Input** - 智能输入框，支持翻译功能
+- **Textarea** - 多行文本输入
+- **Card** - 卡片容器，支持多种布局
+
+### 使用示例
+
+```tsx
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+
+<Card variant='elevated' hover>
+  <Card.Header title='标题' subtitle='副标题' />
+  <Card.Content>内容区域</Card.Content>
+  <Card.Footer justify='between'>
+    <Button variant='outline'>取消</Button>
+    <Button variant='primary'>确认</Button>
+  </Card.Footer>
+</Card>;
 ```
 
-## 📊 页面类型说明 / Page Types
+## 📚 自定义 Hooks
 
-### 🚀 动态主站 (Dynamic Main Site)
-- **用途**: 完整功能演示和实际使用
-- **访问地址**: http://localhost:3000
-- **特点**: 支持实时数据交互、用户操作、完整API功能
+### useLocalStorage
 
-### 📊 静态展示 (Static Showcase)  
-- **用途**: 独立功能展示和演示
-- **访问地址**: http://localhost:3000/showcase/standalone
-- **特点**: 纯展示页面、快速加载、适合外部分享
+```typescript
+const [value, setValue] = useLocalStorage('key', initialValue);
+```
 
-📖 **详细说明**: 查看 [PAGE_DIFFERENTIATION.md](./PAGE_DIFFERENTIATION.md)
+### useDebounce
 
-## ✨ 技术栈 / Tech Stack
+```typescript
+const debouncedValue = useDebounce(value, 500);
+```
 
-- [Next.js 14](https://nextjs.org/) - React 全栈框架 / React Full-Stack Framework
-- [React 18](https://reactjs.org/) - 用户界面库 / User Interface Library
-- [Tailwind CSS](https://tailwindcss.com/) - 实用优先的 CSS 框架 / Utility-First CSS Framework
-- [TypeScript](https://www.typescriptlang.org/) - 类型安全的 JavaScript / Type-Safe JavaScript
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html) - 状态管理 / State Management
+## 🔄 开发工作流
 
-## 🏗️ 核心模块 / Core Modules
+1. **代码提交前检查**
+   - ESLint 代码规范检查
+   - Prettier 代码格式化
+   - TypeScript 类型检查
+   - 单元测试运行
 
-| 模块名 / Module | 路径 / Path | 说明 / Description |
-|----------------|-------------|-------------------|
-| 首页 / Home | `/` | 平台概览、模块导航、项目愿景 / Platform Overview & Navigation |
-| 发起任务 / Launch Mission | `/launch-mission` | 提交创意任务，让社区共同孵化 / Submit Creative Tasks |
-| Agent 养成所 / Agent Incubator | `/agents` | 查看智能体列表与训练记录 / View Agent List & Training Records |
-| 训练智能体 / Train Agent | `/train-agent` | 通过提示词和样本训练自定义 Agent / Train Custom Agents |
-| 许愿池 / Wish Pool | `/wishes` | 展示灵感碎片和半成品想法 / Show Inspiration Fragments |
-| 用户角色 / User Roles | `/roles` | 扮演不同角色，体验不同权限路径 / Experience Different Roles |
-| 元叙事广场 / Metanarrative | `/narratives` | 记录社区发展和 Agent 传记 / Community History & Biographies |
-| 任务广场 / Task Square | `/task-square` | 浏览所有公开任务与进展 / Browse All Public Tasks |
+2. **Git Hooks**
+   - pre-commit: 运行 lint-staged
+   - 确保代码质量
 
-## 🎨 设计特色 / Design Features
+3. **持续集成**
+   - 自动化测试
+   - 代码覆盖率报告
+   - 类型安全检查
 
-- **暗色主题 / Dark Theme**: 采用 `bg-zinc-900` 暗黑背景 + 白色文字 / Dark Background with White Text
-- **渐变色彩 / Gradient Colors**: 每个模块使用独特的渐变色彩方案 / Unique Gradient Schemes
-- **动效体验 / Animations**: 悬停动画、页面过渡、进度条动画 / Hover Effects & Transitions
-- **响应式设计 / Responsive Design**: 支持桌面端和移动端 / Desktop & Mobile Support
-- **现代化 UI / Modern UI**: 毛玻璃效果、圆角设计、阴影层次 / Glassmorphism & Modern Design
-- **语言切换 / Language Switching**: 实时中英文切换 / Real-time Chinese-English switching
+## 📖 贡献指南
 
-## 🧬 样式指南 / Style Guide
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
 
-- 统一使用 `max-w-6xl mx-auto` 控制内容宽度 / Content Width Control
-- 卡片样式：`bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl` / Card Styles
-- 按钮样式：渐变背景 + 悬停缩放效果 / Button Styles with Gradients
-- 标签样式：`px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full` / Tag Styles
+## 📄 许可证
 
-## 💡 项目愿景 / Project Vision
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
-> 让每个创意都被看见、让每位参与者都能留下痕迹，  
-> 在非问答型协作中捏出赛博智能体，  
-> 共同建造一座人机共创的灵感宇宙。
+## 🤝 联系我们
 
-> Let every idea be seen, let every participant leave their mark,  
-> Mold cyber agents through non-Q&A collaboration,  
-> Together build a universe of human-machine co-creation.
-
-## 🚧 下一步开发建议 / Next Development Steps
-
-### 中文 / Chinese
-
-1. **数据持久化**: 接入数据库或 GitHub API 实现任务存储
-2. **用户认证**: 实现用户注册、登录和权限管理
-3. **AI 集成**: 引入 LLM 接口，让用户可训练自定义 Agent
-4. **实时协作**: 添加实时聊天、协作编辑功能
-5. **版本控制**: 构建版本继承链，支持任务 > Agent > 演化路径追踪
-6. **视觉宇宙**: 打造 Logo、Icon、星图视图等视觉元素
-
-### English
-
-1. **Data Persistence**: Integrate database or GitHub API for task storage
-2. **User Authentication**: Implement user registration, login, and permission management
-3. **AI Integration**: Introduce LLM interfaces for custom agent training
-4. **Real-time Collaboration**: Add real-time chat and collaborative editing
-5. **Version Control**: Build version inheritance chains for task > agent > evolution tracking
-6. **Visual Universe**: Create logos, icons, star map views, and other visual elements
-
-## 🧩 命名风格 / Naming Conventions
-
-| 英文 / English | 中文 / Chinese | 含义 / Meaning |
-|---------------|---------------|---------------|
-| MCP | Mission Collaboration Protocol | 任务协作协议名 / Mission Collaboration Protocol |
-| Agent | 智能体 | 被训练的模型或行为体 / Trained Models or Entities |
-| 许愿池 / Wish Pool | Wish Pool | 创意原矿区 / Creative Mining Area |
-| 元叙事 / Metanarrative | Metanarrative | 社区历史、代表故事 / Community History & Stories |
-| 数字子民 / Digital Entities | Digital Entities | 用户训练生成的智能体 / User-Trained Agents |
-
-## 🌐 访问方式 / Access Methods
-
-### 本地访问 / Local Access
-- **开发环境**: http://localhost:3000
-- **生产环境**: http://localhost:3000 (npm start)
-
-### 在线部署 / Online Deployment
-- **Vercel**: https://cybernuwa.vercel.app (推荐)
-- **Netlify**: https://cybernuwa.netlify.app
-- **GitHub Pages**: https://korsakowii.github.io/CyberNuwa
+- 项目主页: [Cyber Nüwa](https://github.com/your-username/CyberNuwa)
+- 问题反馈: [Issues](https://github.com/your-username/CyberNuwa/issues)
+- 功能建议: [Discussions](https://github.com/your-username/CyberNuwa/discussions)
 
 ---
 
-如需参与贡献或提交任务，请访问 `发起任务（/launch-mission）` 页面。
-
-To contribute or submit tasks, please visit the `Launch Mission (/launch-mission)` page.
+**Cyber Nüwa** - 让创意与智能体共创美好未来 🌟

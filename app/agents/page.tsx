@@ -1,251 +1,584 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useLanguage } from '@/contexts/LanguageContext'
-import { translations } from '../../locales/translations'
+import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '../../locales/translations';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Input } from '../../components/ui/input';
+import { Dropdown } from '../../components/ui/dropdown';
+import { Pagination, type PaginationInfo } from '../../components/ui/pagination';
+import { 
+  StatusBadge, 
+  type StatusType,
+  Footer,
+  TranslationControls,
+  ErrorBoundary 
+} from '../../components';
+
+
+// 智能体类型定义
+interface Agent {
+  id: number;
+  name: { zh: string; en: string };
+  description: { zh: string; en: string };
+  creator: { zh: string; en: string };
+  status: 'active' | 'training' | 'inactive' | 'maintenance';
+  trainingProgress: number;
+  tags: { zh: string[]; en: string[] };
+  avatar: string;
+  category: string;
+  createdAt: string;
+  lastUsed?: string;
+  performance?: number;
+}
+
+// 过滤选项
+interface FilterOption {
+  value: string;
+  label: string;
+  count?: number;
+}
 
 export default function Agents() {
-  const { language, setLanguage } = useLanguage()
-  const t = translations[language].agents
+  const { language } = useLanguage();
+  const t = translations[language].agents;
 
-  // 多语言模拟数据
-  const agents = [
+  // 状态管理
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<'name' | 'progress' | 'created' | 'performance'>('name');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+  // 分页状态
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+
+  // 智能体数据
+  const agents: Agent[] = [
     {
       id: 1,
       name: { zh: '创意助手', en: 'Creative Assistant' },
       description: {
         zh: '专门帮助用户进行创意构思和头脑风暴的智能体',
-        en: 'An agent dedicated to helping users brainstorm and generate creative ideas'
+        en: 'An agent dedicated to helping users brainstorm and generate creative ideas',
       },
       creator: { zh: 'Alice', en: 'Alice' },
       status: 'active',
       trainingProgress: 85,
-      tags: {
-        zh: ['创意', '头脑风暴', '协作'],
-        en: ['Creativity', 'Brainstorming', 'Collaboration']
-      },
-      avatar: '🎨'
+      tags: { zh: ['创意', '头脑风暴', '协作'], en: ['Creativity', 'Brainstorming', 'Collaboration'] },
+      avatar: '🎨',
+      category: 'creativity',
+      createdAt: '2025-01-15',
+      lastUsed: '2025-01-20',
+      performance: 92
     },
     {
       id: 2,
       name: { zh: '代码审查员', en: 'Code Reviewer' },
       description: {
         zh: '自动审查代码质量，提供改进建议的智能体',
-        en: 'An agent that automatically reviews code quality and provides improvement suggestions'
+        en: 'An agent that automatically reviews code quality and provides improvement suggestions',
       },
       creator: { zh: 'Bob', en: 'Bob' },
       status: 'training',
       trainingProgress: 45,
-      tags: {
-        zh: ['编程', '代码审查', '质量保证'],
-        en: ['Programming', 'Code Review', 'Quality Assurance']
-      },
-      avatar: '💻'
+      tags: { zh: ['编程', '代码审查', '质量保证'], en: ['Programming', 'Code Review', 'Quality Assurance'] },
+      avatar: '💻',
+      category: 'development',
+      createdAt: '2025-01-14',
+      performance: 78
     },
     {
       id: 3,
       name: { zh: '故事编织者', en: 'Story Weaver' },
       description: {
         zh: '根据用户提供的情节元素，生成完整故事的智能体',
-        en: 'An agent that generates complete stories based on user-provided plot elements'
+        en: 'An agent that generates complete stories based on user-provided plot elements',
       },
       creator: { zh: 'Charlie', en: 'Charlie' },
       status: 'active',
       trainingProgress: 92,
-      tags: {
-        zh: ['写作', '故事创作', '文学'],
-        en: ['Writing', 'Storytelling', 'Literature']
-      },
-      avatar: '📚'
+      tags: { zh: ['写作', '故事创作', '文学'], en: ['Writing', 'Storytelling', 'Literature'] },
+      avatar: '📚',
+      category: 'writing',
+      createdAt: '2025-01-13',
+      lastUsed: '2025-01-19',
+      performance: 95
     },
     {
       id: 4,
       name: { zh: '数据分析师', en: 'Data Analyst' },
       description: {
         zh: '自动分析数据并生成可视化报告的智能体',
-        en: 'An agent that automatically analyzes data and generates visual reports'
+        en: 'An agent that automatically analyzes data and generates visual reports',
       },
       creator: { zh: 'Diana', en: 'Diana' },
       status: 'inactive',
       trainingProgress: 100,
-      tags: {
-        zh: ['数据分析', '可视化', '报告'],
-        en: ['Data Analysis', 'Visualization', 'Reporting']
+      tags: { zh: ['数据分析', '可视化', '报告'], en: ['Data Analysis', 'Visualization', 'Reporting'] },
+      avatar: '📊',
+      category: 'analytics',
+      createdAt: '2025-01-12',
+      lastUsed: '2025-01-18',
+      performance: 88
+    },
+    {
+      id: 5,
+      name: { zh: '翻译专家', en: 'Translation Expert' },
+      description: {
+        zh: '多语言翻译和本地化服务的智能体',
+        en: 'An agent providing multilingual translation and localization services',
       },
-      avatar: '📊'
+      creator: { zh: 'Eva', en: 'Eva' },
+      status: 'active',
+      trainingProgress: 78,
+      tags: { zh: ['翻译', '多语言', '本地化'], en: ['Translation', 'Multilingual', 'Localization'] },
+      avatar: '🌐',
+      category: 'language',
+      createdAt: '2025-01-11',
+      lastUsed: '2025-01-20',
+      performance: 91
+    },
+    {
+      id: 6,
+      name: { zh: '设计顾问', en: 'Design Consultant' },
+      description: {
+        zh: '提供设计建议和创意指导的智能体',
+        en: 'An agent that provides design advice and creative guidance',
+      },
+      creator: { zh: 'Frank', en: 'Frank' },
+      status: 'maintenance',
+      trainingProgress: 100,
+      tags: { zh: ['设计', '创意', '视觉'], en: ['Design', 'Creative', 'Visual'] },
+      avatar: '🎭',
+      category: 'design',
+      createdAt: '2025-01-10',
+      lastUsed: '2025-01-17',
+      performance: 85
     }
-  ]
+  ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-              case 'active': return 'text-blue-400 bg-blue-400/10'
-      case 'training': return 'text-yellow-400 bg-yellow-400/10'
-      case 'inactive': return 'text-gray-400 bg-gray-400/10'
-      default: return 'text-gray-400 bg-gray-400/10'
-    }
-  }
+  // 过滤和排序智能体
+  const filteredAndSortedAgents = useMemo(() => {
+          const filtered = agents.filter(agent => {
+      const matchesSearch = agent.name[language].toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           agent.description[language].toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesStatus = statusFilter === 'all' || agent.status === statusFilter;
+      const matchesCategory = categoryFilter === 'all' || agent.category === categoryFilter;
+      
+      return matchesSearch && matchesStatus && matchesCategory;
+    });
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'active': return t.status.active
-      case 'training': return t.status.training
-      case 'inactive': return t.status.inactive
-      default: return t.status.unknown
+    // 排序
+    filtered.sort((a, b) => {
+      let aValue: any, bValue: any;
+      
+      switch (sortBy) {
+        case 'progress':
+          aValue = a.trainingProgress;
+          bValue = b.trainingProgress;
+          break;
+        case 'created':
+          aValue = new Date(a.createdAt).getTime();
+          bValue = new Date(b.createdAt).getTime();
+          break;
+        case 'performance':
+          aValue = a.performance || 0;
+          bValue = b.performance || 0;
+          break;
+        case 'name':
+        default:
+          aValue = a.name[language].toLowerCase();
+          bValue = b.name[language].toLowerCase();
+          break;
+      }
+
+      if (typeof aValue === 'string') {
+        return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+      }
+      return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
+    });
+
+    return filtered;
+  }, [agents, searchTerm, statusFilter, categoryFilter, sortBy, sortOrder, language]);
+
+  // 分页
+  const totalPages = Math.ceil(filteredAndSortedAgents.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedAgents = filteredAndSortedAgents.slice(startIndex, startIndex + itemsPerPage);
+
+  // 分页信息
+  const paginationInfo: PaginationInfo = {
+    currentPage,
+    totalPages,
+    totalItems: filteredAndSortedAgents.length,
+    itemsPerPage,
+    hasNextPage: currentPage < totalPages,
+    hasPreviousPage: currentPage > 1
+  };
+
+  // 事件处理
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
+
+  const handleStatusFilter = (value: string) => {
+    setStatusFilter(value);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryFilter = (value: string) => {
+    setCategoryFilter(value);
+    setCurrentPage(1);
+  };
+
+  const handleSort = (field: 'name' | 'progress' | 'created' | 'performance') => {
+    if (sortBy === field) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(field);
+      setSortOrder('desc');
     }
-  }
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
+
+  // 智能体操作
+  const handleViewDetails = (agentId: number) => {
+    console.log('View agent details:', agentId);
+  };
+
+  const handleUseAgent = (agentId: number) => {
+    console.log('Use agent:', agentId);
+  };
+
+  const handleEditAgent = (agentId: number) => {
+    console.log('Edit agent:', agentId);
+  };
+
+  // 获取本地化文本
+  const getLocalizedText = (key: string) => {
+    const texts = {
+      backHome: language === 'zh' ? '← 返回首页' : '← Back Home',
+      title: t.title,
+      subtitle: t.subtitle,
+      trainNew: t.trainNew,
+      total: t.stats.total,
+      active: t.stats.active,
+      training: t.stats.training,
+      avgProgress: t.avgProgress,
+      creatorBy: t.creatorBy,
+      trainingProgress: t.trainingProgress,
+      viewDetails: t.viewDetails,
+      use: t.use,
+      noAgents: language === 'zh' ? '还没有智能体' : 'No agents yet',
+      noAgentsDesc: language === 'zh' ? '成为第一个训练智能体的用户吧！' : 'Be the first to train an agent!',
+      startTraining: language === 'zh' ? '开始训练' : 'Start Training',
+      searchPlaceholder: language === 'zh' ? '搜索智能体...' : 'Search agents...',
+      allStatus: language === 'zh' ? '全部状态' : 'All Status',
+      allCategories: language === 'zh' ? '全部分类' : 'All Categories',
+      sortByName: language === 'zh' ? '按名称' : 'By Name',
+      sortByProgress: language === 'zh' ? '按进度' : 'By Progress',
+      sortByCreated: language === 'zh' ? '按创建时间' : 'By Created',
+      sortByPerformance: language === 'zh' ? '按性能' : 'By Performance',
+      foundAgents: language === 'zh' ? '共找到 ' : 'Found ',
+      agents: language === 'zh' ? ' 个智能体' : ' agents'
+    };
+    return texts[key as keyof typeof texts] || key;
+  };
+
+  // 过滤选项
+  const statusOptions: FilterOption[] = [
+    { value: 'all', label: getLocalizedText('allStatus') },
+    { value: 'active', label: language === 'zh' ? '活跃' : 'Active' },
+    { value: 'training', label: language === 'zh' ? '训练中' : 'Training' },
+    { value: 'inactive', label: language === 'zh' ? '非活跃' : 'Inactive' },
+    { value: 'maintenance', label: language === 'zh' ? '维护中' : 'Maintenance' }
+  ];
+
+  const categoryOptions: FilterOption[] = [
+    { value: 'all', label: getLocalizedText('allCategories') },
+    { value: 'creativity', label: language === 'zh' ? '创意' : 'Creativity' },
+    { value: 'development', label: language === 'zh' ? '开发' : 'Development' },
+    { value: 'writing', label: language === 'zh' ? '写作' : 'Writing' },
+    { value: 'analytics', label: language === 'zh' ? '分析' : 'Analytics' },
+    { value: 'language', label: language === 'zh' ? '语言' : 'Language' },
+    { value: 'design', label: language === 'zh' ? '设计' : 'Design' }
+  ];
+
+  // 统计数据
+  const stats = {
+    total: agents.length,
+    active: agents.filter(a => a.status === 'active').length,
+    training: agents.filter(a => a.status === 'training').length,
+    avgProgress: Math.round(agents.reduce((acc, agent) => acc + agent.trainingProgress, 0) / agents.length)
+  };
 
   return (
-    <div className="bg-zinc-900 text-white py-10">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Link href="/" className="text-zinc-400 hover:text-white transition-colors mb-4 inline-block">
-            {t.backHome}
-          </Link>
-          <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
-          <p className="text-zinc-400 mb-6">{t.subtitle}</p>
-          <Link
-            href="/train-agent"
-                            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
-          >
-            {t.trainNew}
-          </Link>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-blue-400">{agents.length}</div>
-            <div className="text-zinc-400">{t.stats.total}</div>
-          </div>
-          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-                            <div className="text-3xl font-bold text-blue-400">
-              {agents.filter(a => a.status === 'active').length}
-            </div>
-            <div className="text-zinc-400">{t.stats.active}</div>
-          </div>
-          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-yellow-400">
-              {agents.filter(a => a.status === 'training').length}
-            </div>
-            <div className="text-zinc-400">{t.stats.training}</div>
-          </div>
-          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-purple-400">
-              {Math.round(agents.reduce((acc, agent) => acc + agent.trainingProgress, 0) / agents.length)}%
-            </div>
-            <div className="text-zinc-400">{language === 'zh' ? '平均完成度' : 'Avg Progress'}</div>
-          </div>
-        </div>
-
-        {/* Agents Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {agents.map((agent) => (
-            <div
-              key={agent.id}
-              className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 hover:bg-zinc-800/70 hover:border-zinc-600 transition-all duration-300 transform hover:-translate-y-1"
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-10">
+          {/* 页面头部 */}
+          <div className="text-center mb-12">
+            <Link
+              href="/"
+              className="text-zinc-400 hover:text-white transition-colors mb-4 inline-block"
             >
-              {/* Agent Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <div className="text-3xl">{agent.avatar}</div>
-                  <div>
-                    <h3 className="text-xl font-semibold">{agent.name[language]}</h3>
-                    <p className="text-sm text-zinc-400">{language === 'zh' ? '创建者：' : 'by '}{agent.creator[language]}</p>
-                  </div>
-                </div>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(agent.status)}`}>
-                  {getStatusText(agent.status)}
+              {getLocalizedText('backHome')}
+            </Link>
+            <h1 className="text-4xl font-bold mb-4">{getLocalizedText('title')}</h1>
+            <p className="text-zinc-400 mb-6 max-w-2xl mx-auto">{getLocalizedText('subtitle')}</p>
+            <Link href="/train-agent">
+              <Button variant="primary" size="lg" className="transform hover:scale-105">
+                🚀 {getLocalizedText('trainNew')}
+              </Button>
+            </Link>
+          </div>
+
+          {/* 统计卡片 */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <Card className="bg-zinc-800/50 border-zinc-700 p-6 text-center">
+              <div className="text-3xl font-bold text-blue-400 mb-2">{stats.total}</div>
+              <div className="text-zinc-400">{getLocalizedText('total')}</div>
+            </Card>
+            <Card className="bg-zinc-800/50 border-zinc-700 p-6 text-center">
+              <div className="text-3xl font-bold text-green-400 mb-2">{stats.active}</div>
+              <div className="text-zinc-400">{getLocalizedText('active')}</div>
+            </Card>
+            <Card className="bg-zinc-800/50 border-zinc-700 p-6 text-center">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">{stats.training}</div>
+              <div className="text-zinc-400">{getLocalizedText('training')}</div>
+            </Card>
+            <Card className="bg-zinc-800/50 border-zinc-700 p-6 text-center">
+              <div className="text-3xl font-bold text-purple-400 mb-2">{stats.avgProgress}%</div>
+              <div className="text-zinc-400">{getLocalizedText('avgProgress')}</div>
+            </Card>
+          </div>
+
+          {/* 控制面板 */}
+          <Card className="mb-8 p-6 bg-zinc-800/50 border-zinc-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* 搜索 */}
+              <div className="lg:col-span-2">
+                <Input
+                  value={searchTerm}
+                  onChange={handleSearch}
+                  placeholder={getLocalizedText('searchPlaceholder')}
+                  className="w-full"
+                />
+              </div>
+
+              {/* 状态过滤 */}
+              <Dropdown
+                trigger={
+                  <Button variant="outline" className="w-full justify-between">
+                    {statusFilter === 'all' 
+                      ? getLocalizedText('allStatus')
+                      : statusOptions.find(opt => opt.value === statusFilter)?.label
+                    }
+                    <span>▼</span>
+                  </Button>
+                }
+                options={statusOptions.map(opt => ({
+                  value: opt.value,
+                  label: opt.label
+                }))}
+                onSelect={(option) => handleStatusFilter(option.value.toString())}
+                placement="bottom"
+                className="w-full"
+              />
+
+              {/* 分类过滤 */}
+              <Dropdown
+                trigger={
+                  <Button variant="outline" className="w-full justify-between">
+                    {categoryFilter === 'all' 
+                      ? getLocalizedText('allCategories')
+                      : categoryOptions.find(opt => opt.value === categoryFilter)?.label
+                    }
+                    <span>▼</span>
+                  </Button>
+                }
+                options={categoryOptions.map(opt => ({
+                  value: opt.value,
+                  label: opt.label
+                }))}
+                onSelect={(option) => handleCategoryFilter(option.value.toString())}
+                placement="bottom"
+                className="w-full"
+              />
+            </div>
+
+            {/* 排序控制 */}
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-zinc-700">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-zinc-400">
+                  {language === 'zh' ? '排序方式: ' : 'Sort by: '}
                 </span>
-              </div>
-
-              {/* Description */}
-              <p className="text-zinc-300 text-sm mb-4 leading-relaxed">
-                {agent.description[language]}
-              </p>
-
-              {/* Training Progress */}
-              <div className="mb-4">
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-zinc-400">{language === 'zh' ? '训练进度' : 'Training Progress'}</span>
-                  <span className="text-zinc-300">{agent.trainingProgress}%</span>
-                </div>
-                <div className="w-full bg-zinc-700 rounded-full h-2">
-                  <div
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${agent.trainingProgress}%` }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {agent.tags[language].map((tag: string, index: number) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full"
+                {(['name', 'progress', 'created', 'performance'] as const).map(field => (
+                  <Button
+                    key={field}
+                    variant={sortBy === field ? 'primary' : 'ghost'}
+                    size="sm"
+                    onClick={() => handleSort(field)}
+                    className="text-xs"
                   >
-                    {tag}
-                  </span>
+                    {field === 'name' ? getLocalizedText('sortByName') :
+                     field === 'progress' ? getLocalizedText('sortByProgress') :
+                     field === 'created' ? getLocalizedText('sortByCreated') :
+                     getLocalizedText('sortByPerformance')}
+                    {sortBy === field && (
+                      <span className="ml-1">
+                        {sortOrder === 'asc' ? '↑' : '↓'}
+                      </span>
+                    )}
+                  </Button>
                 ))}
               </div>
 
-              {/* Actions */}
-              <div className="flex space-x-2">
-                <button className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white text-sm py-2 px-3 rounded-lg transition-colors">
-                  {language === 'zh' ? '查看详情' : 'View Details'}
-                </button>
-                <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-3 rounded-lg transition-colors">
-                  {language === 'zh' ? '使用' : 'Use'}
-                </button>
+              <div className="text-sm text-zinc-400">
+                {getLocalizedText('foundAgents')}
+                <span className="text-white font-medium">{filteredAndSortedAgents.length}</span>
+                {getLocalizedText('agents')}
               </div>
             </div>
-          ))}
+          </Card>
+
+          {/* 智能体网格 */}
+          {paginatedAgents.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              {paginatedAgents.map((agent) => (
+                <Card
+                  key={agent.id}
+                  className="bg-zinc-800/50 border-zinc-700 hover:border-zinc-600 transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="p-6">
+                    {/* 智能体头部 */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="text-3xl">{agent.avatar}</div>
+                        <div>
+                          <h3 className="text-xl font-semibold">
+                            {agent.name[language]}
+                          </h3>
+                          <p className="text-sm text-zinc-400">
+                            {getLocalizedText('creatorBy')} {agent.creator[language]}
+                          </p>
+                        </div>
+                      </div>
+                      <StatusBadge 
+                        status={agent.status as StatusType} 
+                        size="sm"
+                      />
+                    </div>
+
+                    {/* 描述 */}
+                    <p className="text-zinc-300 text-sm mb-4 leading-relaxed">
+                      {agent.description[language]}
+                    </p>
+
+                    {/* 训练进度 */}
+                    <div className="mb-4">
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-zinc-400">{getLocalizedText('trainingProgress')}</span>
+                        <span className="text-zinc-300">
+                          {agent.trainingProgress}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-zinc-700 rounded-full h-2">
+                        <div
+                          className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                          style={{ width: `${agent.trainingProgress}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* 标签 */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {agent.tags[language].map((tag: string, index: number) => (
+                        <Badge key={index} variant="outline" size="sm">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* 操作按钮 */}
+                    <div className="flex space-x-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleViewDetails(agent.id)}
+                        className="flex-1"
+                      >
+                        👁️ {getLocalizedText('viewDetails')}
+                      </Button>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => handleUseAgent(agent.id)}
+                        className="flex-1"
+                      >
+                        🚀 {getLocalizedText('use')}
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <Card className="text-center p-16 bg-zinc-800/30 border-zinc-700">
+              <div className="text-zinc-400">
+                <div className="text-6xl mb-4">🤖</div>
+                <h3 className="text-xl font-semibold mb-2">
+                  {getLocalizedText('noAgents')}
+                </h3>
+                <p className="text-sm mb-6">
+                  {getLocalizedText('noAgentsDesc')}
+                </p>
+                <Link href="/train-agent">
+                  <Button variant="primary">
+                    🚀 {getLocalizedText('startTraining')}
+                  </Button>
+                </Link>
+              </div>
+            </Card>
+          )}
+
+          {/* 分页 */}
+          {totalPages > 1 && (
+            <div className="flex justify-center">
+              <Pagination
+                info={paginationInfo}
+                onPageChange={handlePageChange}
+                onItemsPerPageChange={handleItemsPerPageChange}
+                showItemsPerPage={true}
+                itemsPerPageOptions={[6, 9, 12, 18]}
+                showTotal={false}
+                showPageInfo={true}
+              />
+            </div>
+          )}
         </div>
 
-        {/* Empty State */}
-        {agents.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-4">🤖</div>
-            <h3 className="text-xl font-semibold mb-2">{language === 'zh' ? '还没有智能体' : 'No agents yet'}</h3>
-            <p className="text-zinc-400 mb-6">{language === 'zh' ? '成为第一个训练智能体的用户吧！' : 'Be the first to train an agent!'}</p>
-            <Link
-              href="/train-agent"
-                              className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300"
-            >
-              {language === 'zh' ? '开始训练' : 'Start Training'}
-            </Link>
-          </div>
-        )}
+        {/* 页脚 */}
+        <Footer />
+
+        {/* 翻译控制 */}
+        <TranslationControls showSettings={true} />
       </div>
-
-      {/* Footer with Language Switcher */}
-      <footer className="bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* 版权信息 */}
-            <div className="text-zinc-400 text-sm">
-              © 2025 Cyber Nüwa. {language === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
-            </div>
-
-            {/* 右侧平台描述 */}
-            <div className="text-zinc-500 text-xs">
-              {language === 'zh' ? 'AI智能体共创平台' : 'AI Agent Co-Creation Platform'}
-            </div>
-
-            {/* 语言切换器 - 移到最右侧 */}
-            <div className="flex items-center">
-              <button
-                onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-                className="flex items-center space-x-2 px-3 py-2 bg-zinc-700 rounded-lg hover:bg-zinc-600 transition-colors"
-              >
-                <span>{language === 'zh' ? '🇨🇳' : '🇺🇸'}</span>
-                <span>{language === 'zh' ? '中文' : 'English'}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-} 
+    </ErrorBoundary>
+  );
+}

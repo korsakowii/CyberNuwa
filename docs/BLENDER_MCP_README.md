@@ -14,56 +14,66 @@
 ## 文件说明
 
 ### `blender_mcp_server.py`
+
 主要的 MCP 服务器文件，提供以下功能：
+
 - 启动/停止 Blender
 - 检查 Blender 状态
 - 执行 Python 脚本
 
 ### `mcp-config.json`
+
 MCP 配置文件，定义了 Blender 服务器的配置。
 
 ### `example_blender_script.py`
+
 示例 Blender Python 脚本，创建一个带有发光材质的立方体场景。
 
 ## 使用方法
 
 ### 1. 激活虚拟环境
+
 ```bash
 source blender-mcp-env/bin/activate
 ```
 
 ### 2. 检查 Blender 状态
+
 ```bash
 python3 blender_mcp_server.py status
 ```
 
 ### 3. 启动 Blender
+
 ```bash
 python3 blender_mcp_server.py start
 ```
 
 ### 4. 执行 Python 脚本
+
 ```bash
 python3 blender_mcp_server.py script example_blender_script.py
 ```
 
 ### 5. 停止 Blender
+
 ```bash
 python3 blender_mcp_server.py stop
 ```
 
 ## 命令说明
 
-| 命令 | 描述 |
-|------|------|
-| `start` | 启动 Blender 应用程序 |
-| `stop` | 停止所有 Blender 进程 |
-| `status` | 检查 Blender 是否正在运行 |
+| 命令            | 描述                          |
+| --------------- | ----------------------------- |
+| `start`         | 启动 Blender 应用程序         |
+| `stop`          | 停止所有 Blender 进程         |
+| `status`        | 检查 Blender 是否正在运行     |
 | `script <file>` | 在 Blender 中执行 Python 脚本 |
 
 ## 示例脚本功能
 
 `example_blender_script.py` 会：
+
 1. 清除现有场景
 2. 创建一个立方体
 3. 添加橙色发光材质
@@ -89,6 +99,7 @@ npx @modelcontextprotocol/inspector-cli --config mcp-config.json --server blende
 ## 扩展功能
 
 你可以通过修改 `blender_mcp_server.py` 来添加更多功能：
+
 - 场景管理
 - 材质操作
 - 动画控制
@@ -108,4 +119,4 @@ npx @modelcontextprotocol/inspector-cli --config mcp-config.json --server blende
 1. 升级到 Python 3.8+ 以支持更多 MCP 功能
 2. 添加更多 Blender 操作命令
 3. 集成完整的 MCP 协议支持
-4. 添加 Web UI 界面 
+4. 添加 Web UI 界面

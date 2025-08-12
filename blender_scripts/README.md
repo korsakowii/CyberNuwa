@@ -5,11 +5,13 @@
 ## 文件分类
 
 ### MCP服务器相关
+
 - `advanced_blender_mcp_server.py` - 高级Blender MCP服务器
 - `blender_mcp_server.py` - 基础Blender MCP服务器
 - `blender-mcp-env/` - Blender MCP环境文件夹
 
 ### 女娲模型脚本
+
 - `nuwa_ultra_exquisite.py` - 超精致女娲模型（最新版本）
 - `exquisite_nuwa_model_v4_compatible.py` - 兼容版本精致女娲模型
 - `exquisite_nuwa_model_v4.py` - 精致女娲模型v4
@@ -20,6 +22,7 @@
 - `simple_nuwa.py` - 简单女娲模型
 
 ### 基础模型脚本
+
 - `nuwa_model.py` - 基础女娲模型
 - `nuwa_model_direct.py` - 直接创建女娲模型
 - `nuwa_model_for_blender.py` - 为Blender优化的女娲模型
@@ -29,6 +32,7 @@
 - `nuwa_in_blender.py` - Blender中的女娲模型
 
 ### 渲染脚本
+
 - `render_exquisite_nuwa.py` - 渲染精致女娲模型
 - `render_complete_nuwa.py` - 渲染完整女娲模型
 - `render_nuwa.py` - 渲染女娲模型
@@ -36,6 +40,7 @@
 - `simple_render_nuwa.py` - 简单渲染女娲模型
 
 ### 启动脚本
+
 - `start_blender_with_nuwa.py` - 启动Blender并加载女娲模型
 - `start_exquisite_nuwa.py` - 启动精致女娲模型
 - `create_and_render_exquisite_nuwa.py` - 创建并渲染精致女娲模型
@@ -43,11 +48,13 @@
 ## 使用方法
 
 ### 运行最新版本（推荐）
+
 ```bash
 /Applications/Blender.app/Contents/MacOS/Blender --python blender_scripts/nuwa_ultra_exquisite.py --background
 ```
 
 ### 运行其他版本
+
 ```bash
 # 精致版本
 /Applications/Blender.app/Contents/MacOS/Blender --python blender_scripts/exquisite_nuwa_model_v4_compatible.py --background
@@ -57,6 +64,7 @@
 ```
 
 ### 启动Blender界面
+
 ```bash
 /Applications/Blender.app/Contents/MacOS/Blender --python blender_scripts/start_blender_with_nuwa.py
 ```
@@ -68,6 +76,7 @@
 ## 技术特性
 
 ### 最新版本 (nuwa_ultra_exquisite.py) 包含：
+
 - ✨ 超高级PBR材质（皮肤、蛇皮、头发、金色、玉石、丝绸）
 - 👤 精致头部（细分曲面5级）
 - 👗 精致躯干（细分曲面4级）
@@ -83,6 +92,7 @@
 - 🌌 渐变星空背景
 
 ### 渲染设置
+
 - 引擎：Cycles
 - 采样：1024
 - 分辨率：2560x1440 (2K)
@@ -98,4 +108,4 @@
 1. 确保Blender已正确安装
 2. 渲染高质量图像需要较长时间（约47分钟）
 3. 建议使用GPU加速渲染以获得更好性能
-4. 所有材质都使用PBR工作流，确保最佳视觉效果 
+4. 所有材质都使用PBR工作流，确保最佳视觉效果

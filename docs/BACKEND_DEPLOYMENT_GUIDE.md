@@ -5,12 +5,14 @@
 ### 本地开发环境
 
 1. **启动后端服务器**
+
 ```bash
 # 在项目根目录运行
 ./scripts/deploy-backend.sh
 ```
 
 2. **手动启动**
+
 ```bash
 cd backend
 python3 -m venv venv
@@ -20,6 +22,7 @@ python main.py
 ```
 
 3. **访问地址**
+
 - 后端 API: http://localhost:8001
 - API 文档: http://localhost:8001/docs
 - 健康检查: http://localhost:8001/health
@@ -29,12 +32,14 @@ python main.py
 ### 1. Vercel (推荐)
 
 **优势：**
+
 - 与前端在同一平台
 - 自动 HTTPS
 - 免费额度充足
 - 简单配置
 
 **部署步骤：**
+
 1. 安装 Vercel CLI: `npm i -g vercel`
 2. 在 `backend/` 目录运行: `vercel`
 3. 按提示配置项目
@@ -44,11 +49,13 @@ python main.py
 ### 2. Railway
 
 **优势：**
+
 - 简单易用
 - 自动部署
 - 支持数据库
 
 **部署步骤：**
+
 1. 访问 [Railway.app](https://railway.app)
 2. 连接 GitHub 仓库
 3. 选择 `backend/` 目录
@@ -57,11 +64,13 @@ python main.py
 ### 3. Render
 
 **优势：**
+
 - 免费额度
 - 自动 HTTPS
 - 简单配置
 
 **部署步骤：**
+
 1. 访问 [Render.com](https://render.com)
 2. 创建新的 Web Service
 3. 连接 GitHub 仓库
@@ -71,12 +80,15 @@ python main.py
 ### 4. Heroku
 
 **优势：**
+
 - 稳定可靠
 - 丰富的插件生态
 
 **部署步骤：**
+
 1. 安装 Heroku CLI
 2. 在 `backend/` 目录运行:
+
 ```bash
 heroku create your-app-name
 git add .
@@ -111,11 +123,13 @@ DEBUG=True
 ## 📊 API 端点
 
 ### 基础端点
+
 - `GET /` - API 状态
 - `GET /health` - 健康检查
 - `GET /docs` - API 文档
 
 ### 功能端点
+
 - `GET /api/wishes` - 获取愿望列表
 - `POST /api/wishes` - 创建新愿望
 - `GET /api/agents` - 获取智能体列表
@@ -127,6 +141,7 @@ DEBUG=True
 ### 常见问题
 
 1. **端口被占用**
+
 ```bash
 # 检查端口占用
 lsof -i :8001
@@ -135,6 +150,7 @@ kill -9 <PID>
 ```
 
 2. **依赖安装失败**
+
 ```bash
 # 升级 pip
 pip install --upgrade pip
@@ -143,6 +159,7 @@ pip install -r requirements.txt --force-reinstall
 ```
 
 3. **数据库连接问题**
+
 ```bash
 # 检查数据库文件
 ls -la backend/cybernuwa.db
@@ -153,6 +170,7 @@ python -c "from utils.database import init_database; import asyncio; asyncio.run
 ## 📈 监控和维护
 
 ### 日志查看
+
 ```bash
 # 查看应用日志
 tail -f logs/app.log
@@ -162,6 +180,7 @@ tail -f logs/error.log
 ```
 
 ### 性能监控
+
 - 使用 `/health` 端点监控服务状态
 - 定期检查数据库大小
 - 监控 API 响应时间
@@ -186,6 +205,7 @@ tail -f logs/error.log
 ## 📞 支持
 
 如果遇到问题，请检查：
+
 1. 日志文件
 2. API 文档
 3. 环境变量配置

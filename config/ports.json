@@ -1,0 +1,36 @@
+{
+  "development": {
+    "frontend": {
+      "cybernuwa": 3000,
+      "project2": 3001,
+      "project3": 3002,
+      "project4": 3003,
+      "project5": 3004,
+      "project6": 3005
+    },
+    "backend": {
+      "cybernuwa": 8002,
+      "project2": 8003,
+      "project3": 8004,
+      "project4": 8005,
+      "project5": 8006,
+      "project6": 8007
+    },
+    "database": {
+      "cybernuwa": 5432,
+      "project2": 5433,
+      "project3": 5434,
+      "project4": 5435,
+      "project5": 5436,
+      "project6": 5437
+    }
+  },
+  "production": {
+    "frontend": {
+      "cybernuwa": 3000
+    },
+    "backend": {
+      "cybernuwa": 8002
+    }
+  }
+}

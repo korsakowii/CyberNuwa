@@ -1,1 +1,1019 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[878],{6696:function(e,t,s){Promise.resolve().then(s.bind(s,6896))},6896:function(e,t,s){"use strict";s.r(t),s.d(t,{default:function(){return c}});var i=s(7437),n=s(29),r=s.n(n),a=s(7648),o=s(8596),l=s(8800);function c(){let{language:e,setLanguage:t}=(0,o.Z)(),s=l.I[e].narratives,n=[{id:1,type:"community",title:{zh:"平台启动记",en:"Platform Launch Story"},author:{zh:"管理员",en:"Admin"},content:{zh:"2025年1月，Cyber N\xfcwa 平台正式上线，开启了人机共创的新纪元。",en:"In January 2025, the Cyber N\xfcwa platform officially launched, ushering in a new era of human-AI co-creation."},tags:{zh:["平台","历史"],en:["Platform","History"]},date:"2025-01-01",likes:12,readTime:3,comments:2,views:2341},{id:2,type:"agent-biography",title:{zh:"首个智能体诞生",en:"First Agent Born"},author:{zh:"Alice",en:"Alice"},content:{zh:"创意助手成为平台上第一个被训练成功的智能体，帮助用户激发灵感。",en:"Creative Assistant became the first successfully trained agent on the platform, helping users spark inspiration."},tags:{zh:["智能体","创意"],en:["Agent","Creativity"]},date:"2025-01-10",likes:8,readTime:2,comments:0,views:1567},{id:3,type:"community",title:{zh:"社区共创高峰",en:"Community Co-Creation Peak"},author:{zh:"Bob",en:"Bob"},content:{zh:"数百名用户参与任务与智能体训练，社区活跃度创新高。",en:"Hundreds of users participated in tasks and agent training, reaching new heights of community engagement."},tags:{zh:["社区","协作"],en:["Community","Collaboration"]},date:"2025-02-01",likes:5,readTime:4,comments:5,views:892}],c=e=>{switch(e){case"community":return"text-blue-400 bg-blue-400/10";case"agent-biography":return"text-green-400 bg-green-400/10";default:return"text-gray-400 bg-gray-400/10"}};return(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-900 text-white py-10",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 max-w-6xl mx-auto px-4",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 text-center mb-12",children:[(0,i.jsx)(a.default,{href:"/",className:"text-zinc-400 hover:text-white transition-colors mb-4 inline-block",children:s.backHome}),(0,i.jsx)("h1",{className:"jsx-2efd3be6b3192f92 text-4xl font-bold mb-4",children:s.title}),(0,i.jsx)("p",{className:"jsx-2efd3be6b3192f92 text-zinc-400 mb-6",children:s.subtitle})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-3xl font-bold text-blue-400",children:n.length}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400",children:s.total})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-3xl font-bold text-green-400",children:n.filter(e=>"agent-biography"===e.type).length}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400",children:s.agentBiographies})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-3xl font-bold text-purple-400",children:n.filter(e=>"community"===e.type).length}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400",children:s.communityHistory})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-3xl font-bold text-yellow-400",children:n.reduce((e,t)=>e+(t.views||0),0).toLocaleString()}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400",children:"zh"===e?"总浏览量":"Total Views"})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-3xl font-bold text-yellow-400",children:n.reduce((e,t)=>e+(t.likes||0),0)}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400",children:s.totalLikes})]})]}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 grid grid-cols-1 lg:grid-cols-2 gap-6",children:n.map(t=>{var n,r,a;return(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 hover:bg-zinc-800/70 hover:border-zinc-600 transition-all duration-300 transform hover:-translate-y-1",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-start justify-between mb-4",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex-1",children:[(0,i.jsx)("h3",{className:"jsx-2efd3be6b3192f92 text-xl font-semibold mb-2",children:t.title[e]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-2 text-sm text-zinc-400",children:[(0,i.jsxs)("span",{className:"jsx-2efd3be6b3192f92",children:["zh"===e?"作者：":"by ",t.author[e]]}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:"•"}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:t.date})]})]}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92 "+"px-2 py-1 rounded-full text-xs font-medium ".concat(c(t.type)),children:"community"===t.type?s.communityHistory:s.agentBiographies})]}),(0,i.jsx)("p",{className:"jsx-2efd3be6b3192f92 text-zinc-300 text-sm mb-4 leading-relaxed line-clamp-3",children:t.content[e]}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 flex flex-wrap gap-2 mb-4",children:null===(r=t.tags)||void 0===r?void 0:null===(n=r[e])||void 0===n?void 0:n.map((e,t)=>(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92 px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full",children:e},t))}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-center justify-between text-sm text-zinc-400",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-4",children:[(0,i.jsxs)("span",{className:"jsx-2efd3be6b3192f92",children:["⏱️ ",t.readTime]}),(0,i.jsxs)("button",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-1 hover:text-red-400 transition-colors",children:[(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:"❤️"}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:t.likes})]}),(0,i.jsxs)("button",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-1 hover:text-blue-400 transition-colors",children:[(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:"\uD83D\uDCAC"}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:t.comments})]}),(0,i.jsxs)("span",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-1",children:[(0,i.jsx)("span",{role:"img","aria-label":"views",className:"jsx-2efd3be6b3192f92",children:"\uD83D\uDC40"}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:(null===(a=t.views)||void 0===a?void 0:a.toLocaleString())||0})]})]}),(0,i.jsx)("button",{className:"jsx-2efd3be6b3192f92 text-blue-400 hover:text-blue-300 transition-colors",children:s.readMore})]})]},t.id)})}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 mt-12",children:[(0,i.jsx)("h2",{className:"jsx-2efd3be6b3192f92 text-2xl font-bold text-center mb-8",children:s.timelineTitle}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6",children:(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 space-y-6",children:n.slice(0,4).map((t,n)=>(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-start space-x-4",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex-shrink-0",children:[(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 "+"w-4 h-4 rounded-full ".concat("community"===t.type?"bg-blue-400":"bg-green-400")}),n<3&&(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 "+"w-0.5 h-12 mx-auto mt-2 ".concat("community"===t.type?"bg-blue-400/30":"bg-green-400/30")})]}),(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex-1",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex items-center space-x-2 mb-1",children:[(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92 text-sm font-medium text-zinc-300",children:t.title[e]}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92 "+"inline-block px-3 py-1 rounded-full text-xs font-semibold ".concat("community"===t.type?"bg-blue-900 text-blue-300":"bg-green-900 text-green-300"," mr-2"),children:"community"===t.type?s.communityHistory:s.agentBiographies})]}),(0,i.jsx)("p",{className:"jsx-2efd3be6b3192f92 text-sm text-zinc-400",children:t.date}),(0,i.jsx)("p",{className:"jsx-2efd3be6b3192f92 text-sm text-zinc-300 mt-2 line-clamp-2",children:t.content[e]})]})]},t.id))})})]}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 mt-8 text-center",children:(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6",children:[(0,i.jsx)("h3",{className:"jsx-2efd3be6b3192f92 text-xl font-semibold mb-4",children:s.shareStory}),(0,i.jsxs)("p",{className:"jsx-2efd3be6b3192f92 text-zinc-400 mb-6",children:[s.shareDesc1,(0,i.jsx)("br",{className:"jsx-2efd3be6b3192f92"}),s.shareDesc2]}),(0,i.jsx)("button",{className:"jsx-2efd3be6b3192f92 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105",children:s.shareButton})]})})]}),(0,i.jsx)(r(),{id:"2efd3be6b3192f92",children:".line-clamp-3.jsx-2efd3be6b3192f92{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.line-clamp-2.jsx-2efd3be6b3192f92{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}"}),(0,i.jsx)("footer",{className:"jsx-2efd3be6b3192f92 bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24",children:(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 max-w-6xl mx-auto px-4 py-8",children:(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0",children:[(0,i.jsxs)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-400 text-sm",children:["\xa9 2024 Cyber N\xfcwa. ","zh"===e?"保留所有权利。":"All rights reserved."]}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 text-zinc-500 text-xs",children:"zh"===e?"AI智能体共创平台":"AI Agent Co-Creation Platform"}),(0,i.jsx)("div",{className:"jsx-2efd3be6b3192f92 flex items-center",children:(0,i.jsxs)("button",{onClick:()=>t("zh"===e?"en":"zh"),className:"jsx-2efd3be6b3192f92 flex items-center space-x-2 px-3 py-2 bg-zinc-700 rounded-lg hover:bg-zinc-600 transition-colors",children:[(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:"zh"===e?"\uD83C\uDDE8\uD83C\uDDF3":"\uD83C\uDDFA\uD83C\uDDF8"}),(0,i.jsx)("span",{className:"jsx-2efd3be6b3192f92",children:"zh"===e?"中文":"English"})]})})]})})})]})}},8596:function(e,t,s){"use strict";s.d(t,{LanguageProvider:function(){return a},Z:function(){return o}});var i=s(7437),n=s(2265);let r=(0,n.createContext)(void 0);function a(e){let{children:t}=e,[s,a]=(0,n.useState)("en");return(0,i.jsx)(r.Provider,{value:{language:s,setLanguage:a},children:t})}function o(){let e=(0,n.useContext)(r);if(void 0===e)throw Error("useLanguage must be used within a LanguageProvider");return e}},8800:function(e,t,s){"use strict";s.d(t,{I:function(){return i}});let i={zh:{common:{backHome:"← 返回首页",loading:"加载中...",submit:"提交",cancel:"取消",save:"保存",edit:"编辑",delete:"删除",view:"查看",add:"添加",search:"搜索",filter:"筛选",sort:"排序",refresh:"刷新",close:"关闭",confirm:"确认",yes:"是",no:"否",ok:"确定",error:"错误",success:"成功",warning:"警告",info:"信息"},home:{hero:{title:"\uD83C\uDF0C Cyber N\xfcwa",subtitle:"面向创意共创与智能体养成的开放式平台",description:"融合 Kaggle 的任务机制、Notion 的协作空间与 HuggingFace 的模型文化"},modules:{title:"探索平台模块",launchMission:{title:"\uD83D\uDE80 发起任务",description:"提交创意任务，让社区共同孵化"},agents:{title:"\uD83E\uDD16 Agent 养成所",description:"查看智能体列表与训练记录"},trainAgent:{title:"\uD83C\uDFAF 训练智能体",description:"通过提示词和样本训练自定义 Agent"},wishes:{title:"⭐ 许愿池",description:"展示灵感碎片和半成品想法"},roles:{title:"\uD83D\uDC65 用户角色",description:"扮演不同角色，体验不同权限路径"},narratives:{title:"\uD83D\uDCD6 元叙事广场",description:"记录社区发展和 Agent 传记"},taskSquare:{title:"\uD83C\uDFDB️ 任务广场",description:"浏览所有公开任务与进展"}},vision:{title:"项目愿景",content:"让每个创意都被看见、让每位参与者都能留下痕迹，在非问答型协作中捏出赛博智能体，共同建造一座人机共创的灵感宇宙。"}},launchMission:{title:"\uD83D\uDE80 发起任务",subtitle:"提交创意任务，让社区共同孵化",form:{title:"任务标题",titlePlaceholder:"输入你的创意任务标题...",description:"任务描述",descriptionPlaceholder:"详细描述你的任务需求、目标和期望结果...",tags:"标签",tagsPlaceholder:"用逗号分隔的标签，如：AI, 创意, 协作",submit:"提交任务",back:"返回首页"},success:{title:"\uD83C\uDF89 任务提交成功！",message:"你的创意任务已成功提交到社区。我们将尽快审核并发布。",newTask:"提交新任务",back:"返回首页"}},agents:{title:"\uD83E\uDD16 Agent 养成所",subtitle:"查看智能体列表与训练记录",backHome:"← 返回首页",trainNew:"\uD83C\uDFAF 训练新智能体",stats:{total:"总智能体数",active:"运行中",training:"训练中",inactive:"已停用"},status:{active:"运行中",training:"训练中",inactive:"已停用",unknown:"未知"}},trainAgent:{title:"\uD83C\uDFAF 训练智能体",subtitle:"通过提示词和样本训练自定义 Agent",backHome:"← 返回首页",form:{name:"智能体名称 *",namePlaceholder:"给你的智能体起个名字...",description:"智能体描述 *",descriptionPlaceholder:"简要描述智能体的功能...",prompt:"核心提示词 *",promptPlaceholder:"定义智能体的核心行为和响应模式...",samples:"训练样本",samplesPlaceholder:"提供一些示例对话或场景...",personality:"性格特征",personalityPlaceholder:"描述智能体的性格特点...",constraints:"行为约束",constraintsPlaceholder:"定义智能体的行为边界...",submit:"开始训练",training:"训练中..."},progress:{title:"训练进度",complete:"训练完成！"}},wishes:{title:"⭐ 许愿池",subtitle:"展示灵感碎片和半成品想法",backHome:"← 返回首页",addWish:"添加愿望",supportWish:"支持这个愿望",status:{idea:"灵感","in-progress":"进行中",completed:"已完成",unknown:"未知"}},roles:{title:"\uD83D\uDC65 用户角色",subtitle:"扮演不同角色，体验不同权限路径",backHome:"← 返回首页",currentStatus:"你的当前状态",upgradeProgress:"升级进度",members:"成员",permissions:"权限",requirement:"获得要求",nextLevel:"下一级",nextRequirement:"下一级要求",viewDetails:"查看详情",roleDevelopmentPath:"角色发展路径",roleDevelopmentPathDescription:"每个角色都有独特的权限和发展路径，通过贡献和参与来提升你的角色等级",howToProgress1:"想要提升角色等级？积极参与任务、训练智能体、贡献优质内容！",howToProgress2:"每个角色都有独特的成长路径和专属权限。"},narratives:{title:"\uD83D\uDCD6 元叙事广场",subtitle:"记录社区发展和 Agent 传记",backHome:"← 返回首页",total:"总叙事数",agentBiographies:"智能体传记",communityHistory:"社区历史",totalLikes:"总点赞数",readMore:"阅读全文",other:"其他",shareStory:"分享你的故事",shareButton:"撰写叙事",shareDesc1:"无论是社区贡献的经历，还是智能体训练的心得，都值得被记录和分享。",shareDesc2:"让我们一起书写 CyberNuwa 的历史。",timelineTitle:"社区发展时间线"},taskSquare:{title:"\uD83C\uDFDB️ 任务广场",subtitle:"浏览所有公开任务与进展",addTask:"发布新任务",totalTasks:"总任务数",inProgress:"进行中",completed:"已完成",participants:"参与者",status:{pending:"待启动","in-progress":"进行中",completed:"已完成",unknown:"未知"},priority:{high:"高优先级",medium:"中优先级",low:"低优先级",unknown:"未知"},assignee:"负责人",viewResult:"查看成果",details:"详情",deadline:"截止：",reward:"经验值：",emptyTaskSquare:"暂无任务",beFirst:"成为第一个发布任务的用户吧！",launchFirstTask:"发布第一个任务",backHome:"← 返回首页",viewProgress:"查看进展",progress:"完成进度"}},en:{common:{backHome:"← Back to Home",loading:"Loading...",submit:"Submit",cancel:"Cancel",save:"Save",edit:"Edit",delete:"Delete",view:"View",add:"Add",search:"Search",filter:"Filter",sort:"Sort",refresh:"Refresh",close:"Close",confirm:"Confirm",yes:"Yes",no:"No",ok:"OK",error:"Error",success:"Success",warning:"Warning",info:"Info"},home:{hero:{title:"\uD83C\uDF0C Cyber N\xfcwa",subtitle:"Open Platform for Creative Co-Creation and AI Agent Development",description:"Integrating Kaggle's task mechanisms, Notion's collaborative spaces, and HuggingFace's model culture"},modules:{title:"Explore Platform Modules",launchMission:{title:"\uD83D\uDE80 Launch Mission",description:"Submit creative tasks for community incubation"},agents:{title:"\uD83E\uDD16 Agent Incubator",description:"View agent list and training records"},trainAgent:{title:"\uD83C\uDFAF Train Agent",description:"Train custom agents with prompts and samples"},wishes:{title:"⭐ Wish Pool",description:"Show inspiration fragments and half-finished ideas"},roles:{title:"\uD83D\uDC65 User Roles",description:"Experience different roles and permission paths"},narratives:{title:"\uD83D\uDCD6 Metanarrative Square",description:"Record community development and agent biographies"},taskSquare:{title:"\uD83C\uDFDB️ Task Square",description:"Browse all public tasks and progress"}},vision:{title:"Project Vision",content:"Let every idea be seen, let every participant leave their mark, mold cyber agents through non-Q&A collaboration, and together build a universe of human-machine co-creation."}},launchMission:{title:"\uD83D\uDE80 Launch Mission",subtitle:"Submit creative tasks for community incubation",form:{title:"Mission Title",titlePlaceholder:"Enter your creative mission title...",description:"Mission Description",descriptionPlaceholder:"Describe your mission requirements, goals, and expected outcomes...",tags:"Tags",tagsPlaceholder:"Comma-separated tags, e.g.: AI, Creative, Collaboration",submit:"Submit Mission",back:"Back to Home"},success:{title:"\uD83C\uDF89 Mission Submitted Successfully!",message:"Your creative mission has been successfully submitted to the community. We will review and publish it soon.",newTask:"Submit New Mission",back:"Back to Home"}},agents:{title:"\uD83E\uDD16 Agent Incubator",subtitle:"View agent list and training records",backHome:"← Back to Home",trainNew:"\uD83C\uDFAF Train New Agent",stats:{total:"Total Agents",active:"Active",training:"Training",inactive:"Inactive"},status:{active:"Active",training:"Training",inactive:"Inactive",unknown:"Unknown"}},trainAgent:{title:"\uD83C\uDFAF Train Agent",subtitle:"Train custom agents with prompts and samples",backHome:"← Back to Home",form:{name:"Agent Name *",namePlaceholder:"Give your agent a name...",description:"Agent Description *",descriptionPlaceholder:"Briefly describe the agent's function...",prompt:"Core Prompt *",promptPlaceholder:"Define the agent's core behavior and response patterns...",samples:"Training Samples",samplesPlaceholder:"Provide some example conversations or scenarios...",personality:"Personality Traits",personalityPlaceholder:"Describe the agent's personality...",constraints:"Behavior Constraints",constraintsPlaceholder:"Define the agent's behavioral boundaries...",submit:"Start Training",training:"Training..."},progress:{title:"Training Progress",complete:"Training Complete!"}},wishes:{title:"⭐ Wish Pool",subtitle:"Show inspiration fragments and half-finished ideas",backHome:"← Back to Home",addWish:"Add Wish",supportWish:"Support this wish",status:{idea:"Idea","in-progress":"In Progress",completed:"Completed",unknown:"Unknown"}},roles:{title:"\uD83D\uDC65 User Roles",subtitle:"Experience different roles and permission paths",backHome:"← Back to Home",currentStatus:"Your Current Status",upgradeProgress:"Upgrade Progress",members:"Members",permissions:"Permissions",requirement:"Requirement",nextLevel:"Next Level",nextRequirement:"Next Requirement",viewDetails:"View Details",roleDevelopmentPath:"Role Development Path",roleDevelopmentPathDescription:"Each role has unique permissions and development paths. Improve your role level through contribution and participation.",howToProgress1:"Want to level up your role? Actively participate in tasks, train agents, and contribute quality content!",howToProgress2:"Each role has a unique growth path and exclusive permissions."},narratives:{title:"\uD83D\uDCD6 Metanarrative Square",subtitle:"Record community development and agent biographies",backHome:"← Back to Home",total:"Total Narratives",agentBiographies:"Agent Biographies",communityHistory:"Community History",totalLikes:"Total Likes",readMore:"Read More",other:"Other",shareStory:"Share Your Story",shareButton:"Write Narrative",shareDesc1:"Whether it is the experience of community contribution or the insights of agent training, it is worth recording and sharing.",shareDesc2:"Let us write the history of CyberNuwa together.",timelineTitle:"Community Timeline"},taskSquare:{title:"\uD83C\uDFDB️ Task Square",subtitle:"Browse all public tasks and progress",addTask:"Publish New Task",totalTasks:"Total Tasks",inProgress:"In Progress",completed:"Completed",participants:"Participants",status:{pending:"Pending","in-progress":"In Progress",completed:"Completed",unknown:"Unknown"},priority:{high:"High Priority",medium:"Medium Priority",low:"Low Priority",unknown:"Unknown"},assignee:"Assignee",viewResult:"View Result",details:"Details",deadline:"Deadline:",reward:"XP:",emptyTaskSquare:"No tasks yet",beFirst:"Be the first to publish a task!",launchFirstTask:"Publish the first task",backHome:"← Back to Home",viewProgress:"View Progress",progress:"Progress"}}}}},function(e){e.O(0,[648,29,971,117,744],function(){return e(e.s=6696)}),_N_E=e.O()}]);
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [878],
+  {
+    6696: function (e, t, s) {
+      Promise.resolve().then(s.bind(s, 6896));
+    },
+    6896: function (e, t, s) {
+      'use strict';
+      (s.r(t),
+        s.d(t, {
+          default: function () {
+            return c;
+          },
+        }));
+      var i = s(7437),
+        n = s(29),
+        r = s.n(n),
+        a = s(7648),
+        o = s(8596),
+        l = s(8800);
+      function c() {
+        let { language: e, setLanguage: t } = (0, o.Z)(),
+          s = l.I[e].narratives,
+          n = [
+            {
+              id: 1,
+              type: 'community',
+              title: { zh: '平台启动记', en: 'Platform Launch Story' },
+              author: { zh: '管理员', en: 'Admin' },
+              content: {
+                zh: '2025年1月，Cyber N\xfcwa 平台正式上线，开启了人机共创的新纪元。',
+                en: 'In January 2025, the Cyber N\xfcwa platform officially launched, ushering in a new era of human-AI co-creation.',
+              },
+              tags: { zh: ['平台', '历史'], en: ['Platform', 'History'] },
+              date: '2025-01-01',
+              likes: 12,
+              readTime: 3,
+              comments: 2,
+              views: 2341,
+            },
+            {
+              id: 2,
+              type: 'agent-biography',
+              title: { zh: '首个智能体诞生', en: 'First Agent Born' },
+              author: { zh: 'Alice', en: 'Alice' },
+              content: {
+                zh: '创意助手成为平台上第一个被训练成功的智能体，帮助用户激发灵感。',
+                en: 'Creative Assistant became the first successfully trained agent on the platform, helping users spark inspiration.',
+              },
+              tags: { zh: ['智能体', '创意'], en: ['Agent', 'Creativity'] },
+              date: '2025-01-10',
+              likes: 8,
+              readTime: 2,
+              comments: 0,
+              views: 1567,
+            },
+            {
+              id: 3,
+              type: 'community',
+              title: { zh: '社区共创高峰', en: 'Community Co-Creation Peak' },
+              author: { zh: 'Bob', en: 'Bob' },
+              content: {
+                zh: '数百名用户参与任务与智能体训练，社区活跃度创新高。',
+                en: 'Hundreds of users participated in tasks and agent training, reaching new heights of community engagement.',
+              },
+              tags: {
+                zh: ['社区', '协作'],
+                en: ['Community', 'Collaboration'],
+              },
+              date: '2025-02-01',
+              likes: 5,
+              readTime: 4,
+              comments: 5,
+              views: 892,
+            },
+          ],
+          c = e => {
+            switch (e) {
+              case 'community':
+                return 'text-blue-400 bg-blue-400/10';
+              case 'agent-biography':
+                return 'text-green-400 bg-green-400/10';
+              default:
+                return 'text-gray-400 bg-gray-400/10';
+            }
+          };
+        return (0, i.jsxs)('div', {
+          className: 'jsx-2efd3be6b3192f92 bg-zinc-900 text-white py-10',
+          children: [
+            (0, i.jsxs)('div', {
+              className: 'jsx-2efd3be6b3192f92 max-w-6xl mx-auto px-4',
+              children: [
+                (0, i.jsxs)('div', {
+                  className: 'jsx-2efd3be6b3192f92 text-center mb-12',
+                  children: [
+                    (0, i.jsx)(a.default, {
+                      href: '/',
+                      className:
+                        'text-zinc-400 hover:text-white transition-colors mb-4 inline-block',
+                      children: s.backHome,
+                    }),
+                    (0, i.jsx)('h1', {
+                      className: 'jsx-2efd3be6b3192f92 text-4xl font-bold mb-4',
+                      children: s.title,
+                    }),
+                    (0, i.jsx)('p', {
+                      className: 'jsx-2efd3be6b3192f92 text-zinc-400 mb-6',
+                      children: s.subtitle,
+                    }),
+                  ],
+                }),
+                (0, i.jsxs)('div', {
+                  className:
+                    'jsx-2efd3be6b3192f92 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8',
+                  children: [
+                    (0, i.jsxs)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center',
+                      children: [
+                        (0, i.jsx)('div', {
+                          className:
+                            'jsx-2efd3be6b3192f92 text-3xl font-bold text-blue-400',
+                          children: n.length,
+                        }),
+                        (0, i.jsx)('div', {
+                          className: 'jsx-2efd3be6b3192f92 text-zinc-400',
+                          children: s.total,
+                        }),
+                      ],
+                    }),
+                    (0, i.jsxs)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center',
+                      children: [
+                        (0, i.jsx)('div', {
+                          className:
+                            'jsx-2efd3be6b3192f92 text-3xl font-bold text-green-400',
+                          children: n.filter(e => 'agent-biography' === e.type)
+                            .length,
+                        }),
+                        (0, i.jsx)('div', {
+                          className: 'jsx-2efd3be6b3192f92 text-zinc-400',
+                          children: s.agentBiographies,
+                        }),
+                      ],
+                    }),
+                    (0, i.jsxs)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center',
+                      children: [
+                        (0, i.jsx)('div', {
+                          className:
+                            'jsx-2efd3be6b3192f92 text-3xl font-bold text-purple-400',
+                          children: n.filter(e => 'community' === e.type)
+                            .length,
+                        }),
+                        (0, i.jsx)('div', {
+                          className: 'jsx-2efd3be6b3192f92 text-zinc-400',
+                          children: s.communityHistory,
+                        }),
+                      ],
+                    }),
+                    (0, i.jsxs)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center',
+                      children: [
+                        (0, i.jsx)('div', {
+                          className:
+                            'jsx-2efd3be6b3192f92 text-3xl font-bold text-yellow-400',
+                          children: n
+                            .reduce((e, t) => e + (t.views || 0), 0)
+                            .toLocaleString(),
+                        }),
+                        (0, i.jsx)('div', {
+                          className: 'jsx-2efd3be6b3192f92 text-zinc-400',
+                          children: 'zh' === e ? '总浏览量' : 'Total Views',
+                        }),
+                      ],
+                    }),
+                    (0, i.jsxs)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 text-center',
+                      children: [
+                        (0, i.jsx)('div', {
+                          className:
+                            'jsx-2efd3be6b3192f92 text-3xl font-bold text-yellow-400',
+                          children: n.reduce((e, t) => e + (t.likes || 0), 0),
+                        }),
+                        (0, i.jsx)('div', {
+                          className: 'jsx-2efd3be6b3192f92 text-zinc-400',
+                          children: s.totalLikes,
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+                (0, i.jsx)('div', {
+                  className:
+                    'jsx-2efd3be6b3192f92 grid grid-cols-1 lg:grid-cols-2 gap-6',
+                  children: n.map(t => {
+                    var n, r, a;
+                    return (0, i.jsxs)(
+                      'div',
+                      {
+                        className:
+                          'jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6 hover:bg-zinc-800/70 hover:border-zinc-600 transition-all duration-300 transform hover:-translate-y-1',
+                        children: [
+                          (0, i.jsxs)('div', {
+                            className:
+                              'jsx-2efd3be6b3192f92 flex items-start justify-between mb-4',
+                            children: [
+                              (0, i.jsxs)('div', {
+                                className: 'jsx-2efd3be6b3192f92 flex-1',
+                                children: [
+                                  (0, i.jsx)('h3', {
+                                    className:
+                                      'jsx-2efd3be6b3192f92 text-xl font-semibold mb-2',
+                                    children: t.title[e],
+                                  }),
+                                  (0, i.jsxs)('div', {
+                                    className:
+                                      'jsx-2efd3be6b3192f92 flex items-center space-x-2 text-sm text-zinc-400',
+                                    children: [
+                                      (0, i.jsxs)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: [
+                                          'zh' === e ? '作者：' : 'by ',
+                                          t.author[e],
+                                        ],
+                                      }),
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: '•',
+                                      }),
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: t.date,
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              }),
+                              (0, i.jsx)('span', {
+                                className:
+                                  'jsx-2efd3be6b3192f92 ' +
+                                  'px-2 py-1 rounded-full text-xs font-medium '.concat(
+                                    c(t.type)
+                                  ),
+                                children:
+                                  'community' === t.type
+                                    ? s.communityHistory
+                                    : s.agentBiographies,
+                              }),
+                            ],
+                          }),
+                          (0, i.jsx)('p', {
+                            className:
+                              'jsx-2efd3be6b3192f92 text-zinc-300 text-sm mb-4 leading-relaxed line-clamp-3',
+                            children: t.content[e],
+                          }),
+                          (0, i.jsx)('div', {
+                            className:
+                              'jsx-2efd3be6b3192f92 flex flex-wrap gap-2 mb-4',
+                            children:
+                              null === (r = t.tags) || void 0 === r
+                                ? void 0
+                                : null === (n = r[e]) || void 0 === n
+                                  ? void 0
+                                  : n.map((e, t) =>
+                                      (0, i.jsx)(
+                                        'span',
+                                        {
+                                          className:
+                                            'jsx-2efd3be6b3192f92 px-2 py-1 bg-zinc-700/50 text-zinc-300 text-xs rounded-full',
+                                          children: e,
+                                        },
+                                        t
+                                      )
+                                    ),
+                          }),
+                          (0, i.jsxs)('div', {
+                            className:
+                              'jsx-2efd3be6b3192f92 flex items-center justify-between text-sm text-zinc-400',
+                            children: [
+                              (0, i.jsxs)('div', {
+                                className:
+                                  'jsx-2efd3be6b3192f92 flex items-center space-x-4',
+                                children: [
+                                  (0, i.jsxs)('span', {
+                                    className: 'jsx-2efd3be6b3192f92',
+                                    children: ['⏱️ ', t.readTime],
+                                  }),
+                                  (0, i.jsxs)('button', {
+                                    className:
+                                      'jsx-2efd3be6b3192f92 flex items-center space-x-1 hover:text-red-400 transition-colors',
+                                    children: [
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: '❤️',
+                                      }),
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: t.likes,
+                                      }),
+                                    ],
+                                  }),
+                                  (0, i.jsxs)('button', {
+                                    className:
+                                      'jsx-2efd3be6b3192f92 flex items-center space-x-1 hover:text-blue-400 transition-colors',
+                                    children: [
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: '\uD83D\uDCAC',
+                                      }),
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: t.comments,
+                                      }),
+                                    ],
+                                  }),
+                                  (0, i.jsxs)('span', {
+                                    className:
+                                      'jsx-2efd3be6b3192f92 flex items-center space-x-1',
+                                    children: [
+                                      (0, i.jsx)('span', {
+                                        role: 'img',
+                                        'aria-label': 'views',
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children: '\uD83D\uDC40',
+                                      }),
+                                      (0, i.jsx)('span', {
+                                        className: 'jsx-2efd3be6b3192f92',
+                                        children:
+                                          (null === (a = t.views) ||
+                                          void 0 === a
+                                            ? void 0
+                                            : a.toLocaleString()) || 0,
+                                      }),
+                                    ],
+                                  }),
+                                ],
+                              }),
+                              (0, i.jsx)('button', {
+                                className:
+                                  'jsx-2efd3be6b3192f92 text-blue-400 hover:text-blue-300 transition-colors',
+                                children: s.readMore,
+                              }),
+                            ],
+                          }),
+                        ],
+                      },
+                      t.id
+                    );
+                  }),
+                }),
+                (0, i.jsxs)('div', {
+                  className: 'jsx-2efd3be6b3192f92 mt-12',
+                  children: [
+                    (0, i.jsx)('h2', {
+                      className:
+                        'jsx-2efd3be6b3192f92 text-2xl font-bold text-center mb-8',
+                      children: s.timelineTitle,
+                    }),
+                    (0, i.jsx)('div', {
+                      className:
+                        'jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6',
+                      children: (0, i.jsx)('div', {
+                        className: 'jsx-2efd3be6b3192f92 space-y-6',
+                        children: n.slice(0, 4).map((t, n) =>
+                          (0, i.jsxs)(
+                            'div',
+                            {
+                              className:
+                                'jsx-2efd3be6b3192f92 flex items-start space-x-4',
+                              children: [
+                                (0, i.jsxs)('div', {
+                                  className:
+                                    'jsx-2efd3be6b3192f92 flex-shrink-0',
+                                  children: [
+                                    (0, i.jsx)('div', {
+                                      className:
+                                        'jsx-2efd3be6b3192f92 ' +
+                                        'w-4 h-4 rounded-full '.concat(
+                                          'community' === t.type
+                                            ? 'bg-blue-400'
+                                            : 'bg-green-400'
+                                        ),
+                                    }),
+                                    n < 3 &&
+                                      (0, i.jsx)('div', {
+                                        className:
+                                          'jsx-2efd3be6b3192f92 ' +
+                                          'w-0.5 h-12 mx-auto mt-2 '.concat(
+                                            'community' === t.type
+                                              ? 'bg-blue-400/30'
+                                              : 'bg-green-400/30'
+                                          ),
+                                      }),
+                                  ],
+                                }),
+                                (0, i.jsxs)('div', {
+                                  className: 'jsx-2efd3be6b3192f92 flex-1',
+                                  children: [
+                                    (0, i.jsxs)('div', {
+                                      className:
+                                        'jsx-2efd3be6b3192f92 flex items-center space-x-2 mb-1',
+                                      children: [
+                                        (0, i.jsx)('span', {
+                                          className:
+                                            'jsx-2efd3be6b3192f92 text-sm font-medium text-zinc-300',
+                                          children: t.title[e],
+                                        }),
+                                        (0, i.jsx)('span', {
+                                          className:
+                                            'jsx-2efd3be6b3192f92 ' +
+                                            'inline-block px-3 py-1 rounded-full text-xs font-semibold '.concat(
+                                              'community' === t.type
+                                                ? 'bg-blue-900 text-blue-300'
+                                                : 'bg-green-900 text-green-300',
+                                              ' mr-2'
+                                            ),
+                                          children:
+                                            'community' === t.type
+                                              ? s.communityHistory
+                                              : s.agentBiographies,
+                                        }),
+                                      ],
+                                    }),
+                                    (0, i.jsx)('p', {
+                                      className:
+                                        'jsx-2efd3be6b3192f92 text-sm text-zinc-400',
+                                      children: t.date,
+                                    }),
+                                    (0, i.jsx)('p', {
+                                      className:
+                                        'jsx-2efd3be6b3192f92 text-sm text-zinc-300 mt-2 line-clamp-2',
+                                      children: t.content[e],
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            },
+                            t.id
+                          )
+                        ),
+                      }),
+                    }),
+                  ],
+                }),
+                (0, i.jsx)('div', {
+                  className: 'jsx-2efd3be6b3192f92 mt-8 text-center',
+                  children: (0, i.jsxs)('div', {
+                    className:
+                      'jsx-2efd3be6b3192f92 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-xl p-6',
+                    children: [
+                      (0, i.jsx)('h3', {
+                        className:
+                          'jsx-2efd3be6b3192f92 text-xl font-semibold mb-4',
+                        children: s.shareStory,
+                      }),
+                      (0, i.jsxs)('p', {
+                        className: 'jsx-2efd3be6b3192f92 text-zinc-400 mb-6',
+                        children: [
+                          s.shareDesc1,
+                          (0, i.jsx)('br', {
+                            className: 'jsx-2efd3be6b3192f92',
+                          }),
+                          s.shareDesc2,
+                        ],
+                      }),
+                      (0, i.jsx)('button', {
+                        className:
+                          'jsx-2efd3be6b3192f92 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105',
+                        children: s.shareButton,
+                      }),
+                    ],
+                  }),
+                }),
+              ],
+            }),
+            (0, i.jsx)(r(), {
+              id: '2efd3be6b3192f92',
+              children:
+                '.line-clamp-3.jsx-2efd3be6b3192f92{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.line-clamp-2.jsx-2efd3be6b3192f92{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}',
+            }),
+            (0, i.jsx)('footer', {
+              className:
+                'jsx-2efd3be6b3192f92 bg-zinc-800/50 border-t border-zinc-700 mt-20 pb-24',
+              children: (0, i.jsx)('div', {
+                className: 'jsx-2efd3be6b3192f92 max-w-6xl mx-auto px-4 py-8',
+                children: (0, i.jsxs)('div', {
+                  className:
+                    'jsx-2efd3be6b3192f92 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0',
+                  children: [
+                    (0, i.jsxs)('div', {
+                      className: 'jsx-2efd3be6b3192f92 text-zinc-400 text-sm',
+                      children: [
+                        '\xa9 2024 Cyber N\xfcwa. ',
+                        'zh' === e ? '保留所有权利。' : 'All rights reserved.',
+                      ],
+                    }),
+                    (0, i.jsx)('div', {
+                      className: 'jsx-2efd3be6b3192f92 text-zinc-500 text-xs',
+                      children:
+                        'zh' === e
+                          ? 'AI智能体共创平台'
+                          : 'AI Agent Co-Creation Platform',
+                    }),
+                    (0, i.jsx)('div', {
+                      className: 'jsx-2efd3be6b3192f92 flex items-center',
+                      children: (0, i.jsxs)('button', {
+                        onClick: () => t('zh' === e ? 'en' : 'zh'),
+                        className:
+                          'jsx-2efd3be6b3192f92 flex items-center space-x-2 px-3 py-2 bg-zinc-700 rounded-lg hover:bg-zinc-600 transition-colors',
+                        children: [
+                          (0, i.jsx)('span', {
+                            className: 'jsx-2efd3be6b3192f92',
+                            children:
+                              'zh' === e
+                                ? '\uD83C\uDDE8\uD83C\uDDF3'
+                                : '\uD83C\uDDFA\uD83C\uDDF8',
+                          }),
+                          (0, i.jsx)('span', {
+                            className: 'jsx-2efd3be6b3192f92',
+                            children: 'zh' === e ? '中文' : 'English',
+                          }),
+                        ],
+                      }),
+                    }),
+                  ],
+                }),
+              }),
+            }),
+          ],
+        });
+      }
+    },
+    8596: function (e, t, s) {
+      'use strict';
+      s.d(t, {
+        LanguageProvider: function () {
+          return a;
+        },
+        Z: function () {
+          return o;
+        },
+      });
+      var i = s(7437),
+        n = s(2265);
+      let r = (0, n.createContext)(void 0);
+      function a(e) {
+        let { children: t } = e,
+          [s, a] = (0, n.useState)('en');
+        return (0, i.jsx)(r.Provider, {
+          value: { language: s, setLanguage: a },
+          children: t,
+        });
+      }
+      function o() {
+        let e = (0, n.useContext)(r);
+        if (void 0 === e)
+          throw Error('useLanguage must be used within a LanguageProvider');
+        return e;
+      }
+    },
+    8800: function (e, t, s) {
+      'use strict';
+      s.d(t, {
+        I: function () {
+          return i;
+        },
+      });
+      let i = {
+        zh: {
+          common: {
+            backHome: '← 返回首页',
+            loading: '加载中...',
+            submit: '提交',
+            cancel: '取消',
+            save: '保存',
+            edit: '编辑',
+            delete: '删除',
+            view: '查看',
+            add: '添加',
+            search: '搜索',
+            filter: '筛选',
+            sort: '排序',
+            refresh: '刷新',
+            close: '关闭',
+            confirm: '确认',
+            yes: '是',
+            no: '否',
+            ok: '确定',
+            error: '错误',
+            success: '成功',
+            warning: '警告',
+            info: '信息',
+          },
+          home: {
+            hero: {
+              title: '\uD83C\uDF0C Cyber N\xfcwa',
+              subtitle: '面向创意共创与智能体养成的开放式平台',
+              description:
+                '融合 Kaggle 的任务机制、Notion 的协作空间与 HuggingFace 的模型文化',
+            },
+            modules: {
+              title: '探索平台模块',
+              launchMission: {
+                title: '\uD83D\uDE80 发起任务',
+                description: '提交创意任务，让社区共同孵化',
+              },
+              agents: {
+                title: '\uD83E\uDD16 Agent 养成所',
+                description: '查看智能体列表与训练记录',
+              },
+              trainAgent: {
+                title: '\uD83C\uDFAF 训练智能体',
+                description: '通过提示词和样本训练自定义 Agent',
+              },
+              wishes: {
+                title: '⭐ 许愿池',
+                description: '展示灵感碎片和半成品想法',
+              },
+              roles: {
+                title: '\uD83D\uDC65 用户角色',
+                description: '扮演不同角色，体验不同权限路径',
+              },
+              narratives: {
+                title: '\uD83D\uDCD6 元叙事广场',
+                description: '记录社区发展和 Agent 传记',
+              },
+              taskSquare: {
+                title: '\uD83C\uDFDB️ 任务广场',
+                description: '浏览所有公开任务与进展',
+              },
+            },
+            vision: {
+              title: '项目愿景',
+              content:
+                '让每个创意都被看见、让每位参与者都能留下痕迹，在非问答型协作中捏出赛博智能体，共同建造一座人机共创的灵感宇宙。',
+            },
+          },
+          launchMission: {
+            title: '\uD83D\uDE80 发起任务',
+            subtitle: '提交创意任务，让社区共同孵化',
+            form: {
+              title: '任务标题',
+              titlePlaceholder: '输入你的创意任务标题...',
+              description: '任务描述',
+              descriptionPlaceholder: '详细描述你的任务需求、目标和期望结果...',
+              tags: '标签',
+              tagsPlaceholder: '用逗号分隔的标签，如：AI, 创意, 协作',
+              submit: '提交任务',
+              back: '返回首页',
+            },
+            success: {
+              title: '\uD83C\uDF89 任务提交成功！',
+              message: '你的创意任务已成功提交到社区。我们将尽快审核并发布。',
+              newTask: '提交新任务',
+              back: '返回首页',
+            },
+          },
+          agents: {
+            title: '\uD83E\uDD16 Agent 养成所',
+            subtitle: '查看智能体列表与训练记录',
+            backHome: '← 返回首页',
+            trainNew: '\uD83C\uDFAF 训练新智能体',
+            stats: {
+              total: '总智能体数',
+              active: '运行中',
+              training: '训练中',
+              inactive: '已停用',
+            },
+            status: {
+              active: '运行中',
+              training: '训练中',
+              inactive: '已停用',
+              unknown: '未知',
+            },
+          },
+          trainAgent: {
+            title: '\uD83C\uDFAF 训练智能体',
+            subtitle: '通过提示词和样本训练自定义 Agent',
+            backHome: '← 返回首页',
+            form: {
+              name: '智能体名称 *',
+              namePlaceholder: '给你的智能体起个名字...',
+              description: '智能体描述 *',
+              descriptionPlaceholder: '简要描述智能体的功能...',
+              prompt: '核心提示词 *',
+              promptPlaceholder: '定义智能体的核心行为和响应模式...',
+              samples: '训练样本',
+              samplesPlaceholder: '提供一些示例对话或场景...',
+              personality: '性格特征',
+              personalityPlaceholder: '描述智能体的性格特点...',
+              constraints: '行为约束',
+              constraintsPlaceholder: '定义智能体的行为边界...',
+              submit: '开始训练',
+              training: '训练中...',
+            },
+            progress: { title: '训练进度', complete: '训练完成！' },
+          },
+          wishes: {
+            title: '⭐ 许愿池',
+            subtitle: '展示灵感碎片和半成品想法',
+            backHome: '← 返回首页',
+            addWish: '添加愿望',
+            supportWish: '支持这个愿望',
+            status: {
+              idea: '灵感',
+              'in-progress': '进行中',
+              completed: '已完成',
+              unknown: '未知',
+            },
+          },
+          roles: {
+            title: '\uD83D\uDC65 用户角色',
+            subtitle: '扮演不同角色，体验不同权限路径',
+            backHome: '← 返回首页',
+            currentStatus: '你的当前状态',
+            upgradeProgress: '升级进度',
+            members: '成员',
+            permissions: '权限',
+            requirement: '获得要求',
+            nextLevel: '下一级',
+            nextRequirement: '下一级要求',
+            viewDetails: '查看详情',
+            roleDevelopmentPath: '角色发展路径',
+            roleDevelopmentPathDescription:
+              '每个角色都有独特的权限和发展路径，通过贡献和参与来提升你的角色等级',
+            howToProgress1:
+              '想要提升角色等级？积极参与任务、训练智能体、贡献优质内容！',
+            howToProgress2: '每个角色都有独特的成长路径和专属权限。',
+          },
+          narratives: {
+            title: '\uD83D\uDCD6 元叙事广场',
+            subtitle: '记录社区发展和 Agent 传记',
+            backHome: '← 返回首页',
+            total: '总叙事数',
+            agentBiographies: '智能体传记',
+            communityHistory: '社区历史',
+            totalLikes: '总点赞数',
+            readMore: '阅读全文',
+            other: '其他',
+            shareStory: '分享你的故事',
+            shareButton: '撰写叙事',
+            shareDesc1:
+              '无论是社区贡献的经历，还是智能体训练的心得，都值得被记录和分享。',
+            shareDesc2: '让我们一起书写 CyberNuwa 的历史。',
+            timelineTitle: '社区发展时间线',
+          },
+          taskSquare: {
+            title: '\uD83C\uDFDB️ 任务广场',
+            subtitle: '浏览所有公开任务与进展',
+            addTask: '发布新任务',
+            totalTasks: '总任务数',
+            inProgress: '进行中',
+            completed: '已完成',
+            participants: '参与者',
+            status: {
+              pending: '待启动',
+              'in-progress': '进行中',
+              completed: '已完成',
+              unknown: '未知',
+            },
+            priority: {
+              high: '高优先级',
+              medium: '中优先级',
+              low: '低优先级',
+              unknown: '未知',
+            },
+            assignee: '负责人',
+            viewResult: '查看成果',
+            details: '详情',
+            deadline: '截止：',
+            reward: '经验值：',
+            emptyTaskSquare: '暂无任务',
+            beFirst: '成为第一个发布任务的用户吧！',
+            launchFirstTask: '发布第一个任务',
+            backHome: '← 返回首页',
+            viewProgress: '查看进展',
+            progress: '完成进度',
+          },
+        },
+        en: {
+          common: {
+            backHome: '← Back to Home',
+            loading: 'Loading...',
+            submit: 'Submit',
+            cancel: 'Cancel',
+            save: 'Save',
+            edit: 'Edit',
+            delete: 'Delete',
+            view: 'View',
+            add: 'Add',
+            search: 'Search',
+            filter: 'Filter',
+            sort: 'Sort',
+            refresh: 'Refresh',
+            close: 'Close',
+            confirm: 'Confirm',
+            yes: 'Yes',
+            no: 'No',
+            ok: 'OK',
+            error: 'Error',
+            success: 'Success',
+            warning: 'Warning',
+            info: 'Info',
+          },
+          home: {
+            hero: {
+              title: '\uD83C\uDF0C Cyber N\xfcwa',
+              subtitle:
+                'Open Platform for Creative Co-Creation and AI Agent Development',
+              description:
+                "Integrating Kaggle's task mechanisms, Notion's collaborative spaces, and HuggingFace's model culture",
+            },
+            modules: {
+              title: 'Explore Platform Modules',
+              launchMission: {
+                title: '\uD83D\uDE80 Launch Mission',
+                description: 'Submit creative tasks for community incubation',
+              },
+              agents: {
+                title: '\uD83E\uDD16 Agent Incubator',
+                description: 'View agent list and training records',
+              },
+              trainAgent: {
+                title: '\uD83C\uDFAF Train Agent',
+                description: 'Train custom agents with prompts and samples',
+              },
+              wishes: {
+                title: '⭐ Wish Pool',
+                description:
+                  'Show inspiration fragments and half-finished ideas',
+              },
+              roles: {
+                title: '\uD83D\uDC65 User Roles',
+                description: 'Experience different roles and permission paths',
+              },
+              narratives: {
+                title: '\uD83D\uDCD6 Metanarrative Square',
+                description:
+                  'Record community development and agent biographies',
+              },
+              taskSquare: {
+                title: '\uD83C\uDFDB️ Task Square',
+                description: 'Browse all public tasks and progress',
+              },
+            },
+            vision: {
+              title: 'Project Vision',
+              content:
+                'Let every idea be seen, let every participant leave their mark, mold cyber agents through non-Q&A collaboration, and together build a universe of human-machine co-creation.',
+            },
+          },
+          launchMission: {
+            title: '\uD83D\uDE80 Launch Mission',
+            subtitle: 'Submit creative tasks for community incubation',
+            form: {
+              title: 'Mission Title',
+              titlePlaceholder: 'Enter your creative mission title...',
+              description: 'Mission Description',
+              descriptionPlaceholder:
+                'Describe your mission requirements, goals, and expected outcomes...',
+              tags: 'Tags',
+              tagsPlaceholder:
+                'Comma-separated tags, e.g.: AI, Creative, Collaboration',
+              submit: 'Submit Mission',
+              back: 'Back to Home',
+            },
+            success: {
+              title: '\uD83C\uDF89 Mission Submitted Successfully!',
+              message:
+                'Your creative mission has been successfully submitted to the community. We will review and publish it soon.',
+              newTask: 'Submit New Mission',
+              back: 'Back to Home',
+            },
+          },
+          agents: {
+            title: '\uD83E\uDD16 Agent Incubator',
+            subtitle: 'View agent list and training records',
+            backHome: '← Back to Home',
+            trainNew: '\uD83C\uDFAF Train New Agent',
+            stats: {
+              total: 'Total Agents',
+              active: 'Active',
+              training: 'Training',
+              inactive: 'Inactive',
+            },
+            status: {
+              active: 'Active',
+              training: 'Training',
+              inactive: 'Inactive',
+              unknown: 'Unknown',
+            },
+          },
+          trainAgent: {
+            title: '\uD83C\uDFAF Train Agent',
+            subtitle: 'Train custom agents with prompts and samples',
+            backHome: '← Back to Home',
+            form: {
+              name: 'Agent Name *',
+              namePlaceholder: 'Give your agent a name...',
+              description: 'Agent Description *',
+              descriptionPlaceholder:
+                "Briefly describe the agent's function...",
+              prompt: 'Core Prompt *',
+              promptPlaceholder:
+                "Define the agent's core behavior and response patterns...",
+              samples: 'Training Samples',
+              samplesPlaceholder:
+                'Provide some example conversations or scenarios...',
+              personality: 'Personality Traits',
+              personalityPlaceholder: "Describe the agent's personality...",
+              constraints: 'Behavior Constraints',
+              constraintsPlaceholder:
+                "Define the agent's behavioral boundaries...",
+              submit: 'Start Training',
+              training: 'Training...',
+            },
+            progress: {
+              title: 'Training Progress',
+              complete: 'Training Complete!',
+            },
+          },
+          wishes: {
+            title: '⭐ Wish Pool',
+            subtitle: 'Show inspiration fragments and half-finished ideas',
+            backHome: '← Back to Home',
+            addWish: 'Add Wish',
+            supportWish: 'Support this wish',
+            status: {
+              idea: 'Idea',
+              'in-progress': 'In Progress',
+              completed: 'Completed',
+              unknown: 'Unknown',
+            },
+          },
+          roles: {
+            title: '\uD83D\uDC65 User Roles',
+            subtitle: 'Experience different roles and permission paths',
+            backHome: '← Back to Home',
+            currentStatus: 'Your Current Status',
+            upgradeProgress: 'Upgrade Progress',
+            members: 'Members',
+            permissions: 'Permissions',
+            requirement: 'Requirement',
+            nextLevel: 'Next Level',
+            nextRequirement: 'Next Requirement',
+            viewDetails: 'View Details',
+            roleDevelopmentPath: 'Role Development Path',
+            roleDevelopmentPathDescription:
+              'Each role has unique permissions and development paths. Improve your role level through contribution and participation.',
+            howToProgress1:
+              'Want to level up your role? Actively participate in tasks, train agents, and contribute quality content!',
+            howToProgress2:
+              'Each role has a unique growth path and exclusive permissions.',
+          },
+          narratives: {
+            title: '\uD83D\uDCD6 Metanarrative Square',
+            subtitle: 'Record community development and agent biographies',
+            backHome: '← Back to Home',
+            total: 'Total Narratives',
+            agentBiographies: 'Agent Biographies',
+            communityHistory: 'Community History',
+            totalLikes: 'Total Likes',
+            readMore: 'Read More',
+            other: 'Other',
+            shareStory: 'Share Your Story',
+            shareButton: 'Write Narrative',
+            shareDesc1:
+              'Whether it is the experience of community contribution or the insights of agent training, it is worth recording and sharing.',
+            shareDesc2: 'Let us write the history of CyberNuwa together.',
+            timelineTitle: 'Community Timeline',
+          },
+          taskSquare: {
+            title: '\uD83C\uDFDB️ Task Square',
+            subtitle: 'Browse all public tasks and progress',
+            addTask: 'Publish New Task',
+            totalTasks: 'Total Tasks',
+            inProgress: 'In Progress',
+            completed: 'Completed',
+            participants: 'Participants',
+            status: {
+              pending: 'Pending',
+              'in-progress': 'In Progress',
+              completed: 'Completed',
+              unknown: 'Unknown',
+            },
+            priority: {
+              high: 'High Priority',
+              medium: 'Medium Priority',
+              low: 'Low Priority',
+              unknown: 'Unknown',
+            },
+            assignee: 'Assignee',
+            viewResult: 'View Result',
+            details: 'Details',
+            deadline: 'Deadline:',
+            reward: 'XP:',
+            emptyTaskSquare: 'No tasks yet',
+            beFirst: 'Be the first to publish a task!',
+            launchFirstTask: 'Publish the first task',
+            backHome: '← Back to Home',
+            viewProgress: 'View Progress',
+            progress: 'Progress',
+          },
+        },
+      };
+    },
+  },
+  function (e) {
+    (e.O(0, [648, 29, 971, 117, 744], function () {
+      return e((e.s = 6696));
+    }),
+      (_N_E = e.O()));
+  },
+]);

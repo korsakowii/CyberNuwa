@@ -1,11 +1,13 @@
 # CyberNuwa 项目结构
 
 ## 项目概述
+
 CyberNuwa 是一个全栈项目，包含前端（Next.js）和后端（Python FastAPI）应用。
 
 ## 目录结构
 
 ### 根目录
+
 ```
 CyberNuwa/
 ├── app/                    # Next.js 应用目录
@@ -23,6 +25,7 @@ CyberNuwa/
 ```
 
 ### 后端结构 (backend/)
+
 ```
 backend/
 ├── data/                  # 数据文件
@@ -38,6 +41,7 @@ backend/
 ```
 
 ### 文档结构 (docs/)
+
 ```
 docs/
 ├── translation/           # 翻译相关文档
@@ -45,6 +49,7 @@ docs/
 ```
 
 ### 测试结构 (tests/)
+
 ```
 tests/
 ├── test_final_translation.js
@@ -55,6 +60,7 @@ tests/
 ## 主要功能模块
 
 ### 前端模块
+
 - **agents/** - 智能体管理
 - **launch-mission/** - 任务启动
 - **narratives/** - 叙事管理
@@ -65,6 +71,7 @@ tests/
 - **wishes/** - 愿望管理
 
 ### 后端模块
+
 - **agents/** - 智能体 API
 - **modules/** - 模块管理
 - **routes/** - API 路由
@@ -73,17 +80,20 @@ tests/
 ## 开发指南
 
 ### 启动前端
+
 ```bash
 npm run dev
 ```
 
 ### 启动后端
+
 ```bash
 cd backend
 python main.py
 ```
 
 ### 运行测试
+
 ```bash
 # 前端测试
 npm test
@@ -94,6 +104,7 @@ python -m pytest
 ```
 
 ## 环境配置
+
 1. 复制 `backend/env.example` 为 `backend/.env`
 2. 配置必要的环境变量
 3. 安装依赖：`npm install` 和 `pip install -r backend/requirements.txt`

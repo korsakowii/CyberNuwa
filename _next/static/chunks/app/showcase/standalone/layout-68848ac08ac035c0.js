@@ -1,1 +1,23 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[481],{1938:function(e,n,_){Promise.resolve().then(_.t.bind(_,6928,23))},6928:function(e){e.exports={style:{fontFamily:"'__Inter_e8ce0c', '__Inter_Fallback_e8ce0c'",fontStyle:"normal"},className:"__className_e8ce0c"}}},function(e){e.O(0,[390,971,117,744],function(){return e(e.s=1938)}),_N_E=e.O()}]);
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [481],
+  {
+    1938: function (e, n, _) {
+      Promise.resolve().then(_.t.bind(_, 6928, 23));
+    },
+    6928: function (e) {
+      e.exports = {
+        style: {
+          fontFamily: "'__Inter_e8ce0c', '__Inter_Fallback_e8ce0c'",
+          fontStyle: 'normal',
+        },
+        className: '__className_e8ce0c',
+      };
+    },
+  },
+  function (e) {
+    (e.O(0, [390, 971, 117, 744], function () {
+      return e((e.s = 1938));
+    }),
+      (_N_E = e.O()));
+  },
+]);

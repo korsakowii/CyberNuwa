@@ -52,12 +52,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Submit and manage user wishes
 
 **How to Use**:
+
 1. Click "Submit New Wish"
 2. Enter your wish description
 3. Add any additional context
 4. Submit for processing
 
 **Example Wishes**:
+
 - "I want to know when my crush will confirm our relationship"
 - "Help me create a study schedule for my exams"
 - "Build a personal finance advisor"
@@ -67,12 +69,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Browse and claim development tasks
 
 **How to Use**:
+
 1. Browse available tasks
 2. Read task descriptions and requirements
 3. Check difficulty level and estimated time
 4. Claim tasks you want to work on
 
 **Task Categories**:
+
 - Data Analysis
 - Natural Language Processing
 - Computer Vision
@@ -84,6 +88,7 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Build and train AI agents
 
 **How to Use**:
+
 1. Select base modules
 2. Configure agent parameters
 3. Train the agent
@@ -91,6 +96,7 @@ CyberNuwa consists of 8 core modules:
 5. Deploy when ready
 
 **Training Options**:
+
 - Supervised Learning
 - Reinforcement Learning
 - Transfer Learning
@@ -101,12 +107,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Define agent roles and capabilities
 
 **How to Use**:
+
 1. Create new roles
 2. Define capabilities and permissions
 3. Set interaction patterns
 4. Configure safety parameters
 
 **Role Types**:
+
 - Assistant
 - Advisor
 - Companion
@@ -118,12 +126,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Create engaging agent stories
 
 **How to Use**:
+
 1. Write agent backstory
 2. Define personality traits
 3. Create interaction scenarios
 4. Develop character arcs
 
 **Story Elements**:
+
 - Character background
 - Personality traits
 - Goals and motivations
@@ -134,12 +144,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Deploy agents for real-world use
 
 **How to Use**:
+
 1. Select agent to deploy
 2. Configure deployment settings
 3. Set access permissions
 4. Launch and monitor
 
 **Deployment Options**:
+
 - Web Interface
 - API Integration
 - Mobile App
@@ -150,12 +162,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Display completed agents and projects
 
 **How to Use**:
+
 1. Browse featured agents
 2. View project details
 3. Try out demos
 4. Learn from examples
 
 **Showcase Categories**:
+
 - Featured Agents
 - Recent Projects
 - Popular Solutions
@@ -166,12 +180,14 @@ CyberNuwa consists of 8 core modules:
 **Purpose**: Manage your created agents
 
 **How to Use**:
+
 1. View your agent list
 2. Edit agent settings
 3. Monitor performance
 4. Update and maintain
 
 **Management Features**:
+
 - Agent status monitoring
 - Performance analytics
 - Usage statistics
@@ -205,18 +221,21 @@ CyberNuwa consists of 8 core modules:
 #### Common Issues
 
 **Agent Not Responding**
+
 - Check agent status
 - Verify configuration
 - Review error logs
 - Restart if necessary
 
 **Training Failures**
+
 - Check data quality
 - Verify model parameters
 - Increase training time
 - Try different algorithms
 
 **Deployment Issues**
+
 - Check system requirements
 - Verify permissions
 - Review configuration
@@ -321,12 +340,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 提交和管理用户愿望
 
 **使用方法**:
+
 1. 点击"提交新愿望"
 2. 输入愿望描述
 3. 添加任何额外上下文
 4. 提交进行处理
 
 **愿望示例**:
+
 - "想知道喜欢的女生什么时候跟我确定关系"
 - "帮我制定考试学习计划"
 - "构建个人财务顾问"
@@ -336,12 +357,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 浏览和认领开发任务
 
 **使用方法**:
+
 1. 浏览可用任务
 2. 阅读任务描述和要求
 3. 检查难度级别和预计时间
 4. 认领您想要处理的任务
 
 **任务类别**:
+
 - 数据分析
 - 自然语言处理
 - 计算机视觉
@@ -353,6 +376,7 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 构建和训练 AI 智能体
 
 **使用方法**:
+
 1. 选择基础模块
 2. 配置智能体参数
 3. 训练智能体
@@ -360,6 +384,7 @@ CyberNuwa 包含 8 个核心模块：
 5. 准备就绪时部署
 
 **训练选项**:
+
 - 监督学习
 - 强化学习
 - 迁移学习
@@ -370,12 +395,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 定义智能体角色和能力
 
 **使用方法**:
+
 1. 创建新角色
 2. 定义能力和权限
 3. 设置交互模式
 4. 配置安全参数
 
 **角色类型**:
+
 - 助手
 - 顾问
 - 伙伴
@@ -387,12 +414,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 创建引人入胜的智能体故事
 
 **使用方法**:
+
 1. 编写智能体背景故事
 2. 定义个性特征
 3. 创建交互场景
 4. 发展角色弧线
 
 **故事元素**:
+
 - 角色背景
 - 个性特征
 - 目标和动机
@@ -403,12 +432,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 部署智能体用于实际应用
 
 **使用方法**:
+
 1. 选择要部署的智能体
 2. 配置部署设置
 3. 设置访问权限
 4. 启动并监控
 
 **部署选项**:
+
 - Web 界面
 - API 集成
 - 移动应用
@@ -419,12 +450,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 展示完成的智能体和项目
 
 **使用方法**:
+
 1. 浏览特色智能体
 2. 查看项目详情
 3. 试用演示
 4. 从示例中学习
 
 **展示类别**:
+
 - 特色智能体
 - 最近项目
 - 热门解决方案
@@ -435,12 +468,14 @@ CyberNuwa 包含 8 个核心模块：
 **目的**: 管理您创建的智能体
 
 **使用方法**:
+
 1. 查看您的智能体列表
 2. 编辑智能体设置
 3. 监控性能
 4. 更新和维护
 
 **管理功能**:
+
 - 智能体状态监控
 - 性能分析
 - 使用统计
@@ -474,18 +509,21 @@ CyberNuwa 包含 8 个核心模块：
 #### 常见问题
 
 **智能体无响应**
+
 - 检查智能体状态
 - 验证配置
 - 查看错误日志
 - 必要时重启
 
 **训练失败**
+
 - 检查数据质量
 - 验证模型参数
 - 增加训练时间
 - 尝试不同算法
 
 **部署问题**
+
 - 检查系统要求
 - 验证权限
 - 查看配置
@@ -538,4 +576,4 @@ CyberNuwa 包含 8 个核心模块：
 3. **财务规划智能体**
    - 创建预算计划
    - 建议投资策略
-   - 监控财务目标 
+   - 监控财务目标

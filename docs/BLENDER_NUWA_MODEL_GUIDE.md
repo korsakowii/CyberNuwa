@@ -1,11 +1,13 @@
 # 🐉 在Blender中创建女娲模型指南
 
 ## 🎯 目标
+
 在Blender界面中直接创建和查看女娲3D模型
 
 ## 📋 准备工作
 
 ### 1. 确保Blender已启动
+
 ```bash
 # 检查Blender状态
 python3 blender_mcp_server.py status
@@ -15,6 +17,7 @@ python3 blender_mcp_server.py start
 ```
 
 ### 2. 准备脚本文件
+
 - `nuwa_model_direct.py` - 简化版女娲模型脚本
 - `nuwa_model_blender_ui.py` - 完整版女娲模型脚本（含材质）
 
@@ -52,6 +55,7 @@ python3 blender_mcp_server.py script nuwa_model_blender_ui.py
 ## 🐉 女娲模型特性
 
 ### 模型组成
+
 - **头部**：球体，代表人类头部
 - **躯干**：圆柱体，代表上半身
 - **手臂**：两个圆柱体，左右对称
@@ -60,12 +64,14 @@ python3 blender_mcp_server.py script nuwa_model_blender_ui.py
 - **装饰品**：金色头冠、耳环、项链
 
 ### 材质系统（完整版）
+
 - **皮肤材质**：肤色，带次表面散射
 - **蛇皮材质**：深绿色，金属质感
 - **头发材质**：深棕色，粗糙质感
 - **金色材质**：金属质感，高反射
 
 ### 光照系统
+
 - **太阳光**：主光源，45度角照射
 - **补光**：区域光，填充阴影
 - **背光**：点光源，创造轮廓光（完整版）
@@ -73,6 +79,7 @@ python3 blender_mcp_server.py script nuwa_model_blender_ui.py
 ## 🎯 查看模型
 
 ### 视图控制
+
 - **数字键盘 0**：切换到相机视图
 - **数字键盘 1**：前视图
 - **数字键盘 3**：右视图
@@ -82,6 +89,7 @@ python3 blender_mcp_server.py script nuwa_model_blender_ui.py
 - **鼠标滚轮**：缩放视图
 
 ### 着色模式
+
 - **实体**：默认模式，显示基本颜色
 - **材质预览**：显示材质效果（推荐）
 - **渲染**：最终渲染效果
@@ -89,6 +97,7 @@ python3 blender_mcp_server.py script nuwa_model_blender_ui.py
 ## 🔧 自定义修改
 
 ### 修改模型参数
+
 在脚本中可以调整以下参数：
 
 ```python
@@ -107,13 +116,14 @@ location=(0, 0, 2.5)  # 位置坐标
 ```
 
 ### 添加新元素
+
 可以在脚本中添加更多装饰品：
 
 ```python
 # 添加手镯
 bpy.ops.mesh.primitive_torus_add(
-    major_radius=0.15, 
-    minor_radius=0.03, 
+    major_radius=0.15,
+    minor_radius=0.03,
     location=(side * 1.5, 0, 1.5)
 )
 ```
@@ -121,6 +131,7 @@ bpy.ops.mesh.primitive_torus_add(
 ## 🎨 渲染设置
 
 ### 快速渲染
+
 ```python
 # 设置渲染引擎
 bpy.context.scene.render.engine = 'CYCLES'
@@ -128,6 +139,7 @@ bpy.context.scene.cycles.samples = 128  # 降低采样数加快渲染
 ```
 
 ### 高质量渲染
+
 ```python
 # 高质量设置
 bpy.context.scene.cycles.samples = 512
@@ -138,6 +150,7 @@ bpy.context.scene.render.resolution_y = 1080
 ## 🚀 高级功能
 
 ### 动画准备
+
 为模型添加骨骼系统：
 
 ```python
@@ -152,6 +165,7 @@ bpy.ops.object.mode_set(mode='OBJECT')
 ```
 
 ### 粒子系统
+
 为头发添加粒子系统：
 
 ```python
@@ -179,17 +193,20 @@ particle_system.settings.type = 'HAIR'
 ## 🔍 故障排除
 
 ### 如果看不到模型
+
 1. 确保脚本成功运行（查看控制台输出）
 2. 按 `A` 键选择所有对象
 3. 按 `Home` 键聚焦到所有对象
 4. 检查是否在正确的视图模式
 
 ### 如果材质不显示
+
 1. 确保使用"材质预览"着色模式
 2. 检查渲染引擎是否设置为Cycles
 3. 确保光照设置正确
 
 ### 如果性能问题
+
 1. 减少蛇身段数
 2. 减少头发数量
 3. 降低渲染采样数
@@ -203,4 +220,4 @@ particle_system.settings.type = 'HAIR'
 
 ---
 
-**🎨 现在你可以在Blender中欣赏完整的女娲3D模型了！** 🐉✨ 
+**🎨 现在你可以在Blender中欣赏完整的女娲3D模型了！** 🐉✨

@@ -7,6 +7,7 @@ CyberNuwa 翻译系统是一个高性能的全局翻译解决方案，支持中�
 ## 🎯 功能特性
 
 ### 核心功能
+
 - ✅ **全局翻译**: 一键翻译整个页面内容
 - ✅ **智能检测**: 自动识别中英文文本
 - ✅ **批量处理**: 高效批量翻译API
@@ -15,6 +16,7 @@ CyberNuwa 翻译系统是一个高性能的全局翻译解决方案，支持中�
 - ✅ **错误回退**: 多级错误处理和回退机制
 
 ### 用户体验
+
 - 🎨 **美观界面**: 现代化的UI设计
 - 📊 **进度显示**: 实时翻译进度指示
 - 🔄 **状态反馈**: 清晰的操作状态提示
@@ -23,6 +25,7 @@ CyberNuwa 翻译系统是一个高性能的全局翻译解决方案，支持中�
 ## 🏗️ 系统架构
 
 ### 前端架构
+
 ```
 TranslationProvider (Context)
 ├── TranslationControls (UI组件)
@@ -31,6 +34,7 @@ TranslationProvider (Context)
 ```
 
 ### 后端架构
+
 ```
 FastAPI Backend
 ├── /api/translation/translate (单文本翻译)
@@ -69,71 +73,82 @@ CyberNuwa/
 ### 前端实现
 
 #### 1. TranslationProvider
+
 ```typescript
 interface TranslationContextType {
-  translateText: (text: string, targetLang?: string) => Promise<string>
-  translateForm: (formData: any) => Promise<any>
-  autoTranslatePage: (onLanguageChange?: (newLang: string) => void) => Promise<void>
-  isTranslating: boolean
-  translationCache: Map<string, string>
-  autoTranslate: boolean
-  setAutoTranslate: (enabled: boolean) => void
-  saveTranslation: (original: string, translated: string, lang: string) => void
+  translateText: (text: string, targetLang?: string) => Promise<string>;
+  translateForm: (formData: any) => Promise<any>;
+  autoTranslatePage: (
+    onLanguageChange?: (newLang: string) => void
+  ) => Promise<void>;
+  isTranslating: boolean;
+  translationCache: Map<string, string>;
+  autoTranslate: boolean;
+  setAutoTranslate: (enabled: boolean) => void;
+  saveTranslation: (original: string, translated: string, lang: string) => void;
 }
 ```
 
 **核心功能:**
+
 - 提供翻译上下文
 - 管理翻译状态
 - 处理缓存逻辑
 - 实现全局翻译
 
 #### 2. 全局翻译算法
+
 ```typescript
-const autoTranslatePage = async (onLanguageChange?: (newLang: string) => void) => {
+const autoTranslatePage = async (
+  onLanguageChange?: (newLang: string) => void
+) => {
   // 1. 获取所有文本节点
-  const textNodes = getTextNodes(document.body)
-  
+  const textNodes = getTextNodes(document.body);
+
   // 2. 收集需要翻译的文本（去重）
-  const uniqueTexts = new Set<string>()
-  
+  const uniqueTexts = new Set<string>();
+
   // 3. 使用批量翻译API
   const response = await fetch('/api/translation/translate_batch', {
     method: 'POST',
-    body: JSON.stringify({ texts, target_lang, source_lang: 'auto' })
-  })
-  
+    body: JSON.stringify({ texts, target_lang, source_lang: 'auto' }),
+  });
+
   // 4. 更新DOM节点
   allNodes.forEach(node => {
     if (translationMap.has(text)) {
-      node.textContent = translationMap.get(text)
+      node.textContent = translationMap.get(text);
     }
-  })
-}
+  });
+};
 ```
 
 #### 3. 智能文本检测
+
 ```typescript
 const shouldTranslateText = (text: string): boolean => {
   // 过滤规则
   const skipPatterns = [
-    /^\d+$/,                    // 纯数字
-    /^\d{4}-\d{2}-\d{2}$/,      // 日期格式
-    /^[❤️💬👁️✨👤•]+$/,        // 纯emoji
-    /^[a-zA-Z0-9_]+$/,          // 纯英文数字下划线
-    /^[•\s]+$/,                 // 纯空格和点
-  ]
-  
+    /^\d+$/, // 纯数字
+    /^\d{4}-\d{2}-\d{2}$/, // 日期格式
+    /^[❤️💬👁️✨👤•]+$/, // 纯emoji
+    /^[a-zA-Z0-9_]+$/, // 纯英文数字下划线
+    /^[•\s]+$/, // 纯空格和点
+  ];
+
   // 检查是否需要翻译
-  return text.length >= 2 && 
-         !skipPatterns.some(pattern => pattern.test(text)) &&
-         (/[\u4e00-\u9fff]/.test(text) || /[a-zA-Z]/.test(text))
-}
+  return (
+    text.length >= 2 &&
+    !skipPatterns.some(pattern => pattern.test(text)) &&
+    (/[\u4e00-\u9fff]/.test(text) || /[a-zA-Z]/.test(text))
+  );
+};
 ```
 
 ### 后端实现
 
 #### 1. 翻译服务架构
+
 ```python
 class TranslationService:
     def __init__(self):
@@ -148,23 +163,25 @@ class TranslationService:
 ```
 
 #### 2. 批量翻译API
+
 ```python
 @router.post("/translate_batch", response_model=BatchTranslationResponse)
 async def translate_batch(request: BatchTranslationRequest):
     # 1. 去重处理
     unique_texts = list(dict.fromkeys(request.texts))
-    
+
     # 2. 批量翻译
     translated_texts = await translation_service.translate_batch(
         unique_texts, request.target_lang, request.source_lang
     )
-    
+
     # 3. 创建映射并返回结果
     translation_map = dict(zip(unique_texts, translated_texts))
     return BatchTranslationResponse(results=results)
 ```
 
 #### 3. 多API支持
+
 ```python
 async def _translate_with_google_translate(self, text: str, target_lang: str, source_lang: str = 'auto') -> str:
     url = "https://translate.googleapis.com/translate_a/single"
@@ -181,16 +198,19 @@ async def _translate_with_google_translate(self, text: str, target_lang: str, so
 ## 🚀 性能优化
 
 ### 1. 批量处理
+
 - **API调用减少**: 70-80% 的请求减少
 - **并发控制**: 10个并发请求限制
 - **请求间隔**: 200ms 间隔优化
 
 ### 2. 缓存策略
+
 - **内存缓存**: 翻译结果即时缓存
 - **本地存储**: 跨会话缓存保持
 - **去重处理**: 避免重复翻译
 
 ### 3. 智能过滤
+
 - **文本检测**: 自动识别可翻译内容
 - **模式过滤**: 跳过不需要翻译的文本
 - **长度限制**: 最小文本长度要求
@@ -198,6 +218,7 @@ async def _translate_with_google_translate(self, text: str, target_lang: str, so
 ## 📊 API接口
 
 ### 单文本翻译
+
 ```http
 POST /api/translation/translate
 Content-Type: application/json
@@ -210,6 +231,7 @@ Content-Type: application/json
 ```
 
 **响应:**
+
 ```json
 {
   "original_text": "每天都能喝到完美的咖啡",
@@ -220,6 +242,7 @@ Content-Type: application/json
 ```
 
 ### 批量翻译
+
 ```http
 POST /api/translation/translate_batch
 Content-Type: application/json
@@ -232,6 +255,7 @@ Content-Type: application/json
 ```
 
 **响应:**
+
 ```json
 {
   "results": [
@@ -246,6 +270,7 @@ Content-Type: application/json
 ```
 
 ### 语言检测
+
 ```http
 POST /api/translation/detect
 Content-Type: application/json
@@ -256,6 +281,7 @@ Content-Type: application/json
 ```
 
 **响应:**
+
 ```json
 {
   "detected_language": "zh"
@@ -265,16 +291,19 @@ Content-Type: application/json
 ## 🎨 用户界面
 
 ### 翻译控件
+
 - **位置**: 右下角固定位置
 - **功能**: 一键翻译按钮 + 设置面板
 - **状态**: 翻译进度指示器
 
 ### 状态指示器
+
 - **位置**: 右上角
 - **显示**: 当前语言状态
 - **颜色**: 绿色(中文) / 蓝色(英文)
 
 ### 卡片组件
+
 - **设计**: 现代化卡片布局
 - **动画**: 浮动和悬停效果
 - **响应式**: 适配不同屏幕尺寸
@@ -282,18 +311,21 @@ Content-Type: application/json
 ## 🔍 使用指南
 
 ### 基本使用
+
 1. 访问愿望页面 (`/wishes`)
 2. 点击右下角翻译按钮 🌐
 3. 等待翻译完成
 4. 再次点击切换回原文
 
 ### 测试功能
+
 1. 访问测试页面 (`/test-global-translation`)
 2. 输入测试文本
 3. 点击"测试翻译"按钮
 4. 观察翻译结果
 
 ### 开发者测试
+
 ```bash
 # 测试后端健康状态
 curl -X GET http://localhost:8001/health
@@ -312,13 +344,16 @@ curl -X POST http://localhost:8001/api/translation/translate_batch \
 ## 🛠️ 部署说明
 
 ### 环境要求
+
 - Node.js 18+
 - Python 3.7+
 - FastAPI
 - React/Next.js
 
 ### 启动步骤
+
 1. **启动后端服务**
+
    ```bash
    cd backend
    source venv/bin/activate
@@ -326,6 +361,7 @@ curl -X POST http://localhost:8001/api/translation/translate_batch \
    ```
 
 2. **启动前端服务**
+
    ```bash
    npm run dev
    ```
@@ -338,6 +374,7 @@ curl -X POST http://localhost:8001/api/translation/translate_batch \
 ## 🔧 配置选项
 
 ### 环境变量
+
 ```bash
 # 翻译API配置
 TRANSLATION_API_KEY=your_api_key
@@ -350,14 +387,15 @@ CACHE_ENABLED=true
 ```
 
 ### 前端配置
+
 ```typescript
 // 翻译设置
 const translationConfig = {
   batchSize: 10,
   cacheEnabled: true,
   autoTranslate: false,
-  defaultLanguage: 'zh'
-}
+  defaultLanguage: 'zh',
+};
 ```
 
 ## 🐛 故障排除
@@ -380,6 +418,7 @@ const translationConfig = {
    - 重启应用服务
 
 ### 调试工具
+
 - 浏览器开发者工具
 - 后端日志监控
 - API响应检查
@@ -387,13 +426,15 @@ const translationConfig = {
 ## 📈 性能指标
 
 ### 优化前后对比
-| 指标 | 优化前 | 优化后 | 提升 |
-|------|--------|--------|------|
-| 翻译速度 | 慢 | 快 | 3-5倍 |
-| API调用 | 多 | 少 | 70-80% |
-| 用户体验 | 一般 | 优秀 | 显著 |
+
+| 指标     | 优化前 | 优化后 | 提升   |
+| -------- | ------ | ------ | ------ |
+| 翻译速度 | 慢     | 快     | 3-5倍  |
+| API调用  | 多     | 少     | 70-80% |
+| 用户体验 | 一般   | 优秀   | 显著   |
 
 ### 监控指标
+
 - 翻译响应时间
 - API调用频率
 - 缓存命中率
@@ -402,18 +443,21 @@ const translationConfig = {
 ## 🔮 未来规划
 
 ### 功能扩展
+
 - [ ] 支持更多语言
 - [ ] 语音翻译功能
 - [ ] 翻译历史记录
 - [ ] 用户偏好设置
 
 ### 性能优化
+
 - [ ] 更智能的缓存策略
 - [ ] 预翻译机制
 - [ ] 离线翻译支持
 - [ ] 分布式翻译服务
 
 ### 用户体验
+
 - [ ] 翻译质量评分
 - [ ] 用户反馈系统
 - [ ] 个性化翻译
@@ -422,6 +466,7 @@ const translationConfig = {
 ## 📝 更新日志
 
 ### v1.0.0 (2025-01-28)
+
 - ✅ 实现基础翻译功能
 - ✅ 添加全局翻译支持
 - ✅ 优化性能和缓存
@@ -432,4 +477,4 @@ const translationConfig = {
 
 **文档版本**: v1.0.0  
 **最后更新**: 2025-01-28  
-**维护者**: CyberNuwa Team 
+**维护者**: CyberNuwa Team

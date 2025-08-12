@@ -16,12 +16,14 @@
 ### 1. Vercel (推荐 ⭐⭐⭐⭐⭐)
 
 **优点:**
+
 - 免费额度大 (每月 100GB 带宽)
 - 部署简单，自动 CI/CD
 - 全球 CDN，速度快
 - 支持 Python 3.9+
 
 **部署步骤:**
+
 ```bash
 cd backend
 npm install -g vercel
@@ -29,18 +31,21 @@ vercel --prod
 ```
 
 **配置要求:**
+
 - 确保 `vercel.json` 存在
 - 环境变量在 Vercel 控制台设置
 
 ### 2. Railway (推荐 ⭐⭐⭐⭐)
 
 **优点:**
+
 - 稳定可靠
 - 每月 $5 免费额度
 - 自动 HTTPS
 - 支持环境变量
 
 **部署步骤:**
+
 ```bash
 cd backend
 npm install -g @railway/cli
@@ -52,11 +57,13 @@ railway up
 ### 3. Render (推荐 ⭐⭐⭐⭐)
 
 **优点:**
+
 - 免费服务
 - 自动部署
 - 支持自定义域名
 
 **部署步骤:**
+
 1. 访问 [render.com](https://render.com)
 2. 连接 GitHub 仓库
 3. 选择 "Web Service"
@@ -65,10 +72,12 @@ railway up
 ### 4. Heroku (经典 ⭐⭐⭐)
 
 **优点:**
+
 - 经典平台
 - 生态系统成熟
 
 **缺点:**
+
 - 免费额度有限
 - 需要信用卡验证
 
@@ -84,6 +93,7 @@ cp env.example .env
 ```
 
 **必需的环境变量:**
+
 - `OPENAI_API_KEY`: OpenAI API 密钥
 - `SECRET_KEY`: 应用密钥
 - `DATABASE_URL`: 数据库连接字符串
@@ -113,10 +123,10 @@ curl http://localhost:8002/health
 
 ```typescript
 // 从本地地址
-const API_BASE = 'http://localhost:8002'
+const API_BASE = 'http://localhost:8002';
 
 // 改为云端地址
-const API_BASE = 'https://your-backend-domain.vercel.app'
+const API_BASE = 'https://your-backend-domain.vercel.app';
 ```
 
 ### 2. 配置 CORS
@@ -134,6 +144,7 @@ origins = [
 ### 3. 环境变量设置
 
 在部署平台的控制台中设置环境变量：
+
 - `OPENAI_API_KEY`
 - `SECRET_KEY`
 - `DATABASE_URL` (如果使用外部数据库)
@@ -159,6 +170,7 @@ curl https://your-backend-domain.vercel.app/health
 ### 1. 依赖安装失败
 
 **解决方案:**
+
 - 检查 Python 版本兼容性
 - 更新 `requirements.txt`
 - 使用 `pip-tools` 管理依赖
@@ -166,6 +178,7 @@ curl https://your-backend-domain.vercel.app/health
 ### 2. 环境变量未生效
 
 **解决方案:**
+
 - 在部署平台重新设置环境变量
 - 重启服务
 - 检查变量名拼写
@@ -173,6 +186,7 @@ curl https://your-backend-domain.vercel.app/health
 ### 3. 数据库连接失败
 
 **解决方案:**
+
 - 检查数据库 URL 格式
 - 确认数据库服务状态
 - 检查网络连接
@@ -180,6 +194,7 @@ curl https://your-backend-domain.vercel.app/health
 ### 4. CORS 错误
 
 **解决方案:**
+
 - 更新 CORS 配置
 - 检查前端域名是否正确
 - 清除浏览器缓存
